@@ -1,6 +1,6 @@
 var PlugAPI = require('./plugapi');
 var ROOM = 'christian-anything-2';
-var UPDATECODE = '$&2h72=^^@jdBf_n!`-38UHs'; 
+var UPDATECODE = '_:8s[H@*dnPe!nNerEM'; 
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
