@@ -23,6 +23,12 @@ PlugAPI.getAuth({
         
     bot.on('userJoin', function(data) {
         bot.chat('Welcome to Christian Anything. All Christian Bands and Christian Songs are allowed in this epic room. Have fun and worship with us to celebrate our king, God.');
+        
+    bot.on('chat', function(data) {
+        if(data.text.match(/^\/hello$/)) {
+            bot.chat('Hi! How Are You?');
+                }
+            });
         });
     });
 });
