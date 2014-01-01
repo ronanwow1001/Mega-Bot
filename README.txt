@@ -8,7 +8,7 @@ Version Number: 1.0.2
 Debut Date: December 10, 2013
  
 Commands:
-1. /hello
+1. /woot
 
 Features:
 1. Welcome Greeting
@@ -30,6 +30,3 @@ December 31, 2013:
 
 1.0.2:
 1. Ability to Woot on Songs
-2. Hello Command
-
-
