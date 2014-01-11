@@ -19,14 +19,18 @@ PlugAPI.getAuth({
         // data object has information on the room - list of users, song currently playing, etc.
         console.log("Joined " + ROOM + ": ", data);
         bot.chat('Mega-Bot is now online!');
-      
+        
     bot.on('userJoin', function(data) {
         bot.chat('Welcome to Christian Anything. All Christian Bands and Christian Songs are allowed in this epic room. Have fun and worship with us to celebrate our king, God.');
         
+    bot.on('vote', function(data) {
+        bot.woot('up');
+    
     var reconnect = function() { bot.connect('coding-soundtrack'); };
 
     bot.on('close', reconnect);
     bot.on('error', reconnect); 
+            });
         });
     });
 });
