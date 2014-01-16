@@ -22,15 +22,38 @@ PlugAPI.getAuth({
         
     bot.on('userJoin', function(data) {
         bot.chat('Welcome to Christian Anything. All Christian Bands and Christian Songs are allowed in this epic room. Have fun and worship with us to celebrate our king, God.');
-        
-    bot.on('vote', function(data) {
-        bot.woot('up');
+    });
     
     var reconnect = function() { bot.connect('coding-soundtrack'); };
 
-    bot.on('close', reconnect);
-    bot.on('error', reconnect); 
-            });
+	bot.on('close', reconnect);
+	bot.on('error', reconnect);
+
+	bot.on('chat', function(data) {
+        //if (data.from == 'Christian Anything') {
+            var command = data.message.split(' ')[0];
+            var firstIndex = data.message.indexOf(' ');
+            var qualifier = "";
+            if (firstIndex!=-1) {
+                qualifier = data.message.substring(firstIndex+1, data.message.length); 
+            }
+            switch (command)
+            {
+                case ".commands":
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh");
+                    break;
+                case ".hey":
+                    bot.chat("Well hey there! @" + data.from);
+                    break;
+                case ".woot":
+                    bot.woot();
+                    bot.chat("I love this song.");
+                    break;
+                case ".meh":
+                    bot.meh();
+                    bot.chat("I hate this song.");
+                    break;
+            }
         });
     });
 });
