@@ -40,7 +40,7 @@ PlugAPI.getAuth({
             switch (command)
             {
                 case ".commands":
-                    bot.chat("List of Commands: .commands, .hey, .woot, .meh");
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props");
                     break;
                 case ".hey":
                     bot.chat("Well hey there! @" + data.from);
@@ -52,6 +52,11 @@ PlugAPI.getAuth({
                 case ".meh":
                     bot.meh();
                     bot.chat("I hate this song.");
+                    break;
+                case ".props":
+                    console.log(bot.getDJs()[0].username, bot.getDJs(), bot.getDJs()[0]);
+                    bot.chat("Epic Play! @" + bot.getDJs()[0].username);
+                    bot.woot();
                     break;
             }
         });

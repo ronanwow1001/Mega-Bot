@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.1.0
+Version Number: 1.1.1
 
 Debut Date: December 10, 2013
  
@@ -33,3 +33,8 @@ January 16, 2014:
 
 1.1.0:
 1. New Commands System
+
+January 17, 2014:
+
+1.1.1:
+1. New Props Command
