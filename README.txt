@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.2.0
+Version Number: 1.2.1
 
 Debut Date: December 10, 2013
  
@@ -58,3 +58,8 @@ January 18, 2014:
 2. New Join Waitlist Command
 3. New Leave Waitlist Command
 4. New Skip Song Command
+
+January 21, 2014:
+
+1.2.1:
+1. Minor Tweaks to Reconnection Code

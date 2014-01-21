@@ -26,10 +26,17 @@ PlugAPI.getAuth({
         bot.chat('Welcome to Christian Anything. All Christian Bands and Christian Songs are allowed in this epic room. Have fun and worship with us to celebrate our king, God.');
     });
     
-    var reconnect = function() { bot.connect('christian-anything-2'); };
+    var reconnect = function() { 
+        bot.connect(ROOM);
+    };
 
     bot.on('close', reconnect);
     bot.on('error', reconnect);
+
+    bot.on('djAdvance', function(data) {
+        console.log(data, bot.getUser(data.currentDJ));
+        console.log(bot.getDJs()[0].username, bot.getDJs());
+    });
     
     bot.on('chat', function(data) {
         //if (data.from == 'christian-anything-2') {
