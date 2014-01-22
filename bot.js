@@ -1,6 +1,6 @@
 var PlugAPI = require('./plugapi');
 var ROOM = 'christian-anything-2';
-var UPDATECODE = '_:8s[H@*dnPe!nNerEM'; 
+var UPDATECODE = 'p9R*'; 
 
 var mlexer = require('math-lexer');
 

@@ -63,3 +63,4 @@ January 21, 2014:
 
 1.2.1:
 1. Minor Tweaks to Reconnection Code
+2. New Update Code for Plug.DJ
