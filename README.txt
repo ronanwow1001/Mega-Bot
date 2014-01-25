@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.2.1
+Version Number: 1.3.0
 
 Debut Date: December 10, 2013
  
@@ -12,6 +12,8 @@ Features:
 2. Auto Reconnects back to Plug.DJ
 3. Commands System
 4. Math-Lexer API Support
+5. Google Geocoding API Support
+6. Weathers API Support
 
 Commands:
 1.  .commands
@@ -23,6 +25,8 @@ Commands:
 7.	.join
 8.	.leave
 9.	.skip
+10. .forecast
+11.	.version
 
 Release Notes:
  
@@ -64,3 +68,10 @@ January 21, 2014:
 1.2.1:
 1. Minor Tweaks to Reconnection Code
 2. New Update Code for Plug.DJ
+
+January 25, 2014:
+
+1.3.0:
+1. Google Geocoding API Support
+2. Weathers API Support
+3. New Version Command

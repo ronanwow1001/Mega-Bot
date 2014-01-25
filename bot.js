@@ -2,7 +2,11 @@ var PlugAPI = require('./plugapi');
 var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
+var version = "1.3.0";
+
 var mlexer = require('math-lexer');
+var google_geocoding = require('google-geocoding');
+var weather = require('weathers');
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
@@ -49,7 +53,7 @@ PlugAPI.getAuth({
             switch (command)
             {
                 case ".commands":
-                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip");
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version");
                     break;
                 case ".hey":
                     bot.chat("Well hey there! @" + data.from);
@@ -105,6 +109,44 @@ PlugAPI.getAuth({
                 case ".skip":
                     bot.skipSong();
                     bot.chat("Skipping The Song!");
+                    break;
+                case ".forecast":
+                    google_geocoding.geocode(qualifier, function(err, location) {
+                        if (location!=null){
+                            weather.getWeather(location.lat, location.lng, function(err, data){
+                                if (data!=null){
+                                    var weekForecast="Forecast for "+data.location.areaDescription+": Current: "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
+                                    for (var i=0; i<7; i++){
+                                        var day = data.time.startPeriodName[i].split(' ');
+                                        if (day[1]!='Night'){
+                                            weekForecast=weekForecast+"; "+data.time.startPeriodName[i]+": ";
+                                        }
+                                        else{
+                                            weekForecast=weekForecast+", ";
+                                        }
+                                        weekForecast=weekForecast+data.time.tempLabel[i]+": "+data.data.temperature[i]+"°F";
+                                    } 
+                                    weekForecast=weekForecast.replace(/Sunday/g, 'Sun');
+                                    weekForecast=weekForecast.replace(/Monday/g, 'Mon');
+                                    weekForecast=weekForecast.replace(/Tuesday/g, 'Tues');
+                                    weekForecast=weekForecast.replace(/Wednesday/g, 'Wed');
+                                    weekForecast=weekForecast.replace(/Thursday/g, 'Thurs');
+                                    weekForecast=weekForecast.replace(/Friday/g, 'Fri');
+                                    weekForecast=weekForecast.replace(/Saturday/g, 'Sat');
+                                    bot.chat(weekForecast);
+                                }
+                                else{
+                                    bot.chat("No weather found.")
+                                }
+                            });
+                        }
+                        else{
+                            bot.chat("No weather found.")
+                        }
+                    });
+                    break;
+                case ".version":
+                    bot.chat(version);
                     break;
             }
         });
