@@ -2,7 +2,15 @@ var PlugAPI = require('./plugapi');
 var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
-var version = "1.3.0";
+var Lastfm = require('simple-lastfm');
+var version = "1.4.0";
+
+var lastfm = new Lastfm({
+    api_key: 'dc116468a760d9c586562d79e302aadf',
+    api_secret: 'c68c25364ccfa0961f60abe9250f8233',
+    username: 'kingzimmer',
+    password: 'Starwarskotor1'
+});
 
 var mlexer = require('math-lexer');
 var google_geocoding = require('google-geocoding');
@@ -53,7 +61,7 @@ PlugAPI.getAuth({
             switch (command)
             {
                 case ".commands":
-                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version");
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help");
                     break;
                 case ".hey":
                     bot.chat("Well hey there! @" + data.from);
@@ -148,7 +156,144 @@ PlugAPI.getAuth({
                 case ".version":
                     bot.chat(version);
                     break;
-            }
+                case ".artist":
+                    var artistChoice="";
+                    if (qualifier==""){
+                        artistChoice=bot.getMedia().author;
+                    }
+                    else{
+                        artistChoice=qualifier;
+                    }
+                    lastfm.getArtistInfo({
+                        artist: artistChoice,
+                        callback: function(result) { 
+                            //console.log(result);
+                            if (result.success==true){
+                                if (result.artistInfo.bio.summary!=""){
+                                    var summary=result.artistInfo.bio.summary;
+                                    summary=summary.replace(/(&quot;)/g, '"');
+                                    summary=summary.replace(/(&amp;)/g, '&');
+                                    summary=summary.replace(/(&eacute;)/g, 'é');
+                                    summary=summary.replace(/(&aacute;)/g, 'á');
+                                    summary=summary.replace(/(&auml;)/g, 'ä');
+                                    summary=summary.replace(/(&iacute;)/g, 'í');
+                                    summary=summary.replace(/(&oacute;)/g, 'ó');
+                                    summary=summary.replace(/<[^>]+>/g, '');
+                                    if (summary.indexOf(" 1) ") != -1){
+                                        summary=summary.substring(summary.lastIndexOf(" 1) ")+4);
+                                        if (summary.indexOf(" 2) ") != -1){
+                                            summary=summary.substring(0, summary.lastIndexOf(" 2)"));
+                                        }
+                                    }   
+                                    else if (summary.indexOf(" 1. ") != -1){
+                                        summary=summary.substring(summary.lastIndexOf(" 1. ")+4);
+                                        if (summary.indexOf(" 2. ") != -1){
+                                            summary=summary.substring(0, summary.lastIndexOf(" 2."));
+                                        }
+                                    }     
+                                    else if (summary.indexOf(" (1) ") != -1){
+                                        summary=summary.substring(summary.lastIndexOf(" (1) ")+4);
+                                        if (summary.indexOf(" (2) ") != -1){
+                                            summary=summary.substring(0, summary.lastIndexOf(" (2)"));
+                                        }
+                                    }        
+                                    if (summary.length>250){
+                                        summary=summary.substring(0, 247)+"...";
+                                    }                           
+                                    bot.chat(summary); 
+                                    var lastfmArtist=artistChoice;
+                                    lastfmArtist=lastfmArtist.replace(/ /g, '+');
+                                    bot.chat("For more info: http://www.last.fm/music/" + lastfmArtist);
+                                }
+                                else {
+                                    bot.chat("No artist info found.")
+                                }
+                            }
+                            else {
+                                bot.chat("No artist info found.")
+                            }
+                        }
+                    });
+                    break;
+                case ".track":
+                    lastfm.getTrackInfo({
+                        artist: bot.getMedia().author,
+                        track: bot.getMedia().title,
+                        callback: function(result) {
+                            //console.log(result);
+                            if (result.success==true){
+                                if (result.trackInfo.wiki!=undefined){
+                                    var summary=result.trackInfo.wiki.summary;
+                                    summary=summary.replace(/(&quot;)/g, '"');
+                                    summary=summary.replace(/(&amp;)/g, '&');
+                                    summary=summary.replace(/(&eacute;)/g, 'é');
+                                    summary=summary.replace(/(&aacute;)/g, 'á');
+                                    summary=summary.replace(/(&auml;)/g, 'ä');
+                                    summary=summary.replace(/<[^>]+>/g, '');
+                                    if (summary.length>250){
+                                        summary=summary.substring(0, 247)+"...";
+                                    }  
+                                    bot.chat(summary);
+                                }
+                                else {
+                                    bot.chat("No track info found.")
+                                }
+                            }
+                            else {
+                                bot.chat("No track info found.")
+                            }
+                        }
+                    });
+                    break;
+                case ".genre":
+                    var artistChoice="";
+                    if (qualifier==""){
+                        artistChoice=bot.getMedia().author;
+                        trackChoice=bot.getMedia().title;
+                    }
+                    else{
+                        artistChoice=qualifier;
+                        trackChoice=null;
+                    }
+                    lastfm.getTags({
+                        artist: artistChoice,
+                        track: trackChoice,
+                        callback: function(result) {
+                            //console.log(result);
+                            var tags = "";
+                            if (result.tags!=undefined){
+                                for (var i=0; i<result.tags.length; i++){
+                                    tags+=result.tags[i].name;
+                                    tags+=", ";
+                                }
+                                tags=tags.substring(0, tags.length-2);
+                            }
+                            if (qualifier==""){
+                                if (tags!=""){
+                                    bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
+                                }
+                                else{
+                                    bot.chat("No genre found.")
+                                }
+                            }
+                            else{
+                                if (tags!=""){
+                                    bot.chat("Genre of "+artistChoice+": "+tags);
+                                }
+                                else{
+                                    bot.chat("No genre found.")
+                                }
+                            }
+                        }
+                    });
+                    break;
+                case ".github":
+                    bot.chat("Check me out on GitHub! https://github.com/Spiderlover/Mega-Bot");
+                    break;
+                case ".help":
+                    bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
+                    break;
+              }
         });
     });
 });

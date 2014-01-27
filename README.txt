@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.3.0
+Version Number: 1.4.0
 
 Debut Date: December 10, 2013
  
@@ -14,6 +14,7 @@ Features:
 4. Math-Lexer API Support
 5. Google Geocoding API Support
 6. Weathers API Support
+7. Last.FM API Support
 
 Commands:
 1.  .commands
@@ -27,6 +28,11 @@ Commands:
 9.	.skip
 10. .forecast
 11.	.version
+12. .artist
+13. .track
+14. .genre
+15. .github
+16. .help
 
 Release Notes:
  
@@ -75,3 +81,10 @@ January 25, 2014:
 1. Google Geocoding API Support
 2. Weathers API Support
 3. New Version Command
+
+January 27, 2014:
+
+1.4.0:
+1. Last.FM API Support
+2. New Github Command
+3. New Help Command
