@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.4.0";
+var version = "1.4.1";
 
 var lastfm = new Lastfm({
     api_key: 'dc116468a760d9c586562d79e302aadf',
@@ -33,7 +33,7 @@ PlugAPI.getAuth({
         // data object has information on the room - list of users, song currently playing, etc.
         console.log("Joined " + ROOM + ": ", data);
         bot.chat('Mega-Bot is now online!');
-        
+         
     bot.on('userJoin', function(data) {
         bot.chat('Welcome to Christian Anything. All Christian Bands and Christian Songs are allowed in this epic room. Have fun and worship with us to celebrate our king, God.');
     });
@@ -61,7 +61,7 @@ PlugAPI.getAuth({
             switch (command)
             {
                 case ".commands":
-                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help");
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about");
                     break;
                 case ".hey":
                     bot.chat("Well hey there! @" + data.from);
@@ -129,7 +129,7 @@ PlugAPI.getAuth({
                                         if (day[1]!='Night'){
                                             weekForecast=weekForecast+"; "+data.time.startPeriodName[i]+": ";
                                         }
-                                        else{
+                                        else {
                                             weekForecast=weekForecast+", ";
                                         }
                                         weekForecast=weekForecast+data.time.tempLabel[i]+": "+data.data.temperature[i]+"°F";
@@ -143,12 +143,12 @@ PlugAPI.getAuth({
                                     weekForecast=weekForecast.replace(/Saturday/g, 'Sat');
                                     bot.chat(weekForecast);
                                 }
-                                else{
+                                else {
                                     bot.chat("No weather found.")
                                 }
                             });
                         }
-                        else{
+                        else {
                             bot.chat("No weather found.")
                         }
                     });
@@ -251,7 +251,7 @@ PlugAPI.getAuth({
                         artistChoice=bot.getMedia().author;
                         trackChoice=bot.getMedia().title;
                     }
-                    else{
+                    else {
                         artistChoice=qualifier;
                         trackChoice=null;
                     }
@@ -272,15 +272,15 @@ PlugAPI.getAuth({
                                 if (tags!=""){
                                     bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
                                 }
-                                else{
+                                else {
                                     bot.chat("No genre found.")
                                 }
                             }
-                            else{
+                            else {
                                 if (tags!=""){
                                     bot.chat("Genre of "+artistChoice+": "+tags);
                                 }
-                                else{
+                                else {
                                     bot.chat("No genre found.")
                                 }
                             }
@@ -293,7 +293,10 @@ PlugAPI.getAuth({
                 case ".help":
                     bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
                     break;
-              }
+                case ".about":
+                    bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of my commands, type .commands");
+                    break;
+            }
         });
     });
 });

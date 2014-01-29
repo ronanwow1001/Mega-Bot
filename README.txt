@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.4.0
+Version Number: 1.4.1
 
 Debut Date: December 10, 2013
  
@@ -88,3 +88,9 @@ January 27, 2014:
 1. Last.FM API Support
 2. New Github Command
 3. New Help Command
+
+January 29, 2014:
+
+1.4.1:
+1. New About Command
+2. Tweaks to the bot's code
