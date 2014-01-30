@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.4.1
+Version Number: 1.5.0
 
 Debut Date: December 10, 2013
  
@@ -15,6 +15,7 @@ Features:
 5. Google Geocoding API Support
 6. Weathers API Support
 7. Last.FM API Support
+8. Dictionary API Support
 
 Commands:
 1.  .commands
@@ -33,6 +34,9 @@ Commands:
 14. .genre
 15. .github
 16. .help
+17. .about
+18. .define
+19. .grab
 
 Release Notes:
  
@@ -94,3 +98,11 @@ January 29, 2014:
 1.4.1:
 1. New About Command
 2. Tweaks to the bot's code
+
+January 30, 2014:
+
+1.5.0:
+1. Dictionary API Support
+2. Small Bug Fix
+3. New Grab Command
+4. Minor Code Added To Calc Command

@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.4.1";
+var version = "1.5.0";
 
 var lastfm = new Lastfm({
     api_key: 'dc116468a760d9c586562d79e302aadf',
@@ -15,6 +15,7 @@ var lastfm = new Lastfm({
 var mlexer = require('math-lexer');
 var google_geocoding = require('google-geocoding');
 var weather = require('weathers');
+var api = require('dictionaryapi');
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
@@ -46,8 +47,8 @@ PlugAPI.getAuth({
     bot.on('error', reconnect);
 
     bot.on('djAdvance', function(data) {
-        console.log(data, bot.getUser(data.currentDJ));
-        console.log(bot.getDJs()[0].username, bot.getDJs());
+        //console.log(data, bot.getUser(data.currentDJ));
+        console.log(bot.getDJs()[0].username);//, bot.getDJs());
     });
     
     bot.on('chat', function(data) {
@@ -61,7 +62,7 @@ PlugAPI.getAuth({
             switch (command)
             {
                 case ".commands":
-                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about");
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab");
                     break;
                 case ".hey":
                     bot.chat("Well hey there! @" + data.from);
@@ -90,8 +91,8 @@ PlugAPI.getAuth({
                             counter2++;
                         } 
                     }
-                    if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\|]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\-\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\-\*\/\^]/g.test(qualifier)) && !(/([a-zA-Z])\d/g.test(qualifier)) && !(/\d([a-zA-Z])/g.test(qualifier)) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
-                        var func=qualifier;
+                    if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\-\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\-\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])\d/g.test(qualifier))) && !(/\d([a-zA-Z])/g.test(qualifier)) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
+                        func=qualifier;
                         func+=" + (0*x) + (0*y)";
                         var realfunc=mlexer.parseString(func);
                         var answer=(realfunc({x:0,y:0}));
@@ -101,6 +102,9 @@ PlugAPI.getAuth({
                         else{
                             bot.chat("/me does not compute.");
                         }
+                    }
+                    else if (qualifier==""){
+                        bot.chat("Try .calc followed by something to calculate.");
                     }
                     else{
                         bot.chat("/me does not compute.");
@@ -295,6 +299,65 @@ PlugAPI.getAuth({
                     break;
                 case ".about":
                     bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of my commands, type .commands");
+                    break;
+                case ".define":
+                    var dict = new api.DictionaryAPI(api.COLLEGIATE, 'cf2109fd-f2d0-4451-a081-17b11c48069b');
+                    var linkQualifier=qualifier;
+                    linkQualifier=linkQualifier.replace(/ /g, '%20');
+                    dict.query(linkQualifier.toLowerCase(), function(err, result) {
+                        result=result.replace(/<vi>(.*?)<\/vi>|<dx>(.*?)<\/dx>|<dro>(.*?)<\/dro>|<uro>(.*?)<\/uro>|<svr>(.*?)<\/svr>|<sin>(.*?)<\/sin>|<set>(.*?)<\/set>|<pl>(.*?)<\/pl>|<pt>(.*?)<\/pt>|<ss>(.*?)<\/ss>|<ca>(.*?)<\/ca>|<art>(.*?)<\/art>|<ew>(.*?)<\/ew>|<hw>(.*?)<\/hw>|<sound>(.*?)<\/sound>|<pr>(.*?)<\/pr>|<fl>(.*?)<\/fl>|<date>(.*?)<\/date>|<sxn>(.*?)<\/sxn>|<ssl>(.*?)<\/ssl>/g, '');
+                        result=result.replace(/<vt>(.*?)<\/vt>/g,' ');
+                        result=result.replace(/<\/sx> <sx>|<sd>/g,', ');
+                        result=result.replace(/\s{1,}<sn>/g, '; ');
+                        result=result.replace(/\s{1,}<un>/g, ': ');
+                        result=result.replace(/<(?!\/entry\s*\/?)[^>]+>/g, '');
+                        result=result.replace(/\s{1,}:/g,': ')
+                        if (result.indexOf(":") != -1 && (result.indexOf(":")<result.indexOf("1:") || result.indexOf("1:") == -1) && (result.indexOf(":")<result.indexOf("1 a") || result.indexOf("1 a") == -1)) {
+                            result=result.substring(result.indexOf(":")+1);
+                        }
+                        else if (result.indexOf("1:") != -1 || result.indexOf("1 a") != -1){
+                            if ((result.indexOf("1:")<result.indexOf("1 a") && result.indexOf("1:")!=-1) || result.indexOf("1 a")==-1){
+                                result=result.substring(result.indexOf("1:"));
+                            }
+                            else{
+                                result=result.substring(result.indexOf("1 a"));
+                            }
+                        }
+                        result=result.substring(0, result.indexOf("</entry>"));
+                        result=result.replace(/\s{1,};/g, ';');
+                        result=result.replace(/\s{1,},/g, ',');
+                        if (result != ''){
+                            if (result.length>250){
+                                result=result.substring(0, 247)+"...";
+                            }  
+                            bot.chat(result);
+                            //bot.chat("For more info: http://www.merriam-webster.com/dictionary/" + linkQualifier);
+                        }
+                        else{
+                            bot.chat("No definition found.")
+                        }
+                    });
+                    break;
+                case ".grab":
+                    if (data.from=='christian-anything-2'){
+                        bot.getPlaylists(function(playlists) {
+                            for (var i=0; i<playlists.length; i++){
+                                if (playlists[i].selected){
+                                    if (playlists[i].items.length!=200){
+                                        var selectedID=playlists[i].id;
+                                        bot.chat("Added to my "+playlists[i].name+" playlist.");
+                                    }
+                                    else{
+                                        bot.createPlaylist("Library "+playlists.length+1);
+                                        bot.activatePlaylist(playlists[playlists.length-1].id)
+                                        var selectedID=playlists[playlists.length-1].id;
+                                        bot.chat("Added to "+playlists[playlists.length-1].name+" playlist.");
+                                    }
+                                }
+                            }
+                            bot.addSongToPlaylist(selectedID, bot.getMedia().id);
+                        });
+                    }
                     break;
             }
         });
