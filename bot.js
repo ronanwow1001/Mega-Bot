@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.5.0";
+var version = "1.5.1";
 
 var lastfm = new Lastfm({
     api_key: 'dc116468a760d9c586562d79e302aadf',
@@ -62,25 +62,29 @@ PlugAPI.getAuth({
             switch (command)
             {
                 case ".commands":
-                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab");
+                    bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook");
                     break;
                 case ".hey":
                     bot.chat("Well hey there! @" + data.from);
                     break;
                 case ".woot":
+                case ".awesome":
                     bot.woot();
                     bot.chat("I love this song.");
                     break;
                 case ".meh":
+                case ".lame":
                     bot.meh();
                     bot.chat("I hate this song.");
                     break;
                 case ".props":
+                case ".propsicle":
                     console.log(bot.getDJs()[0].username, bot.getDJs(), bot.getDJs()[0]);
                     bot.chat("Epic Play! @" + bot.getDJs()[0].username);
                     bot.woot();
                     break;
                 case ".calc":
+                case ".calculate":
                     var counter = 0;
                     var counter2 = 0;
                     for (var i=0; i<qualifier.length; i++) {
@@ -99,22 +103,24 @@ PlugAPI.getAuth({
                         if (answer.toString()!="NaN"){
                             bot.chat(answer.toString());
                         }
-                        else{
+                        else {
                             bot.chat("/me does not compute.");
                         }
                     }
                     else if (qualifier==""){
                         bot.chat("Try .calc followed by something to calculate.");
                     }
-                    else{
+                    else {
                         bot.chat("/me does not compute.");
                     }
                     break;
                 case ".join":
+                case ".jump":
                     bot.waitListJoin();
                     bot.chat("Joining The Waitlist!");
                     break;
                 case ".leave":
+                case ".jump down":
                     bot.waitListLeave();
                     bot.chat("Leaving The Waitlist.");
                     break;
@@ -359,6 +365,9 @@ PlugAPI.getAuth({
                         });
                     }
                     break;
+                case ".facebook":
+                bot.chat("Join our Facebook group: https://www.facebook.com/groups/285521331540409/");
+                break;
             }
         });
     });

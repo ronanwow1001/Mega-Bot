@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.5.0
+Version Number: 1.5.1
 
 Debut Date: December 10, 2013
  
@@ -37,6 +37,7 @@ Commands:
 17. .about
 18. .define
 19. .grab
+20. .facebook
 
 Release Notes:
  
@@ -106,3 +107,9 @@ January 30, 2014:
 2. Small Bug Fix
 3. New Grab Command
 4. Minor Code Added To Calc Command
+
+February 1, 2014:
+
+1.5.1:
+1. Minor Code added to a couple of commands
+2. New Facebook Command
