@@ -113,3 +113,4 @@ February 1, 2014:
 1.5.1:
 1. Minor Code added to a couple of commands
 2. New Facebook Command
+3. Tweaks to the bot's code
