@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.5.1
+Version Number: 1.6.0
 
 Debut Date: December 10, 2013
  
@@ -16,6 +16,7 @@ Features:
 6. Weathers API Support
 7. Last.FM API Support
 8. Dictionary API Support
+9. Wikipedia API Support
 
 Commands:
 1.  .commands
@@ -38,6 +39,11 @@ Commands:
 18. .define
 19. .grab
 20. .facebook
+21. .wiki
+22. .darkside
+23. .rank
+24. .like
+25. .theme
 
 Release Notes:
  
@@ -114,3 +120,13 @@ February 1, 2014:
 1. Minor Code added to a couple of commands
 2. New Facebook Command
 3. Tweaks to the bot's code
+
+February 3, 2014:
+
+1.6.0:
+1. Wikipedia API Support
+2. Tweaks to the bot's code
+3. New Dark Side Command
+4. New Rank Command
+5. New Like Command
+6. New Theme Command

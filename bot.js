@@ -3,7 +3,9 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.5.1";
+var version = "1.6.0";
+
+var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 
 var lastfm = new Lastfm({
     api_key: 'dc116468a760d9c586562d79e302aadf',
@@ -16,6 +18,7 @@ var mlexer = require('math-lexer');
 var google_geocoding = require('google-geocoding');
 var weather = require('weathers');
 var api = require('dictionaryapi');
+var Wiki = require("wikijs");
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
@@ -62,7 +65,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -139,7 +142,7 @@ PlugAPI.getAuth({
                                     if (day[1]!='Night'){
                                         weekForecast=weekForecast+"; "+data.time.startPeriodName[i]+": ";
                                     }
-                                    else{
+                                    else {
                                         weekForecast=weekForecast+", ";
                                     }
                                     weekForecast=weekForecast+data.time.tempLabel[i]+": "+data.data.temperature[i]+"°F";
@@ -153,7 +156,7 @@ PlugAPI.getAuth({
                                 weekForecast=weekForecast.replace(/Saturday/g, 'Sat');
                                 bot.chat(weekForecast);
                             }
-                            else{
+                            else {
                                 bot.chat("No weather found.")
                             }
                         });
@@ -279,15 +282,15 @@ PlugAPI.getAuth({
                             if (tags!=""){
                                 bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
                             }
-                            else{
+                            else {
                                 bot.chat("No genre found.")
                             }
                         }
-                        else{
+                        else {
                             if (tags!=""){
                                 bot.chat("Genre of "+artistChoice+": "+tags);
                             }
-                            else{
+                            else {
                                 bot.chat("No genre found.")
                             }
                         }
@@ -322,7 +325,7 @@ PlugAPI.getAuth({
                         if ((result.indexOf("1:")<result.indexOf("1 a") && result.indexOf("1:")!=-1) || result.indexOf("1 a")==-1){
                             result=result.substring(result.indexOf("1:"));
                         }
-                        else{
+                        else {
                             result=result.substring(result.indexOf("1 a"));
                         }
                     }
@@ -336,7 +339,7 @@ PlugAPI.getAuth({
                         bot.chat(result);
                         bot.chat("For more info: http://www.merriam-webster.com/dictionary/" + linkQualifier);
                     }
-                    else{
+                    else {
                         bot.chat("No definition found.")
                     }
                 });
@@ -349,7 +352,7 @@ PlugAPI.getAuth({
                                 var selectedID=playlists[i].id;
                                 bot.chat("Added to my "+playlists[i].name+" playlist.");
                             }
-                            else{
+                            else {
                                 bot.createPlaylist("Library "+playlists.length+1);
                                 bot.activatePlaylist(playlists[playlists.length-1].id)
                                 var selectedID=playlists[playlists.length-1].id;
@@ -363,7 +366,114 @@ PlugAPI.getAuth({
             case ".facebook":
                 bot.chat("Join our Facebook group: https://www.facebook.com/groups/285521331540409/");
                 break;
-            }
+            case ".wiki": 
+                if (qualifier!=""){
+                    Wiki.page(qualifier, false, function(err, page){
+                        page.summary(function(err, summary){
+                            if (summary!=undefined){
+                                Wiki.page(qualifier, false, function(err, page){
+                                    page.html(function(err, html){
+                                        if (html.indexOf('<ul>')!=-1){
+                                            html=html.substring(0, html.indexOf('<ul>'));
+                                        }
+                                        html=html.replace(/<[^>]+>/g, '');
+                                        Wiki.page(qualifier, false, function(err, page){
+                                            page.summary(function(err, summary){
+                                                if (summary!=undefined){
+                                                    if (summary=="" || summary.indexOf("This is a redirect")!=-1){
+                                                        summary="redirect "+html;
+                                                    }
+                                                    if (summary.indexOf('may refer to:')!=-1 || summary.indexOf('may also refer to:')!=-1 || summary.indexOf('may refer to the following:')!=-1){
+                                                        bot.chat("This may refer to several things - please be more specific.");
+                                                        var queryChoice=qualifier;
+                                                        queryChoice=queryChoice.replace(/ /g, '_');
+                                                        bot.chat("For more info: http://en.wikipedia.org/wiki/" + queryChoice);
+                                                    }
+                                                    else if (summary.substring(0,8).toLowerCase()=="redirect"){
+                                                        subQuery='';
+                                                        if (summary.indexOf('#')==-1){
+                                                            if (summary.substring(8,9)==' '){
+                                                                var query=summary.substring(9);
+                                                            }
+                                                            else {
+                                                                var query=summary.substring(8);
+                                                            }
+                                                        }
+                                                        else {
+                                                            var query=summary.substring(9, summary.indexOf('#'));
+                                                            subQuery=summary.substring(summary.indexOf('#')+1);
+                                                        }
+                                                        Wiki.page(query, false, function(err, page2){
+                                                            page2.content(function(err, content){
+                                                                if (content!=undefined){
+                                                                    if (content.indexOf('may refer to:')!=-1 || content.indexOf('may also refer to:')!=-1 || summary.indexOf('may refer to the following:')!=-1){
+                                                                        bot.chat("This may refer to several things - please be more specific.");
+                                                                    }
+                                                                    else if (subQuery!=''){
+                                                                        content=content.substring(content.indexOf("=== "+subQuery+" ===")+8+subQuery.length);
+                                                                        if (content.length>250){
+                                                                            content=content.substring(0, 247)+"...";
+                                                                        }  
+                                                                        bot.chat(content);
+                                                                    }
+                                                                    else {
+                                                                        if (content.length>250){
+                                                                            content=content.substring(0, 247)+"...";
+                                                                        }  
+                                                                        bot.chat(content);
+                                                                    }
+                                                                    var queryChoice=qualifier;
+                                                                    queryChoice=queryChoice.replace(/ /g, '_');
+                                                                    bot.chat("For more info: http://en.wikipedia.org/wiki/" + queryChoice);
+                                                                }
+                                                                else {
+                                                                    bot.chat("No wiki found.");
+                                                                }
+                                                            });
+                                                        });
+                                                    }
+                                                    else {
+                                                        if (summary.length>250){
+                                                            summary=summary.substring(0, 247)+"...";
+                                                        }  
+                                                        bot.chat(summary);
+                                                        var queryChoice=qualifier;
+                                                        queryChoice=queryChoice.replace(/ /g, '_');
+                                                        bot.chat("For more info: http://en.wikipedia.org/wiki/" + queryChoice);
+                                                    }
+                                                }
+                                                else {
+                                                    bot.chat("No wiki found.");
+                                                }    
+                                            });
+                                        });
+                                    });
+                                });
+                            }
+                            else {
+                                bot.chat("No wiki found.");
+                            } 
+                        });
+                    });
+                }
+                else {
+                    bot.chat("Try .wiki followed by something to look up.");
+                }
+                break;
+            case ".darkside":
+                bot.chat("Feel the power of the dark side.");
+                break;
+            case ".rank":
+                bot.chat("To rank up in this room: Be kind to the community, love God, and post family-friendly stuff in the chatbox.");
+                break;
+            case ".like":
+                bot.chat("If you like this room: refer your friends and family, add a bookmark/favorite to us in your browser, refer your church group, and come back often. :)");
+                break;
+            case ".theme":
+                bot.chat(Theme);
+                break;
+                
+           }
         });
     });
 });
