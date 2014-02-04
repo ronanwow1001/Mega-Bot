@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.6.0";
+var version = "1.7.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 
@@ -19,6 +19,8 @@ var google_geocoding = require('google-geocoding');
 var weather = require('weathers');
 var api = require('dictionaryapi');
 var Wiki = require("wikijs");
+var MsTranslator = require('mstranslator'); 
+var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXYbYnioSklbU0CSRM5gBBhag4piJ9F+9M="}); 
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
@@ -65,7 +67,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -472,8 +474,72 @@ PlugAPI.getAuth({
             case ".theme":
                 bot.chat(Theme);
                 break;
-                
-           }
+            case ".translate": 
+                var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
+                var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
+                if (qualifier!=""){
+                    var params = { 
+                        text: qualifier 
+                    };
+                    var language="";
+                    client.initialize_token(function(keys){ 
+                        client.detect(params, function(err, data) {
+                            var language = data;
+                            if (languageCodes.indexOf(language) > -1){
+                                if (qualifier.indexOf('(')==-1){
+                                    var params2 = { 
+                                        text: qualifier,
+                                        from: language,
+                                        to: 'en'
+                                    };
+                                    client.initialize_token(function(keys){ 
+                                        client.translate(params2, function(err, data) {
+                                            bot.chat(data + " (" + languages[languageCodes.indexOf(language)] + ")");
+                                        });
+                                    });
+                                }
+                                else {
+                                    var language2 = qualifier.substring(qualifier.lastIndexOf('(')+1, qualifier.lastIndexOf(')')).toLowerCase();
+                                    language2 = language2.charAt(0).toUpperCase() + language2.slice(1);
+                                    if (languages.indexOf(language2) > -1){    
+                                        var params2 = { 
+                                            text: qualifier,
+                                            from: language,
+                                            to: languageCodes[languages.indexOf(language2)]
+                                        };
+                                        client.initialize_token(function(keys){ 
+                                            client.translate(params2, function(err, data) {
+                                                data = data.substring(0, data.lastIndexOf('('));
+                                                bot.chat(data);
+                                            });
+                                        });
+                                    }
+                                    else {
+                                        bot.chat("Sorry, I don't speak that language.");
+                                    }
+                                }
+                            }
+                            else {
+                                bot.chat("Sorry, I don't speak that language.");
+                            }
+                        });
+                    });
+                }
+                else {
+                    bot.chat("Try .translate followed by something to translate.");
+                }
+                break;
+            case ".google": 
+                if (qualifier!=""){
+                    var google=qualifier;
+                    google=google.replace(/ /g, '+');
+                    bot.chat("http://lmgtfy.com/?q=" + google);
+                }
+                else {
+                    bot.chat("Try .google followed by something to look up.");
+                }
+                break; 
+            }
         });
     });
 });

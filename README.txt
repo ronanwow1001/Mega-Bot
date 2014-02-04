@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.6.0
+Version Number: 1.7.0
 
 Debut Date: December 10, 2013
  
@@ -17,6 +17,7 @@ Features:
 7. Last.FM API Support
 8. Dictionary API Support
 9. Wikipedia API Support
+10. Microsoft Translator API Support
 
 Commands:
 1.  .commands
@@ -44,6 +45,8 @@ Commands:
 23. .rank
 24. .like
 25. .theme
+26. .translate
+27. .google
 
 Release Notes:
  
@@ -130,3 +133,9 @@ February 3, 2014:
 4. New Rank Command
 5. New Like Command
 6. New Theme Command
+
+February 4, 2014:
+
+1.7.0:
+1. Microsoft Translator API Support
+2. New Google Command
