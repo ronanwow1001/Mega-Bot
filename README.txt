@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.7.0
+Version Number: 1.8.0
 
 Debut Date: December 10, 2013
  
@@ -18,6 +18,8 @@ Features:
 8. Dictionary API Support
 9. Wikipedia API Support
 10. Microsoft Translator API Support
+11. Mood Database
+12. Coin Flipping Ability
 
 Commands:
 1.  .commands
@@ -47,6 +49,13 @@ Commands:
 25. .theme
 26. .translate
 27. .google
+28. .status
+29. .coin
+30. .mood
+31. .autotranslate
+32. .untranslate
+33. .album
+34. .similar
 
 Release Notes:
  
@@ -139,3 +148,16 @@ February 4, 2014:
 1.7.0:
 1. Microsoft Translator API Support
 2. New Google Command
+
+February 8, 2014:
+
+1.8.0:
+1. New Bot Status Command
+2. Coin Flipping Ability
+3. Mood Database
+4. New Auto Translate Command
+5. New Untranslate Command
+6. Tweaks to Genre Command
+7. Tweaks to Wiki Command
+8. New Album Command
+9. New Similar Artist Command

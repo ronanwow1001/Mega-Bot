@@ -3,15 +3,24 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.7.0";
+var version = "1.8.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
+var joined = new Date().getTime();
+var translateList = [];
 
 var lastfm = new Lastfm({
     api_key: 'dc116468a760d9c586562d79e302aadf',
     api_secret: 'c68c25364ccfa0961f60abe9250f8233',
     username: 'kingzimmer',
     password: 'Starwarskotor1'
+});
+
+var LastfmAPI = require('lastfmapi');
+
+var lfm = new LastfmAPI({
+    'api_key' : 'dc116468a760d9c586562d79e302aadf',
+    'secret' : 'c68c25364ccfa0961f60abe9250f8233'
 });
 
 var mlexer = require('math-lexer');
@@ -51,7 +60,7 @@ PlugAPI.getAuth({
     bot.on('close', reconnect);
     bot.on('error', reconnect);
 
-    bot.on('djAdvance', function(data) {
+     bot.on('djAdvance', function(data) {
         //console.log(data, bot.getUser(data.currentDJ));
         console.log(bot.getDJs()[0].username);//, bot.getDJs());
     });
@@ -67,7 +76,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -123,16 +132,16 @@ PlugAPI.getAuth({
             case ".jump":
                 bot.waitListJoin();
                 bot.chat("Joining The Waitlist!");
-                    break;
+                break;
             case ".leave":
             case ".jump down":
                 bot.waitListLeave();
                 bot.chat("Leaving The Waitlist.");
-                    break;
+                break;
             case ".skip":
                 bot.skipSong();
                 bot.chat("Skipping The Song!");
-                    break;
+                break;
             case ".forecast": 
                 google_geocoding.geocode(qualifier, function(err, location) {
                     if (location!=null){
@@ -163,7 +172,7 @@ PlugAPI.getAuth({
                             }
                         });
                     }
-                    else{
+                    else {
                         bot.chat("No weather found.")
                     }
                 });
@@ -264,7 +273,7 @@ PlugAPI.getAuth({
                     artistChoice=bot.getMedia().author;
                     trackChoice=bot.getMedia().title;
                 }
-                else{
+                else {
                     artistChoice=qualifier;
                     trackChoice=null;
                 }
@@ -285,7 +294,7 @@ PlugAPI.getAuth({
                                 bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
                             }
                             else {
-                                bot.chat("No genre found.")
+                                bot.chat("No genre found.");
                             }
                         }
                         else {
@@ -293,21 +302,60 @@ PlugAPI.getAuth({
                                 bot.chat("Genre of "+artistChoice+": "+tags);
                             }
                             else {
-                                bot.chat("No genre found.")
+                                bot.chat("No genre found.");
                             }
                         }
                     }
                 });
                 break;
+            case ".album": 
+                lfm.track.getInfo({
+                    'artist' : bot.getMedia().author,
+                    'track' : bot.getMedia().title
+                }, function (err, track) {
+                    if (track!=undefined){
+                        bot.chat(track.name + " is from the album " + track.album.title + ".");
+                        bot.chat("Check out the full album: " + track.album.url);
+                    }
+                    else {
+                        bot.chat("No album found.")
+                    }
+                });
+                break;
+            case ".similar": 
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice=bot.getMedia().author;
+                }
+                else {
+                    artistChoice=qualifier;
+                }
+                lfm.artist.getSimilar({
+                    'limit' : 7,
+                    'artist' : artistChoice
+                }, function (err, similarArtists) {
+                    if (similarArtists!=undefined){
+                        var artists = '';
+                        for (var i=0; i<similarArtists.artist.length; i++){
+                            artists = artists + similarArtists.artist[i].name + ", ";
+                        }
+                        artists = artists.substring(0, artists.length-2);
+                        bot.chat("Similar artists to " + artistChoice + ": " + artists);
+                    }
+                    else {
+                        bot.chat("No similar artists found.")
+                    }
+                });
+                break;
             case ".github":
-                    bot.chat("Check me out on GitHub! https://github.com/Spiderlover/Mega-Bot");
-                    break;
+                bot.chat("Check me out on GitHub! https://github.com/Spiderlover/Mega-Bot");
+                break;
             case ".help":
-                    bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
-                    break;
+                bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
+                break;
             case ".about":
-                    bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of my commands, type .commands");
-                    break;
+                bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of my commands, type .commands");
+                break;
             case ".define": 
                 var dict = new api.DictionaryAPI(api.COLLEGIATE, 'cf2109fd-f2d0-4451-a081-17b11c48069b');
                 var linkQualifier=qualifier;
@@ -385,7 +433,7 @@ PlugAPI.getAuth({
                                                     if (summary=="" || summary.indexOf("This is a redirect")!=-1){
                                                         summary="redirect "+html;
                                                     }
-                                                    if (summary.indexOf('may refer to:')!=-1 || summary.indexOf('may also refer to:')!=-1 || summary.indexOf('may refer to the following:')!=-1){
+                                                    if (summary.indexOf('may refer to:')!=-1 || summary.indexOf('may also refer to:')!=-1 || summary.indexOf('may refer to the following:')!=-1 || summary.indexOf('may stand for:')!=-1){
                                                         bot.chat("This may refer to several things - please be more specific.");
                                                         var queryChoice=qualifier;
                                                         queryChoice=queryChoice.replace(/ /g, '_');
@@ -408,7 +456,7 @@ PlugAPI.getAuth({
                                                         Wiki.page(query, false, function(err, page2){
                                                             page2.content(function(err, content){
                                                                 if (content!=undefined){
-                                                                    if (content.indexOf('may refer to:')!=-1 || content.indexOf('may also refer to:')!=-1 || summary.indexOf('may refer to the following:')!=-1){
+                                                                    if (content.indexOf('may refer to:')!=-1 || content.indexOf('may also refer to:')!=-1 || content.indexOf('may refer to the following:')!=-1 || content.indexOf('may stand for:')!=-1){
                                                                         bot.chat("This may refer to several things - please be more specific.");
                                                                     }
                                                                     else if (subQuery!=''){
@@ -538,7 +586,271 @@ PlugAPI.getAuth({
                 else {
                     bot.chat("Try .google followed by something to look up.");
                 }
-                break; 
+                break;
+            case ".status":
+                var response = "";
+                var currentTime = new Date().getTime();
+                var minutes = Math.floor((currentTime - joined) / 60000);
+                var hours = 0;
+                while(minutes > 60){
+                    minutes = minutes - 60;
+                    hours++;
+                }
+                hours == 0 ? response = "Running for " + minutes + "m " : response = "Running for " + hours + "h " + minutes + "m";
+                bot.chat(response);
+                break;
+            case ".coin":
+                var crowd = bot.getUsers();
+                var randomPerson = Math.floor(Math.random() * crowd.length);
+                var randomSentence = Math.floor(Math.random() * 1);
+                switch(randomSentence){
+                     case 0:
+                        bot.chat("@" + crowd[randomPerson].username + "The coin was flipped, and you got heads");
+                        break;
+                    case 1:
+                        bot.chat("@" + crowd[randomPerson].username + "The coin was flipped, and you got tails");
+                        break;
+                }
+                break;
+            case '.autotranslate': 
+                if (qualifier!=""){
+                    translateList.push(qualifier);
+                    bot.chat("Autotranslating user " + qualifier + ".");
+                }
+                else {
+                    bot.chat("Try .autotranslate followed by a username.");
+                }
+                break;
+            case '.untranslate': 
+                if (qualifier!=""){
+                    if (translateList.indexOf(qualifier) != -1) {
+                        translateList.splice(translateList.indexOf(qualifier), 1);
+                    }
+                    bot.chat("Stopped autotranslating user " + qualifier + ".");
+                }
+                else {
+                    bot.chat("Try .untranslate followed by a username.");
+                }
+                break;
+            case ".mood":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var randomMood = Math.floor(Math.random() * 60);
+                switch(randomMood){
+                    case 0:
+                        bot.chat('The current mood, that I am in, is grumpy.');
+                        break;
+                    case 1:
+                        bot.chat('My mood tells me, that I feel like, I need some Christian Rock music.');
+                        break;
+                    case 2:
+                        bot.chat('I feel like, I need Worship music.');
+                        break;
+                    case 3:
+                        bot.chat('I feel like, I need Rap music.');
+                        break;
+                    case 4:
+                        bot.chat('I feel sad and depressed.');
+                        break;
+                    case 5:
+                        bot.chat('I feel happy and excited.');
+                        break;
+                    case 6:
+                        bot.chat('I feel mad.');
+                        break;
+                    case 7:
+                        bot.chat('I feel humiliated.');
+                        break;
+                    case 8:
+                        bot.chat('I need Metal music.');
+                        break;
+                    case 9:
+                        bot.chat('I feel angry.');
+                        break;
+                    case 10:
+                        bot.chat('I need Polish music.');
+                        break;
+                    case 11:
+                        bot.chat('I feel tired.');
+                        break;
+                    case 12:
+                        bot.chat('I feel energetic.');
+                        break;
+                    case 13:
+                        bot.chat('I feel like a superhero.');
+                        break;
+                    case 14:
+                        bot.chat('I feel evil.');
+                        break;
+                    case 15:
+                        bot.chat('I feel like a super villian.');
+                        break;
+                    case 16:
+                        bot.chat('I feel bored.');
+                        break;
+                    case 17:
+                        bot.chat('I feel like a fuzzy cat.');
+                        break;
+                    case 18:
+                        bot.chat('I feel like a fluffy blanket.');
+                        break;
+                    case 19:
+                        bot.chat('I feel like I need a short nap.');
+                        break;
+                    case 20:
+                        bot.chat('I feel like I need a long nap.');
+                        break;
+                    case 21:
+                        bot.chat('I feel like a huge fluff ball.');
+                        break;
+                    case 22:
+                        bot.chat('I feel like a happy fluff ball.');
+                        break;
+                    case 23:
+                        bot.chat('I feel like a sad fluff ball.');
+                        break;
+                    case 24:
+                        bot.chat('I feel like a grumpy fluff ball.');
+                        break;
+                    case 25:
+                        bot.chat('I feel like a angry fluff ball.');
+                        break;
+                    case 26:
+                        bot.chat('I feel like a shy fluff ball.');
+                        break;
+                    case 27:
+                        bot.chat('I feel like a tired fluff ball.');
+                        break;
+                    case 28:
+                        bot.chat('I feel like a silly fluff ball.');
+                        break;
+                    case 29:
+                        bot.chat('I feel like a music-filled robot.');
+                        break;
+                    case 30:
+                        bot.chat('I feel like a happy robot.');
+                        break;
+                    case 31:
+                        bot.chat('I feel like a sad robot.');
+                        break;
+                    case 32:
+                        bot.chat('I feel like a anger-filled robot.');
+                        break;
+                    case 33:
+                        bot.chat('I feel like a mad robot.');
+                        break;
+                    case 34:
+                        bot.chat('I feel like a grumpy robot.');
+                        break;
+                    case 35:
+                        bot.chat('I feel like a fluffy robot.');
+                        break;
+                    case 36:
+                        bot.chat('I feel like a happy tiger.');
+                        break;
+                    case 37:
+                        bot.chat('I feel like a sad tiger.');
+                        break;
+                    case 38:
+                        bot.chat('I feel like a angry tiger.');
+                        break;
+                    case 39:
+                        bot.chat('I feel like a mad tiger.');
+                        break;
+                    case 40:
+                        bot.chat('I feel like a tired tiger.');
+                        break;
+                    case 41:
+                        bot.chat('I feel slugish.');
+                        break;
+                    case 42:
+                        bot.chat('I feel buggish.');
+                        break;
+                    case 43:
+                        bot.chat('I feel glitchy.');
+                        break;
+                    case 44:
+                        bot.chat('I feel old.');
+                        break;
+                    case 45:
+                        bot.chat('I feel weak and helpless.');
+                        break;
+                    case 46:
+                        bot.chat('I feel brave.');
+                        break;
+                    case 47:
+                        bot.chat('I feel courageous.');
+                        break;
+                    case 48:
+                        bot.chat('I feel strong.');
+                        break;
+                    case 49:
+                        bot.chat('I feel like smashing a bad guy into the ground.');
+                        break;
+                    case 50:
+                        bot.chat('I feel like saving the world.');
+                        break;
+                    case 51:
+                        bot.chat('I feel like nothing.');
+                        break;
+                    case 52:
+                        bot.chat('I feel like a worthless space.');
+                        break;
+                    case 53:
+                        bot.chat('I feel like saving a bunch of Pikmin.');
+                        break;
+                    case 54:
+                        bot.chat('I feel like a fool.');
+                        break;
+                    case 55:
+                        bot.chat('I feel like a raging monster.');
+                        break;
+                    case 56:
+                        bot.chat('I feel like a virus.');
+                        break;
+                    case 57:
+                        bot.chat('I feel like a butterfly.');
+                        break;
+                    case 58:
+                        bot.chat('I feel like a dragonfly.');
+                        break;
+                    case 59:
+                        bot.chat('I feel like a shark.');
+                        break;
+                    case 60:
+                        bot.chat('I feel like a goldfish.');
+                        break;
+                }
+                break;
+            default:
+                if (translateList.indexOf(data.from)!=-1){
+                    var user = data.from;
+                    var message = data.message;
+                    var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
+                    var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
+                    var params = { 
+                        text: message 
+                    };
+                    var language="";
+                    client.initialize_token(function(keys){ 
+                        client.detect(params, function(err, data) {
+                            var language = data;
+                            if (languageCodes.indexOf(language) > -1 && language != 'en'){
+                                var params2 = { 
+                                    text: message,
+                                    from: language,
+                                    to: 'en'
+                                };
+                                client.initialize_token(function(keys){ 
+                                    client.translate(params2, function(err, data) {
+                                        bot.chat(user + ": " + data + " (" + languages[languageCodes.indexOf(language)] + ")");
+                                    });
+                                });
+                            }
+                        });
+                    });
+                }
+                break;
             }
         });
     });
