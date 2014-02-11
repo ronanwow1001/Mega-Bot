@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.8.0
+Version Number: 1.8.1
 
 Debut Date: December 10, 2013
  
@@ -56,6 +56,7 @@ Commands:
 32. .untranslate
 33. .album
 34. .similar
+35. .events
 
 Release Notes:
  
@@ -161,3 +162,9 @@ February 8, 2014:
 7. Tweaks to Wiki Command
 8. New Album Command
 9. New Similar Artist Command
+
+February 11, 2014:
+
+1.8.1:
+1. Code Tweaks for Album Command
+2. New Events Command

@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.8.0";
+var version = "1.8.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -76,7 +76,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -314,8 +314,20 @@ PlugAPI.getAuth({
                     'track' : bot.getMedia().title
                 }, function (err, track) {
                     if (track!=undefined){
-                        bot.chat(track.name + " is from the album " + track.album.title + ".");
-                        bot.chat("Check out the full album: " + track.album.url);
+                        lfm.album.getInfo({
+                            'artist' : bot.getMedia().author,
+                            'album' : track.album.title
+                        }, function (err, album) {
+                            var albumMessage = track.name + " is from the album " + track.album.title;
+                            if (album.wiki!=undefined){
+                                if (album.wiki.summary.indexOf('released on') != -1){
+                                    var year = album.wiki.summary.substring(album.wiki.summary.indexOf('released on')).split(' ')[4].substring(0,4);
+                                    albumMessage = albumMessage + " (" + year + ")";
+                                }
+                            }
+                            bot.chat(albumMessage);
+                            bot.chat("Check out the full album: " + track.album.url);
+                        });
                     }
                     else {
                         bot.chat("No album found.")
@@ -344,6 +356,34 @@ PlugAPI.getAuth({
                     }
                     else {
                         bot.chat("No similar artists found.")
+                    }
+                });
+                break;
+            case ".events": 
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice=bot.getMedia().author;
+                }
+                else {
+                    artistChoice=qualifier;
+                }
+                lfm.artist.getEvents({
+                    'limit' : 4,
+                    'artist' : artistChoice
+                }, function (err, events) {
+                    if (events!=undefined){
+                        var upcomingEvents = '';
+                        if (!(events.event instanceof Array)){
+                            events.event = [events.event];
+                        }
+                        for (var i=0; i<events.event.length; i++){
+                            upcomingEvents = upcomingEvents + " " + events.event[i].venue.name + " (" + events.event[i].venue.location.city + " " + events.event[i].startDate.split(/\s+/).slice(2,4).join(" ") + "), ";
+                        }
+                        upcomingEvents = upcomingEvents.substring(0, upcomingEvents.length-2);
+                        bot.chat("Upcoming events for " + artistChoice + ":" + upcomingEvents);
+                    }
+                    else {
+                        bot.chat("No upcoming events found.");
                     }
                 });
                 break;
