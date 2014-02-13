@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'p9R*'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.8.1";
+var version = "1.8.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -76,7 +76,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -431,6 +431,27 @@ PlugAPI.getAuth({
                     }
                     else {
                         bot.chat("No definition found.")
+                    }
+                });
+                break;
+            case ".soundcloud": 
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice = bot.getMedia().author;
+                }
+                else {
+                    artistChoice=qualifier;
+                }
+                var link = 'http://api.soundcloud.com/users.json?q=' + artistChoice + '&consumer_key=apigee';
+                request(link, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        var info = JSON.parse(body);
+                        if (info[0] != undefined){
+                            bot.chat(info[0].username + ": " + info[0].permalink_url);
+                        }
+                        else {
+                             bot.chat("No soundcloud found.");
+                         }
                     }
                 });
                 break;

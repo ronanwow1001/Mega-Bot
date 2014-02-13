@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.8.1
+Version Number: 1.8.2
 
 Debut Date: December 10, 2013
  
@@ -57,6 +57,7 @@ Commands:
 33. .album
 34. .similar
 35. .events
+36. .soundcloud
 
 Release Notes:
  
@@ -168,3 +169,8 @@ February 11, 2014:
 1.8.1:
 1. Code Tweaks for Album Command
 2. New Events Command
+
+February 13, 2014:
+
+1.8.2:
+1. New Soundcloud Command
