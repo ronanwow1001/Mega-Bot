@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.8.2
+Version Number: 1.9.0
 
 Debut Date: December 10, 2013
  
@@ -20,6 +20,7 @@ Features:
 10. Microsoft Translator API Support
 11. Mood Database
 12. Coin Flipping Ability
+13. Lottery Database
 
 Commands:
 1.  .commands
@@ -58,6 +59,7 @@ Commands:
 34. .similar
 35. .events
 36. .soundcloud
+37. .lottery
 
 Release Notes:
  
@@ -174,3 +176,9 @@ February 13, 2014:
 
 1.8.2:
 1. New Soundcloud Command
+
+February 18, 2014:
+
+1.9.0:
+1. Lottery Database
+2. Changed Update Code for Plug.DJ

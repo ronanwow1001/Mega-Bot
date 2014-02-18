@@ -1,9 +1,9 @@
 var PlugAPI = require('./plugapi');
 var ROOM = 'christian-anything-2';
-var UPDATECODE = 'p9R*'; 
+var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.8.2";
+var version = "1.9.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -76,7 +76,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -880,6 +880,46 @@ PlugAPI.getAuth({
                         break;
                     case 60:
                         bot.chat('I feel like a goldfish.');
+                        break;
+                }
+                break;
+            case ".lottery":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var lotteryPrizes = Math.floor(Math.random() * 10);
+                switch(lotteryPrizes){
+                    case 0:
+                        bot.chat('Congratulations! You have won a free song to play on the DJ Stage!');
+                        break;
+                    case 1:
+                        bot.chat('Congratulations! You have won a free bird!');
+                        break;
+                    case 2:
+                        bot.chat('Congratulations! You have won a free battery!');
+                        break;
+                    case 3:
+                        bot.chat('Congratulations! You have won a free hug!');
+                        break;
+                    case 4:
+                        bot.chat('Congratulations! You have won a free hand-shake!');
+                        break;
+                    case 5:
+                        bot.chat('Congratulations! You have won a free bag of air!');
+                        break;
+                    case 6:
+                        bot.chat('Congratulations! You have won a free spider!');
+                        break;
+                    case 7:
+                        bot.chat('Congratulations! You have won a free bag of oxygen!');
+                        break;
+                    case 8:
+                        bot.chat('Congratulations! You have won a free hotdog!');
+                        break;
+                    case 9:
+                        bot.chat('Congratulations! You have won a free octopus!');
+                        break;
+                    case 10:
+                        bot.chat('Congratulations! You have won a free cat!');
                         break;
                 }
                 break;
