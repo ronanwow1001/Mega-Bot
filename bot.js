@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.9.0";
+var version = "1.9.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -886,7 +886,7 @@ PlugAPI.getAuth({
             case ".lottery":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var lotteryPrizes = Math.floor(Math.random() * 10);
+                var lotteryPrizes = Math.floor(Math.random() * 15);
                 switch(lotteryPrizes){
                     case 0:
                         bot.chat('Congratulations! You have won a free song to play on the DJ Stage!');
@@ -920,6 +920,21 @@ PlugAPI.getAuth({
                         break;
                     case 10:
                         bot.chat('Congratulations! You have won a free cat!');
+                        break;
+                    case 11:
+                        bot.chat('Congratulations! You have won a free moth!');
+                        break;
+                    case 12:
+                        bot.chat('Congratulations! You have won a free bag of cat treats!');
+                        break;
+                    case 13:
+                        bot.chat('Congratulations! You have won a free hedgehog!');
+                        break;
+                    case 14:
+                        bot.chat('Congratulations! You have won a free bat!');
+                        break;
+                    case 15:
+                        bot.chat('Congratulations! You have won a free piece of fluff!');
                         break;
                 }
                 break;
