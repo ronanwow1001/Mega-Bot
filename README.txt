@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.9.2
+Version Number: 1.9.3
 
 Debut Date: December 10, 2013
  
@@ -194,3 +194,8 @@ February 24, 2014:
 1. Bug Fixes for Auto-translation
 2. Bug Fixes for Events Command
 3. Bug Fixes for Skip Command
+
+February 26, 2014:
+
+1.9.3:
+1. Updated Lottery Database

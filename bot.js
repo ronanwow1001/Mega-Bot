@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.9.2";
+var version = "1.9.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -905,7 +905,7 @@ PlugAPI.getAuth({
             case ".lottery":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var lotteryPrizes = Math.floor(Math.random() * 15);
+                var lotteryPrizes = Math.floor(Math.random() * 20);
                 switch(lotteryPrizes){
                     case 0:
                         bot.chat('Congratulations! You have won a free song to play on the DJ Stage!');
@@ -955,9 +955,24 @@ PlugAPI.getAuth({
                     case 15:
                         bot.chat('Congratulations! You have won a free piece of fluff!');
                         break;
+                    case 16:
+                        bot.chat('Congratulations! You have won a free bug!');
+                        break;
+                    case 17:
+                        bot.chat('Congratulations! You have won a free bag of potato chips!');
+                        break;
+                    case 18:
+                        bot.chat('Congratulations! You have won a free fox!');
+                        break;
+                    case 19:
+                        bot.chat('Congratulations! You have won a free taco!');
+                        break;
+                    case 20:
+                        bot.chat('Congratulations! You have won a free piece of cheese!');
+                        break;
                 }
                 break;
-            default: 
+            default: //Checks for users that are set to be autotranslated whenever they chat
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
                 var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];        
                 if (translateList.indexOf(data.from)!=-1){
