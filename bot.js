@@ -73,6 +73,9 @@ PlugAPI.getAuth({
             if (firstIndex!=-1) {
                 qualifier = data.message.substring(firstIndex+1, data.message.length); 
             }
+            qualifier=qualifier.replace(/&#39;/g, '\'');
+            qualifier=qualifier.replace(/&#34;/g, '\"');
+            qualifier=qualifier.replace(/&amp;/g, '\&');
             switch (command)
             {
             case ".commands":
