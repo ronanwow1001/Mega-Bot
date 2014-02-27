@@ -99,35 +99,40 @@ PlugAPI.getAuth({
                 break;
             case ".calc":
             case ".calculate":
-                    var counter = 0;
-                    var counter2 = 0;
-                    for (var i=0; i<qualifier.length; i++) {
-                        if (qualifier.charAt(i)=='(') {
-                            counter++;
-                        } 
-                        else if(qualifier.charAt(i)==')') {
-                            counter2++;
-                        } 
-                    }
-                    if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\-\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\-\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])\d/g.test(qualifier))) && !(/\d([a-zA-Z])/g.test(qualifier)) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
-                        func=qualifier;
-                        func+=" + (0*x) + (0*y)";
-                        var realfunc=mlexer.parseString(func);
-                        var answer=(realfunc({x:0,y:0}));
-                        if (answer.toString()!="NaN"){
+                var counter = 0;
+                var counter2 = 0;
+                for (var i=0; i<qualifier.length; i++) {
+                    if (qualifier.charAt(i)=='(') {
+                        counter++;
+                    } 
+                    else if(qualifier.charAt(i)==')') {
+                        counter2++;
+                    } 
+                }
+                if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])\d/g.test(qualifier))) && !(/\d([a-zA-Z])/g.test(qualifier)) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
+                    func=qualifier;
+                    func+=" + (0*x) + (0*y)";
+                    var realfunc=mlexer.parseString(func);
+                    var answer=(realfunc({x:0,y:0}));
+                    if (answer.toString()!="NaN"){
+                        if (answer.toString()!="Infinity"){
                             bot.chat(answer.toString());
                         }
                         else {
-                            bot.chat("/me does not compute.");
+                            bot.chat('http://i.imgur.com/KpAzEs8.jpg');
                         }
-                    }
-                    else if (qualifier==""){
-                        bot.chat("Try .calc followed by something to calculate.");
                     }
                     else {
                         bot.chat("/me does not compute.");
                     }
-                    break;
+                }
+                else if (qualifier==""){
+                    bot.chat("Try .calc followed by something to calculate.");
+                }
+                else {
+                    bot.chat("/me does not compute.");
+                }
+                break;
             case ".join":
             case ".jump":
                 bot.waitListJoin();
@@ -344,7 +349,8 @@ PlugAPI.getAuth({
                 }
                 lfm.artist.getSimilar({
                     'limit' : 7,
-                    'artist' : artistChoice
+                    'artist' : artistChoice,
+                    'autocorrect' : 1
                 }, function (err, similarArtists) {
                     if (similarArtists!=undefined){
                         var artists = '';
@@ -602,7 +608,7 @@ PlugAPI.getAuth({
             case ".theme":
                 bot.chat(Theme);
                 break;
-            case ".translate": 
+             case ".translate": 
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
                 var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
                 if (qualifier!=""){
@@ -627,17 +633,24 @@ PlugAPI.getAuth({
                                     });
                                 }
                                 else {
-                                    var language2 = qualifier.substring(qualifier.lastIndexOf('(')+1, qualifier.lastIndexOf(')')).toLowerCase();
-                                    language2 = language2.charAt(0).toUpperCase() + language2.slice(1);
-                                    if (languages.indexOf(language2) > -1){    
+                                    var givenLanguage='';
+                                    var language2 = qualifier.substring(qualifier.indexOf('(')+1, qualifier.lastIndexOf(')')).toLowerCase();
+                                    if (languageCodes.indexOf(language2) > -1){
+                                        givenLanguage = language2;
+                                    }
+                                    else {
+                                        language2 = language2.charAt(0).toUpperCase() + language2.slice(1);
+                                        givenLanguage = languageCodes[languages.indexOf(language2)];
+                                    }
+                                    if (languages.indexOf(language2) > -1 || languageCodes.indexOf(language2) > -1){    
                                         var params2 = { 
                                             text: qualifier,
                                             from: language,
-                                            to: languageCodes[languages.indexOf(language2)]
+                                            to: givenLanguage
                                         };
                                         client.initialize_token(function(keys){ 
                                             client.translate(params2, function(err, data) {
-                                                data = data.substring(0, data.lastIndexOf('('));
+                                                data = data.substring(0, data.indexOf('('));
                                                 bot.chat(data);
                                             });
                                         });
@@ -976,8 +989,12 @@ PlugAPI.getAuth({
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
                 var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];        
                 if (translateList.indexOf(data.from)!=-1){
+                    qualifier = data.message;
+                    qualifier=qualifier.replace(/&#39;/g, '\'');
+                    qualifier=qualifier.replace(/&#34;/g, '\"');
+                    qualifier=qualifier.replace(/&amp;/g, '\&');
                     var user = data.from;
-                    var message = data.message;
+                    var message = qualifier;
                     var params = { 
                         text: message 
                     };
@@ -1000,7 +1017,7 @@ PlugAPI.getAuth({
                         });
                     });
                 }
-                else if (command.charAt(0) == "@" && translateList.indexOf(command.slice(1)) != -1 && data.from != 'GeniusBot'){
+                else if (command.charAt(0) == "@" && translateList.indexOf(command.slice(1)) != -1 && data.from != 'Mega-Bot'){ 
                     for (var i=0; i<bot.getUsers().length; i++){
                         if (bot.getUsers()[i].username == command.slice(1)){
                             var params = { 
