@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "1.9.3";
+var version = "2.0.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -79,7 +79,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -611,7 +611,7 @@ PlugAPI.getAuth({
             case ".theme":
                 bot.chat(Theme);
                 break;
-             case ".translate": 
+            case ".translate": 
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
                 var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
                 if (qualifier!=""){
@@ -985,6 +985,46 @@ PlugAPI.getAuth({
                         break;
                     case 20:
                         bot.chat('Congratulations! You have won a free piece of cheese!');
+                        break;
+                }
+                break;
+            case ".rules":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var rules = Math.floor(Math.random() * 10);
+                switch(rules){
+                    case 0:
+                        bot.chat('No trolling people in the chatbox!');
+                        break;
+                    case 1:
+                        bot.chat('No inappropriate language!');
+                        break;
+                    case 2:
+                        bot.chat('Christian music, written by Christian Bands, are only allowed in this room!');
+                        break;
+                    case 3:
+                        bot.chat('Please keep the chat, Family Friendly!');
+                        break;
+                    case 4:
+                        bot.chat('Chat must be rated G and PG!');
+                        break;
+                    case 5:
+                        bot.chat('Please capitalize God with a Capital G!');
+                        break;
+                    case 6:
+                        bot.chat('Read your Bible');
+                        break;
+                    case 7:
+                        bot.chat('Worship God!');
+                        break;
+                    case 8:
+                        bot.chat('Love God!');
+                        break;
+                    case 9:
+                        bot.chat('If you want to play Non-Christian Bands, such as Lady Gaga and One Direction, go to a different room');
+                        break;
+                    case 10:
+                        bot.chat('Christian Music can be in any language!');
                         break;
                 }
                 break;

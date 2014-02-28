@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 1.9.3
+Version Number: 2.0.0
 
 Debut Date: December 10, 2013
  
@@ -60,6 +60,7 @@ Commands:
 35. .events
 36. .soundcloud
 37. .lottery
+38. .rules
 
 Release Notes:
  
@@ -199,3 +200,12 @@ February 26, 2014:
 
 1.9.3:
 1. Updated Lottery Database
+
+February 28, 2014:
+
+2.0.0:
+1. Rules Command
+2. Universal Bug Fix
+3. Calculate Command Bug Fix
+4. Translate Command Bug Fix
+5. Similar Command Bug Fix
