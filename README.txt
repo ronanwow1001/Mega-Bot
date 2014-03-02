@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.0.1
+Version Number: 2.0.2
 
 Debut Date: December 10, 2013
  
@@ -214,3 +214,10 @@ March 1, 2014:
 
 2.0.1:
 1. Code Tweaks
+
+March 2, 2014:
+
+2.0.2:
+1. Code Tweaks
+2. Fixed Calculate Command Bug
+3. Fixed Translate Command Bug

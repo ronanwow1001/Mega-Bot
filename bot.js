@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.0.1";
+var version = "2.0.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -112,7 +112,8 @@ PlugAPI.getAuth({
                         counter2++;
                     } 
                 }
-                if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])\d/g.test(qualifier))) && !(/\d([a-zA-Z])/g.test(qualifier)) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
+                qualifier=qualifier.replace(/x/g, '*');
+                if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])/g.test(qualifier))) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
                     func=qualifier;
                     func+=" + (0*x) + (0*y)";
                     var realfunc=mlexer.parseString(func);
@@ -151,39 +152,44 @@ PlugAPI.getAuth({
                 bot.chat("Skipping The Song!");
                 break;
             case ".forecast": 
-                google_geocoding.geocode(qualifier, function(err, location) {
-                    if (location!=null){
-                        weather.getWeather(location.lat, location.lng, function(err, data){
-                            if (data!=null){
-                                var weekForecast="Forecast for "+data.location.areaDescription+": Current: "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
-                                for (var i=0; i<7; i++){
-                                    var day = data.time.startPeriodName[i].split(' ');
-                                    if (day[1]!='Night'){
-                                        weekForecast=weekForecast+"; "+data.time.startPeriodName[i]+": ";
-                                    }
-                                    else {
-                                        weekForecast=weekForecast+", ";
-                                    }
-                                    weekForecast=weekForecast+data.time.tempLabel[i]+": "+data.data.temperature[i]+"°F";
-                                } 
-                                weekForecast=weekForecast.replace(/Sunday/g, 'Sun');
-                                weekForecast=weekForecast.replace(/Monday/g, 'Mon');
-                                weekForecast=weekForecast.replace(/Tuesday/g, 'Tues');
-                                weekForecast=weekForecast.replace(/Wednesday/g, 'Wed');
-                                weekForecast=weekForecast.replace(/Thursday/g, 'Thurs');
-                                weekForecast=weekForecast.replace(/Friday/g, 'Fri');
-                                weekForecast=weekForecast.replace(/Saturday/g, 'Sat');
-                                bot.chat(weekForecast);
-                            }
-                            else {
-                                bot.chat("No weather found.")
-                            }
-                        });
-                    }
-                    else {
-                        bot.chat("No weather found.")
-                    }
-                });
+                if (qualifier==""){
+                    bot.chat("Try .forecast followed by a US state, city, or zip to look up.");
+                }
+                else {
+                    google_geocoding.geocode(qualifier, function(err, location) {
+                        if (location!=null){
+                            weather.getWeather(location.lat, location.lng, function(err, data){
+                                if (data!=null){
+                                    var weekForecast="Forecast for "+data.location.areaDescription+": Current: "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
+                                    for (var i=0; i<7; i++){
+                                        var day = data.time.startPeriodName[i].split(' ');
+                                        if (day[1]!='Night'){
+                                            weekForecast=weekForecast+"; "+data.time.startPeriodName[i]+": ";
+                                        }
+                                        else {
+                                            weekForecast=weekForecast+", ";
+                                        }
+                                        weekForecast=weekForecast+data.time.tempLabel[i]+": "+data.data.temperature[i]+"°F";
+                                    } 
+                                    weekForecast=weekForecast.replace(/Sunday/g, 'Sun');
+                                    weekForecast=weekForecast.replace(/Monday/g, 'Mon');
+                                    weekForecast=weekForecast.replace(/Tuesday/g, 'Tues');
+                                    weekForecast=weekForecast.replace(/Wednesday/g, 'Wed');
+                                    weekForecast=weekForecast.replace(/Thursday/g, 'Thurs');
+                                    weekForecast=weekForecast.replace(/Friday/g, 'Fri');
+                                    weekForecast=weekForecast.replace(/Saturday/g, 'Sat');
+                                    bot.chat(weekForecast);
+                                }
+                                else {
+                                    bot.chat("No weather found.");
+                                }
+                            });
+                        }
+                        else {
+                            bot.chat("No weather found.");
+                        }
+                    });
+                }
                 break;
             case ".version":
                     bot.chat(version);
@@ -237,11 +243,11 @@ PlugAPI.getAuth({
                                 bot.chat("For more info: http://www.last.fm/music/" + lastfmArtist);
                             }
                             else {
-                                bot.chat("No artist info found.")
+                                bot.chat("No artist info found.");
                             }
                         }
                         else {
-                            bot.chat("No artist info found.")
+                            bot.chat("No artist info found.");
                         }
                     }
                 });
@@ -266,11 +272,11 @@ PlugAPI.getAuth({
                                 bot.chat(summary);
                             }
                             else {
-                                bot.chat("No track info found.")
+                                bot.chat("No track info found.");
                             }
                         }
                         else {
-                            bot.chat("No track info found.")
+                            bot.chat("No track info found.");
                         }
                     }
                 });
@@ -338,12 +344,12 @@ PlugAPI.getAuth({
                         });
                     }
                     else {
-                        bot.chat("No album found.")
+                        bot.chat("No album found.");
                     }
                 });
                 break;
             case ".similar": 
-                var artistChoice="";
+                artistChoice="";
                 if (qualifier==""){
                     artistChoice=bot.getMedia().author;
                 }
@@ -364,12 +370,12 @@ PlugAPI.getAuth({
                         bot.chat("Similar artists to " + artistChoice + ": " + artists);
                     }
                     else {
-                        bot.chat("No similar artists found.")
+                        bot.chat("No similar artists found.");
                     }
                 });
                 break;
             case ".events": 
-                var artistChoice="";
+                artistChoice="";
                 if (qualifier==""){
                     artistChoice=bot.getMedia().author;
                 }
@@ -435,7 +441,7 @@ PlugAPI.getAuth({
                     result=result.replace(/\s{1,}<sn>/g, '; ');
                     result=result.replace(/\s{1,}<un>/g, ': ');
                     result=result.replace(/<(?!\/entry\s*\/?)[^>]+>/g, '');
-                    result=result.replace(/\s{1,}:/g,': ')
+                    result=result.replace(/\s{1,}:/g,': ');
                     if (result.indexOf(":") != -1 && (result.indexOf(":")<result.indexOf("1:") || result.indexOf("1:") == -1) && (result.indexOf(":")<result.indexOf("1 a") || result.indexOf("1 a") == -1)) {
                         result=result.substring(result.indexOf(":")+1);
                     }
@@ -458,7 +464,7 @@ PlugAPI.getAuth({
                         bot.chat("For more info: http://www.merriam-webster.com/dictionary/" + linkQualifier);
                     }
                     else {
-                        bot.chat("No definition found.")
+                        bot.chat("No definition found.");
                     }
                 });
                 break;
@@ -493,7 +499,7 @@ PlugAPI.getAuth({
                             }
                             else {
                                 bot.createPlaylist("Library "+playlists.length+1);
-                                bot.activatePlaylist(playlists[playlists.length-1].id)
+                                bot.activatePlaylist(playlists[playlists.length-1].id);
                                 var selectedID=playlists[playlists.length-1].id;
                                 bot.chat("Added to "+playlists[playlists.length-1].name+" playlist.");
                             }
@@ -613,7 +619,7 @@ PlugAPI.getAuth({
                 break;
             case ".translate": 
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
-                var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
+                var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese', 'Chinese', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
                 if (qualifier!=""){
                     var params = { 
                         text: qualifier 
@@ -692,7 +698,7 @@ PlugAPI.getAuth({
                     minutes = minutes - 60;
                     hours++;
                 }
-                hours == 0 ? response = "Running for " + minutes + "m " : response = "Running for " + hours + "h " + minutes + "m";
+                hours == 0 ? response = "Running for " + minutes + "m" : response = "Running for " + hours + "h " + minutes + "m";
                 bot.chat(response);
                 break;
             case ".coin":
@@ -1030,7 +1036,7 @@ PlugAPI.getAuth({
                 break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
-                languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];        
+                languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese', 'Chinese', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
                 if (translateList.indexOf(data.from)!=-1){
                     qualifier = data.message;
                     qualifier=qualifier.replace(/&#39;/g, '\'');
