@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.0.2
+Version Number: 2.0.3
 
 Debut Date: December 10, 2013
  
@@ -61,6 +61,7 @@ Commands:
 36. .soundcloud
 37. .lottery
 38. .rules
+39. .eggs
 
 Release Notes:
  
@@ -221,3 +222,9 @@ March 2, 2014:
 1. Code Tweaks
 2. Fixed Calculate Command Bug
 3. Fixed Translate Command Bug
+
+March 3, 2014:
+
+2.0.3:
+1. Code Tweaks
+2. Eggs Command

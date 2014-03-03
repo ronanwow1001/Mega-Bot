@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.0.2";
+var version = "2.0.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -79,9 +79,10 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs");
                 break;
             case ".hey":
+            case ".hello":
                 bot.chat("Well hey there! @" + data.from);
                 break;
             case ".woot":
@@ -96,6 +97,7 @@ PlugAPI.getAuth({
                 break;
             case ".props":
             case ".propsicle":
+            case ".propstick":
                 console.log(bot.getDJs()[0].username, bot.getDJs(), bot.getDJs()[0]);
                 bot.chat("Epic Play! @" + bot.getDJs()[0].username);
                 bot.woot();
@@ -113,8 +115,8 @@ PlugAPI.getAuth({
                     } 
                 }
                 qualifier=qualifier.replace(/x/g, '*');
-                if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])/g.test(qualifier))) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
-                    func=qualifier;
+                if (qualifier!=="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])/g.test(qualifier))) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
+                    var func=qualifier;
                     func+=" + (0*x) + (0*y)";
                     var realfunc=mlexer.parseString(func);
                     var answer=(realfunc({x:0,y:0}));
@@ -130,7 +132,7 @@ PlugAPI.getAuth({
                         bot.chat("/me does not compute.");
                     }
                 }
-                else if (qualifier==""){
+                else if (qualifier===""){
                     bot.chat("Try .calc followed by something to calculate.");
                 }
                 else {
@@ -152,14 +154,14 @@ PlugAPI.getAuth({
                 bot.chat("Skipping The Song!");
                 break;
             case ".forecast": 
-                if (qualifier==""){
+                if (qualifier===""){
                     bot.chat("Try .forecast followed by a US state, city, or zip to look up.");
                 }
                 else {
                     google_geocoding.geocode(qualifier, function(err, location) {
-                        if (location!=null){
+                        if (location!==null){
                             weather.getWeather(location.lat, location.lng, function(err, data){
-                                if (data!=null){
+                                if (data!==null){
                                     var weekForecast="Forecast for "+data.location.areaDescription+": Current: "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
                                     for (var i=0; i<7; i++){
                                         var day = data.time.startPeriodName[i].split(' ');
@@ -196,7 +198,7 @@ PlugAPI.getAuth({
                     break;
             case ".artist": 
                 var artistChoice="";
-                if (qualifier==""){
+                if (qualifier===""){
                     artistChoice=bot.getMedia().author;
                 }
                 else {
@@ -205,8 +207,8 @@ PlugAPI.getAuth({
                 lastfm.getArtistInfo({
                     artist: artistChoice,
                     callback: function(result) { 
-                        if (result.success==true){
-                            if (result.artistInfo.bio.summary!=""){
+                        if (result.success===true){
+                            if (result.artistInfo.bio.summary!==""){
                                 var summary=result.artistInfo.bio.summary;
                                 summary=summary.replace(/(&quot;)/g, '"');
                                 summary=summary.replace(/(&amp;)/g, '&');
@@ -257,8 +259,8 @@ PlugAPI.getAuth({
                     artist: bot.getMedia().author,
                     track: bot.getMedia().title,
                     callback: function(result) {
-                        if (result.success==true){
-                            if (result.trackInfo.wiki!=undefined){
+                        if (result.success===true){
+                            if (result.trackInfo.wiki!==undefined){
                                 var summary=result.trackInfo.wiki.summary;
                                 summary=summary.replace(/(&quot;)/g, '"');
                                 summary=summary.replace(/(&amp;)/g, '&');
@@ -282,10 +284,10 @@ PlugAPI.getAuth({
                 });
                 break;
             case ".genre": 
-                var artistChoice="";
-                if (qualifier==""){
+                artistChoice="";
+                if (qualifier===""){
                     artistChoice=bot.getMedia().author;
-                    trackChoice=bot.getMedia().title;
+                    var trackChoice=bot.getMedia().title;
                 }
                 else {
                     artistChoice=qualifier;
@@ -296,15 +298,15 @@ PlugAPI.getAuth({
                     track: trackChoice,
                     callback: function(result) {
                         var tags = "";
-                        if (result.tags!=undefined){
+                        if (result.tags!==undefined){
                             for (var i=0; i<result.tags.length; i++){
                                 tags+=result.tags[i].name;
                                 tags+=", ";
                             }
                             tags=tags.substring(0, tags.length-2);
                         }
-                        if (qualifier==""){
-                            if (tags!=""){
+                        if (qualifier===""){
+                            if (tags!==""){
                                 bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
                             }
                             else {
@@ -312,7 +314,7 @@ PlugAPI.getAuth({
                             }
                         }
                         else {
-                            if (tags!=""){
+                            if (tags!==""){
                                 bot.chat("Genre of "+artistChoice+": "+tags);
                             }
                             else {
@@ -327,13 +329,13 @@ PlugAPI.getAuth({
                     'artist' : bot.getMedia().author,
                     'track' : bot.getMedia().title
                 }, function (err, track) {
-                    if (track!=undefined){
+                    if (track!==undefined){
                         lfm.album.getInfo({
                             'artist' : bot.getMedia().author,
                             'album' : track.album.title
                         }, function (err, album) {
                             var albumMessage = track.name + " is from the album " + track.album.title;
-                            if (album.wiki!=undefined){
+                            if (album.wiki!==undefined){
                                 if (album.wiki.summary.indexOf('released on') != -1){
                                     var year = album.wiki.summary.substring(album.wiki.summary.indexOf('released on')).split(' ')[4].substring(0,4);
                                     albumMessage = albumMessage + " (" + year + ")";
@@ -350,7 +352,7 @@ PlugAPI.getAuth({
                 break;
             case ".similar": 
                 artistChoice="";
-                if (qualifier==""){
+                if (qualifier===""){
                     artistChoice=bot.getMedia().author;
                 }
                 else {
@@ -361,7 +363,7 @@ PlugAPI.getAuth({
                     'artist' : artistChoice,
                     'autocorrect' : 1
                 }, function (err, similarArtists) {
-                    if (similarArtists!=undefined){
+                    if (similarArtists!==undefined){
                         var artists = '';
                         for (var i=0; i<similarArtists.artist.length; i++){
                             artists = artists + similarArtists.artist[i].name + ", ";
@@ -376,7 +378,7 @@ PlugAPI.getAuth({
                 break;
             case ".events": 
                 artistChoice="";
-                if (qualifier==""){
+                if (qualifier===""){
                     artistChoice=bot.getMedia().author;
                 }
                 else {
@@ -386,7 +388,7 @@ PlugAPI.getAuth({
                     'limit' : 3,
                     'artist' : artistChoice
                 }, function (err, events) {
-                    if (events!=undefined){
+                    if (events!==undefined){
                         var upcomingEvents = '';
                         if (!(events.event instanceof Array)){
                             events.event = [events.event];
@@ -456,7 +458,7 @@ PlugAPI.getAuth({
                     result=result.substring(0, result.indexOf("</entry>"));
                     result=result.replace(/\s{1,};/g, ';');
                     result=result.replace(/\s{1,},/g, ',');
-                    if (result != ''){
+                    if (result !== ''){
                         if (result.length>250){
                             result=result.substring(0, 247)+"...";
                         }  
@@ -469,8 +471,8 @@ PlugAPI.getAuth({
                 });
                 break;
             case ".soundcloud": 
-                var artistChoice="";
-                if (qualifier==""){
+                artistChoice="";
+                if (qualifier===""){
                     artistChoice = bot.getMedia().author;
                 }
                 else {
@@ -480,7 +482,7 @@ PlugAPI.getAuth({
                 request(link, function (error, response, body) {
                     if (!error && response.statusCode == 200) {
                         var info = JSON.parse(body);
-                        if (info[0] != undefined){
+                        if (info[0] !== undefined){
                             bot.chat(info[0].username + ": " + info[0].permalink_url);
                         }
                         else {
@@ -500,7 +502,7 @@ PlugAPI.getAuth({
                             else {
                                 bot.createPlaylist("Library "+playlists.length+1);
                                 bot.activatePlaylist(playlists[playlists.length-1].id);
-                                var selectedID=playlists[playlists.length-1].id;
+                                selectedID=playlists[playlists.length-1].id;
                                 bot.chat("Added to "+playlists[playlists.length-1].name+" playlist.");
                             }
                         }
@@ -512,10 +514,10 @@ PlugAPI.getAuth({
                 bot.chat("Join our Facebook group: https://www.facebook.com/groups/285521331540409/");
                 break;
             case ".wiki": 
-                if (qualifier!=""){
+                if (qualifier!==""){
                     Wiki.page(qualifier, false, function(err, page){
                         page.summary(function(err, summary){
-                            if (summary!=undefined){
+                            if (summary!==undefined){
                                 Wiki.page(qualifier, false, function(err, page){
                                     page.html(function(err, html){
                                         if (html.indexOf('<ul>')!=-1){
@@ -524,8 +526,8 @@ PlugAPI.getAuth({
                                         html=html.replace(/<[^>]+>/g, '');
                                         Wiki.page(qualifier, false, function(err, page){
                                             page.summary(function(err, summary){
-                                                if (summary!=undefined){
-                                                    if (summary=="" || summary.indexOf("This is a redirect")!=-1){
+                                                if (summary!==undefined){
+                                                    if (summary==="" || summary.indexOf("This is a redirect")!=-1){
                                                         summary="redirect "+html;
                                                     }
                                                     if (summary.indexOf('may refer to:')!=-1 || summary.indexOf('may also refer to:')!=-1 || summary.indexOf('may refer to the following:')!=-1 || summary.indexOf('may stand for:')!=-1){
@@ -535,26 +537,26 @@ PlugAPI.getAuth({
                                                         bot.chat("For more info: http://en.wikipedia.org/wiki/" + queryChoice);
                                                     }
                                                     else if (summary.substring(0,8).toLowerCase()=="redirect"){
-                                                        subQuery='';
+                                                        var subQuery='';
                                                         if (summary.indexOf('#')==-1){
                                                             if (summary.substring(8,9)==' '){
                                                                 var query=summary.substring(9);
                                                             }
                                                             else {
-                                                                var query=summary.substring(8);
+                                                                query=summary.substring(8);
                                                             }
                                                         }
                                                         else {
-                                                            var query=summary.substring(9, summary.indexOf('#'));
+                                                            query=summary.substring(9, summary.indexOf('#'));
                                                             subQuery=summary.substring(summary.indexOf('#')+1);
                                                         }
                                                         Wiki.page(query, false, function(err, page2){
                                                             page2.content(function(err, content){
-                                                                if (content!=undefined){
+                                                                if (content!==undefined){
                                                                     if (content.indexOf('may refer to:')!=-1 || content.indexOf('may also refer to:')!=-1 || content.indexOf('may refer to the following:')!=-1 || content.indexOf('may stand for:')!=-1){
                                                                         bot.chat("This may refer to several things - please be more specific.");
                                                                     }
-                                                                    else if (subQuery!=''){
+                                                                    else if (subQuery!==''){
                                                                         content=content.substring(content.indexOf("=== "+subQuery+" ===")+8+subQuery.length);
                                                                         if (content.length>250){
                                                                             content=content.substring(0, 247)+"...";
@@ -582,7 +584,7 @@ PlugAPI.getAuth({
                                                             summary=summary.substring(0, 247)+"...";
                                                         }  
                                                         bot.chat(summary);
-                                                        var queryChoice=qualifier;
+                                                        queryChoice=qualifier;
                                                         queryChoice=queryChoice.replace(/ /g, '_');
                                                         bot.chat("For more info: http://en.wikipedia.org/wiki/" + queryChoice);
                                                     }
@@ -620,7 +622,7 @@ PlugAPI.getAuth({
             case ".translate": 
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
                 var languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese', 'Chinese', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
-                if (qualifier!=""){
+                if (qualifier!==""){
                     var params = { 
                         text: qualifier 
                     };
@@ -652,7 +654,7 @@ PlugAPI.getAuth({
                                         givenLanguage = languageCodes[languages.indexOf(language2)];
                                     }
                                     if (languages.indexOf(language2) > -1 || languageCodes.indexOf(language2) > -1){    
-                                        var params2 = { 
+                                        params2 = { 
                                             text: qualifier,
                                             from: language,
                                             to: givenLanguage
@@ -680,7 +682,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".google": 
-                if (qualifier!=""){
+                if (qualifier!==""){
                     var google=qualifier;
                     google=google.replace(/ /g, '+');
                     bot.chat("http://lmgtfy.com/?q=" + google);
@@ -698,7 +700,7 @@ PlugAPI.getAuth({
                     minutes = minutes - 60;
                     hours++;
                 }
-                hours == 0 ? response = "Running for " + minutes + "m" : response = "Running for " + hours + "h " + minutes + "m";
+                hours === 0 ? response = "Running for " + minutes + "m" : response = "Running for " + hours + "h " + minutes + "m";
                 bot.chat(response);
                 break;
             case ".coin":
@@ -715,7 +717,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case '.autotranslate': 
-                if (qualifier!=""){
+                if (qualifier!==""){
                     translateList.push(qualifier);
                     bot.chat("Autotranslating user " + qualifier + ".");
                 }
@@ -724,7 +726,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case '.untranslate': 
-                if (qualifier!=""){
+                if (qualifier!==""){
                     if (translateList.indexOf(qualifier) != -1) {
                         translateList.splice(translateList.indexOf(qualifier), 1);
                     }
@@ -1034,6 +1036,9 @@ PlugAPI.getAuth({
                         break;
                 }
                 break;
+            case ".eggs":
+                bot.chat("Wake Up for the yummy eggs and bacon.");
+                break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
                 languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese', 'Chinese', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
@@ -1044,7 +1049,7 @@ PlugAPI.getAuth({
                     qualifier=qualifier.replace(/&amp;/g, '\&');
                     var user = data.from;
                     var message = qualifier;
-                    var params = { 
+                    params = { 
                         text: message 
                     };
                     var language="";
@@ -1069,7 +1074,7 @@ PlugAPI.getAuth({
                 else if (command.charAt(0) == "@" && translateList.indexOf(command.slice(1)) != -1 && data.from != 'Mega-Bot'){ 
                     for (var i=0; i<bot.getUsers().length; i++){
                         if (bot.getUsers()[i].username == command.slice(1)){
-                            var params = { 
+                            params = { 
                                 text: qualifier,
                                 from: 'en',
                                 to: bot.getUsers()[i].language
