@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = '4w@fWs$'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.0.3";
+var version = "2.0.4";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -79,19 +79,23 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs");
+            case ".command":
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita");
                 break;
             case ".hey":
             case ".hello":
+            case ".hi":
                 bot.chat("Well hey there! @" + data.from);
                 break;
             case ".woot":
             case ".awesome":
+            case ".love":
                 bot.woot();
                 bot.chat("I love this song.");
                 break;
             case ".meh":
             case ".lame":
+            case ".hate":
                 bot.meh();
                 bot.chat("I hate this song.");
                 break;
@@ -104,6 +108,7 @@ PlugAPI.getAuth({
                 break;
             case ".calc":
             case ".calculate":
+            case ".figure":
                 var counter = 0;
                 var counter2 = 0;
                 for (var i=0; i<qualifier.length; i++) {
@@ -427,9 +432,11 @@ PlugAPI.getAuth({
                 bot.chat("Check me out on GitHub! https://github.com/Spiderlover/Mega-Bot");
                 break;
             case ".help":
+            case ".plugdj":
                 bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
                 break;
             case ".about":
+            case ".bot":
                 bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of my commands, type .commands");
                 break;
             case ".define": 
@@ -471,6 +478,7 @@ PlugAPI.getAuth({
                 });
                 break;
             case ".soundcloud": 
+            case ".sc":
                 artistChoice="";
                 if (qualifier===""){
                     artistChoice = bot.getMedia().author;
@@ -511,6 +519,7 @@ PlugAPI.getAuth({
                 });
                 break;
             case ".facebook":
+            case ".fb":
                 bot.chat("Join our Facebook group: https://www.facebook.com/groups/285521331540409/");
                 break;
             case ".wiki": 
@@ -1038,6 +1047,9 @@ PlugAPI.getAuth({
                 break;
             case ".eggs":
                 bot.chat("Wake Up for the yummy eggs and bacon.");
+                break;
+            case ".pita":
+                bot.chat("http://chillouttent.org/p-i-t-a/");
                 break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
