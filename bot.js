@@ -1,9 +1,9 @@
 var PlugAPI = require('./plugapi');
 var ROOM = 'christian-anything-2';
-var UPDATECODE = '4w@fWs$'; 
+var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.0.4";
+var version = "2.0.5";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -203,17 +203,17 @@ PlugAPI.getAuth({
                     break;
             case ".artist": 
                 var artistChoice="";
-                if (qualifier===""){
+                if (qualifier==""){
                     artistChoice=bot.getMedia().author;
                 }
-                else {
+                else{
                     artistChoice=qualifier;
                 }
                 lastfm.getArtistInfo({
                     artist: artistChoice,
                     callback: function(result) { 
-                        if (result.success===true){
-                            if (result.artistInfo.bio.summary!==""){
+                        if (result.success==true){
+                            if (result.artistInfo.bio.summary!=""){
                                 var summary=result.artistInfo.bio.summary;
                                 summary=summary.replace(/(&quot;)/g, '"');
                                 summary=summary.replace(/(&amp;)/g, '&');
@@ -250,22 +250,22 @@ PlugAPI.getAuth({
                                 bot.chat("For more info: http://www.last.fm/music/" + lastfmArtist);
                             }
                             else {
-                                bot.chat("No artist info found.");
+                                bot.chat("No artist info found.")
                             }
                         }
                         else {
-                            bot.chat("No artist info found.");
+                            bot.chat("No artist info found.")
                         }
                     }
                 });
                 break;
-            case ".track": 
+            case ".track":
                 lastfm.getTrackInfo({
                     artist: bot.getMedia().author,
                     track: bot.getMedia().title,
                     callback: function(result) {
-                        if (result.success===true){
-                            if (result.trackInfo.wiki!==undefined){
+                        if (result.success==true){
+                            if (result.trackInfo.wiki!=undefined){
                                 var summary=result.trackInfo.wiki.summary;
                                 summary=summary.replace(/(&quot;)/g, '"');
                                 summary=summary.replace(/(&amp;)/g, '&');
@@ -279,22 +279,22 @@ PlugAPI.getAuth({
                                 bot.chat(summary);
                             }
                             else {
-                                bot.chat("No track info found.");
+                                bot.chat("No track info found.")
                             }
                         }
                         else {
-                            bot.chat("No track info found.");
+                            bot.chat("No track info found.")
                         }
                     }
                 });
                 break;
             case ".genre": 
-                artistChoice="";
-                if (qualifier===""){
+                var artistChoice="";
+                if (qualifier==""){
                     artistChoice=bot.getMedia().author;
-                    var trackChoice=bot.getMedia().title;
+                    trackChoice=bot.getMedia().title;
                 }
-                else {
+                else{
                     artistChoice=qualifier;
                     trackChoice=null;
                 }
@@ -303,26 +303,26 @@ PlugAPI.getAuth({
                     track: trackChoice,
                     callback: function(result) {
                         var tags = "";
-                        if (result.tags!==undefined){
+                        if (result.tags!=undefined){
                             for (var i=0; i<result.tags.length; i++){
                                 tags+=result.tags[i].name;
                                 tags+=", ";
                             }
                             tags=tags.substring(0, tags.length-2);
                         }
-                        if (qualifier===""){
-                            if (tags!==""){
+                        if (qualifier==""){
+                            if (tags!=""){
                                 bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
                             }
-                            else {
+                            else{
                                 bot.chat("No genre found.");
                             }
                         }
-                        else {
-                            if (tags!==""){
+                        else{
+                            if (tags!=""){
                                 bot.chat("Genre of "+artistChoice+": "+tags);
                             }
-                            else {
+                            else{
                                 bot.chat("No genre found.");
                             }
                         }
@@ -334,13 +334,13 @@ PlugAPI.getAuth({
                     'artist' : bot.getMedia().author,
                     'track' : bot.getMedia().title
                 }, function (err, track) {
-                    if (track!==undefined){
+                    if (track!=undefined){
                         lfm.album.getInfo({
                             'artist' : bot.getMedia().author,
                             'album' : track.album.title
                         }, function (err, album) {
                             var albumMessage = track.name + " is from the album " + track.album.title;
-                            if (album.wiki!==undefined){
+                            if (album.wiki!=undefined){
                                 if (album.wiki.summary.indexOf('released on') != -1){
                                     var year = album.wiki.summary.substring(album.wiki.summary.indexOf('released on')).split(' ')[4].substring(0,4);
                                     albumMessage = albumMessage + " (" + year + ")";
@@ -350,17 +350,17 @@ PlugAPI.getAuth({
                             bot.chat("Check out the full album: " + track.album.url);
                         });
                     }
-                    else {
-                        bot.chat("No album found.");
+                    else{
+                        bot.chat("No album found.")
                     }
                 });
                 break;
             case ".similar": 
-                artistChoice="";
-                if (qualifier===""){
+                var artistChoice="";
+                if (qualifier==""){
                     artistChoice=bot.getMedia().author;
                 }
-                else {
+                else{
                     artistChoice=qualifier;
                 }
                 lfm.artist.getSimilar({
@@ -368,7 +368,7 @@ PlugAPI.getAuth({
                     'artist' : artistChoice,
                     'autocorrect' : 1
                 }, function (err, similarArtists) {
-                    if (similarArtists!==undefined){
+                    if (similarArtists!=undefined){
                         var artists = '';
                         for (var i=0; i<similarArtists.artist.length; i++){
                             artists = artists + similarArtists.artist[i].name + ", ";
@@ -376,24 +376,24 @@ PlugAPI.getAuth({
                         artists = artists.substring(0, artists.length-2);
                         bot.chat("Similar artists to " + artistChoice + ": " + artists);
                     }
-                    else {
+                    else{
                         bot.chat("No similar artists found.");
                     }
                 });
                 break;
             case ".events": 
-                artistChoice="";
-                if (qualifier===""){
+                var artistChoice="";
+                if (qualifier==""){
                     artistChoice=bot.getMedia().author;
                 }
-                else {
+                else{
                     artistChoice=qualifier;
                 }
                 lfm.artist.getEvents({
                     'limit' : 3,
                     'artist' : artistChoice
                 }, function (err, events) {
-                    if (events!==undefined){
+                    if (events!=undefined){
                         var upcomingEvents = '';
                         if (!(events.event instanceof Array)){
                             events.event = [events.event];
@@ -403,7 +403,7 @@ PlugAPI.getAuth({
                             if (events.event[i].startDate.split(/\s+/).slice(1,2).join(" ").slice(0,1) == '0'){
                                 day = events.event[i].startDate.split(/\s+/).slice(1,2).join(" ").slice(1,2);
                             }
-                            else {
+                            else{
                                 day = events.event[i].startDate.split(/\s+/).slice(1,2).join(" ");
                             }
                             upcomingEvents = upcomingEvents + events.event[i].startDate.split(/\s+/).slice(2,3).join(" ") + "/" + day + "/" + events.event[i].startDate.split(/\s+/).slice(3,4).join(" ").slice(-2) + " at " + events.event[i].venue.name + " in " + events.event[i].venue.location.city + ", " + events.event[i].venue.location.country + "; ";
@@ -423,7 +423,7 @@ PlugAPI.getAuth({
                         upcomingEvents=upcomingEvents.replace(/Dec/g, '12');
                         bot.chat("Upcoming events for " + artistChoice + ": " + upcomingEvents);
                     }
-                    else {
+                    else{
                         bot.chat("No upcoming events found.");
                     }
                 });
