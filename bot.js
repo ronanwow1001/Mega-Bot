@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.0.5";
+var version = "2.0.6";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -13,14 +13,14 @@ var lastfm = new Lastfm({
     api_key: 'dc116468a760d9c586562d79e302aadf',
     api_secret: 'c68c25364ccfa0961f60abe9250f8233',
     username: 'kingzimmer',
-    password: 'Starwarskotor1'
+    password: 'Starwarskotor12345'
 });
 
 var LastfmAPI = require('lastfmapi');
 
 var lfm = new LastfmAPI({
-    'api_key' : 'dc116468a760d9c586562d79e302aadf',
-    'secret' : 'c68c25364ccfa0961f60abe9250f8233'
+    api_key : 'dc116468a760d9c586562d79e302aadf',
+    secret : 'c68c25364ccfa0961f60abe9250f8233'
 });
 
 var mlexer = require('math-lexer');
@@ -76,6 +76,8 @@ PlugAPI.getAuth({
             qualifier=qualifier.replace(/&#39;/g, '\'');
             qualifier=qualifier.replace(/&#34;/g, '\"');
             qualifier=qualifier.replace(/&amp;/g, '\&');
+            qualifier=qualifier.replace(/&lt;/gi, '\<');
+            qualifier=qualifier.replace(/&gt;/gi, '\>');
             switch (command)
             {
             case ".commands":
@@ -90,6 +92,7 @@ PlugAPI.getAuth({
             case ".woot":
             case ".awesome":
             case ".love":
+            case ".dance":
                 bot.woot();
                 bot.chat("I love this song.");
                 break;
@@ -199,8 +202,8 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".version":
-                    bot.chat(version);
-                    break;
+                bot.chat(version);
+                break;
             case ".artist": 
                 var artistChoice="";
                 if (qualifier==""){
@@ -250,11 +253,11 @@ PlugAPI.getAuth({
                                 bot.chat("For more info: http://www.last.fm/music/" + lastfmArtist);
                             }
                             else {
-                                bot.chat("No artist info found.")
+                                bot.chat("No artist info found.");
                             }
                         }
                         else {
-                            bot.chat("No artist info found.")
+                            bot.chat("No artist info found.");
                         }
                     }
                 });
@@ -279,11 +282,11 @@ PlugAPI.getAuth({
                                 bot.chat(summary);
                             }
                             else {
-                                bot.chat("No track info found.")
+                                bot.chat("No track info found.");
                             }
                         }
                         else {
-                            bot.chat("No track info found.")
+                            bot.chat("No track info found.");
                         }
                     }
                 });
@@ -351,7 +354,7 @@ PlugAPI.getAuth({
                         });
                     }
                     else{
-                        bot.chat("No album found.")
+                        bot.chat("No album found.");
                     }
                 });
                 break;
@@ -499,24 +502,26 @@ PlugAPI.getAuth({
                     }
                 });
                 break;
-            case ".grab": 
-                bot.getPlaylists(function(playlists) {
-                    for (var i=0; i<playlists.length; i++){
-                        if (playlists[i].selected){
-                            if (playlists[i].items.length!=200){
-                                var selectedID=playlists[i].id;
-                                bot.chat("Added to my "+playlists[i].name+" playlist.");
-                            }
-                            else {
-                                bot.createPlaylist("Library "+playlists.length+1);
-                                bot.activatePlaylist(playlists[playlists.length-1].id);
-                                selectedID=playlists[playlists.length-1].id;
-                                bot.chat("Added to "+playlists[playlists.length-1].name+" playlist.");
+               case ".grab": 
+                if (data.from=='christian-anything-2'){
+                    bot.getPlaylists(function(playlists) {
+                        for (var i=0; i<playlists.length; i++){
+                            if (playlists[i].selected){
+                                if (playlists[i].items.length!=200){
+                                    var selectedID=playlists[i].id;
+                                    bot.chat("Added to my "+playlists[i].name+" playlist.");
+                                }
+                                else{
+                                    bot.createPlaylist("Library "+playlists.length+1);
+                                    bot.activatePlaylist(playlists[playlists.length-1].id);
+                                    selectedID=playlists[playlists.length-1].id;
+                                    bot.chat("Added to "+playlists[playlists.length-1].name+" playlist.");
+                                }
                             }
                         }
-                    }
-                    bot.addSongToPlaylist(selectedID, bot.getMedia().id);
-                });
+                        bot.addSongToPlaylist(selectedID, bot.getMedia().id);
+                    });
+                }
                 break;
             case ".facebook":
             case ".fb":
@@ -1059,6 +1064,8 @@ PlugAPI.getAuth({
                     qualifier=qualifier.replace(/&#39;/g, '\'');
                     qualifier=qualifier.replace(/&#34;/g, '\"');
                     qualifier=qualifier.replace(/&amp;/g, '\&');
+                    qualifier=qualifier.replace(/&lt;/gi, '\<');
+                    qualifier=qualifier.replace(/&gt;/gi, '\>');
                     var user = data.from;
                     var message = qualifier;
                     params = { 
