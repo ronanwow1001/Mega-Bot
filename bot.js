@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.0.6";
+var version = "2.1.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -82,7 +82,7 @@ PlugAPI.getAuth({
             {
             case ".commands":
             case ".command":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball");
                 break;
             case ".hey":
             case ".hello":
@@ -502,9 +502,8 @@ PlugAPI.getAuth({
                     }
                 });
                 break;
-               case ".grab": 
-                if (data.from=='christian-anything-2'){
-                    bot.getPlaylists(function(playlists) {
+            case ".grab": 
+                bot.getPlaylists(function(playlists) {
                         for (var i=0; i<playlists.length; i++){
                             if (playlists[i].selected){
                                 if (playlists[i].items.length!=200){
@@ -514,14 +513,14 @@ PlugAPI.getAuth({
                                 else{
                                     bot.createPlaylist("Library "+playlists.length+1);
                                     bot.activatePlaylist(playlists[playlists.length-1].id);
-                                    selectedID=playlists[playlists.length-1].id;
+                                    var selectedID=playlists[playlists.length-1].id;
                                     bot.chat("Added to "+playlists[playlists.length-1].name+" playlist.");
                                 }
                             }
                         }
                         bot.addSongToPlaylist(selectedID, bot.getMedia().id);
-                    });
-                }
+                    
+                });
                 break;
             case ".facebook":
             case ".fb":
@@ -1055,6 +1054,76 @@ PlugAPI.getAuth({
                 break;
             case ".pita":
                 bot.chat("http://chillouttent.org/p-i-t-a/");
+                break;
+            case ".8ball":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var eightball = Math.floor(Math.random() * 20);
+                switch(eightball){
+                    case 0:
+                        bot.chat('It is certain!');
+                        break;
+                    case 1:
+                        bot.chat('It is decidedly so!');
+                        break;
+                    case 2:
+                        bot.chat('Without a doubt!');
+                        break;
+                    case 3:
+                        bot.chat('Yes – definitely!');
+                        break;
+                    case 4:
+                        bot.chat('You may rely on it!');
+                        break;
+                    case 5:
+                        bot.chat('As I see it, yes!');
+                        break;
+                    case 6:
+                        bot.chat('Most likely!');
+                        break;
+                    case 7:
+                        bot.chat('Outlook good!');
+                        break;
+                    case 8:
+                        bot.chat('Yes!');
+                        break;
+                    case 9:
+                        bot.chat('Signs point to yes!');
+                        break;
+                    case 10:
+                        bot.chat('Reply hazy, try again!');
+                        break;
+                    case 11:
+                        bot.chat('Ask again later!');
+                        break;
+                    case 12:
+                        bot.chat('Better not tell you now!');
+                        break;
+                    case 13:
+                        bot.chat('Cannot predict now!');
+                        break;
+                    case 14:
+                        bot.chat('Concentrate and ask again!');
+                        break;
+                    case 15:
+                        bot.chat('Do not count on it!');
+                        break;
+                    case 16:
+                        bot.chat('My reply is no!');
+                        break;
+                    case 17:
+                        bot.chat('My sources say no!');
+                        break;
+                    case 18:
+                        bot.chat('Outlook not so good!');
+                        break;
+                    case 19:
+                        bot.chat('Very doubtful!');
+                        break;
+                    case 20:
+                        bot.chat('My sources say yes!');
+                        break;
+                }
                 break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];

@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.0.6
+Version Number: 2.1.0
 
 Debut Date: December 10, 2013
  
@@ -21,6 +21,7 @@ Features:
 11. Mood Database
 12. Coin Flipping Ability
 13. Lottery Database
+14. 8 Ball Database
 
 Commands:
 1.  .commands
@@ -63,6 +64,7 @@ Commands:
 38. .rules
 39. .eggs
 40. .pita
+41. .8ball
 
 Release Notes:
  
@@ -248,3 +250,9 @@ March 6, 2014:
 1. Code Tweaks
 2. Possible Bug Fix for Grab Command
 3. Universal Bug Fix
+
+March 7, 2014:
+
+2.1.0:
+1. 8 Ball Database
+2. Bug Fix for Grab Command
