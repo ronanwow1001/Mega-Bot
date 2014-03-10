@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.1.0";
+var version = "2.2.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -47,10 +47,14 @@ PlugAPI.getAuth({
     bot.on('roomJoin', function(data) {
         // data object has information on the room - list of users, song currently playing, etc.
         console.log("Joined " + ROOM + ": ", data);
-        bot.chat('Mega-Bot is now online!');
+        bot.chat('Ready for Action!');
          
     bot.on('userJoin', function(data) {
-        bot.chat('Welcome to Christian Anything. All Christian Bands and Christian Songs are allowed in this epic room. Have fun and worship with us to celebrate our king, God.');
+        bot.chat('Welcome to Christian Anything. Have fun and worship with us to celebrate our king, God.');
+    });
+    
+    bot.on('userLeave', function(data) {
+        bot.chat('Bye, have a wonderful day!');
     });
     
     var reconnect = function() { 
@@ -82,6 +86,7 @@ PlugAPI.getAuth({
             {
             case ".commands":
             case ".command":
+            case ".list":
                 bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball");
                 break;
             case ".hey":
@@ -99,12 +104,14 @@ PlugAPI.getAuth({
             case ".meh":
             case ".lame":
             case ".hate":
+            case ".boo":
                 bot.meh();
                 bot.chat("I hate this song.");
                 break;
             case ".props":
             case ".propsicle":
             case ".propstick":
+            case ".propbat":
                 console.log(bot.getDJs()[0].username, bot.getDJs(), bot.getDJs()[0]);
                 bot.chat("Epic Play! @" + bot.getDJs()[0].username);
                 bot.woot();
@@ -1012,7 +1019,7 @@ PlugAPI.getAuth({
             case ".rules":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var rules = Math.floor(Math.random() * 10);
+                var rules = Math.floor(Math.random() * 20);
                 switch(rules){
                     case 0:
                         bot.chat('No trolling people in the chatbox!');
@@ -1046,6 +1053,36 @@ PlugAPI.getAuth({
                         break;
                     case 10:
                         bot.chat('Christian Music can be in any language!');
+                        break;
+                    case 11:
+                        bot.chat('The room is strictly for music played by Christian artists.');
+                        break;
+                    case 12:
+                        bot.chat('There is no tolerance for disrespect, rudeness, cursing, trolling, spamming, or inappropriate conversations. You will be booted from the room if you violate this basic principle.');
+                        break;
+                    case 13:
+                        bot.chat('Users with an inappropriate screen name will be asked to change it or leave.');
+                        break;
+                    case 14:
+                        bot.chat('Do not ask to be a moderator.');
+                        break;
+                    case 15:
+                        bot.chat('Do not use scripts or extensions that automatically "awesome" or "lame" songs.');
+                        break;
+                    case 16:
+                        bot.chat('We encourage you to ensure that your songs are tagged with the correct artist, song title, and album name.');
+                        break;
+                    case 17:
+                        bot.chat('Untagged songs may be blocked automatically.');
+                        break;
+                    case 18:
+                        bot.chat('You will be booted if you deliberately tag a song with false information in order to avoid being blocked.');
+                        break;
+                    case 19:
+                        bot.chat('You may choose to vote with the “awesome” and “lame” buttons, or not vote, as you wish.');
+                        break;
+                    case 20:
+                        bot.chat('These are rules for only this room. If you do not agree with them, you are as free to leave as you were to come in. If you choose to stay — thank you for respecting the rules, and others in the room. Enjoy the fellowship, and the music!');
                         break;
                 }
                 break;
@@ -1122,6 +1159,77 @@ PlugAPI.getAuth({
                         break;
                     case 20:
                         bot.chat('My sources say yes!');
+                        break;
+                }
+                break;
+            case "Mega-Bot":
+            case "@Mega-Bot":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var botphrase = Math.floor(Math.random() * 20);
+                switch(botphrase){
+                    case 0:
+                        bot.chat('Exterminate, Exterminate');
+                        break;
+                    case 1:
+                        bot.chat('This room is so cold');
+                        break;
+                    case 2:
+                        bot.chat('Always eat your vegetables');
+                        break;
+                    case 3:
+                        bot.chat('Oh, where is my hairbrush');
+                        break;
+                    case 4:
+                        bot.chat('You would make a good dalek');
+                        break;
+                    case 5:
+                        bot.chat('HELP! Mr. Cactus traded my cat for a new battery pack');
+                        break;
+                    case 6:
+                        bot.chat('Duty, honour, and good sauce');
+                        break;
+                    case 7:
+                        bot.chat('YOU... SHALL... NOT... PASS');
+                        break;
+                    case 8:
+                        bot.chat('Chase Mccain? YOUR A LEGEND!');
+                        break;
+                    case 9:
+                        bot.chat('I find your lack of faith disturbing');
+                        break;
+                    case 10:
+                        bot.chat('Go Green Ranger Go');
+                        break;
+                    case 11:
+                        bot.chat('You were that Flobbit? That Flobbit who bought everything mail order?');
+                        break;
+                    case 12:
+                        bot.chat('[evil face] We aint had nothing but maggoty bread for three stinking days [brightening up] Id love a cookie.');
+                        break;
+                    case 13:
+                        bot.chat('HELP! my cat is stuck in a tree!');
+                        break;
+                    case 14:
+                        bot.chat('God is bigger than the boogieman');
+                        break;
+                    case 15:
+                        bot.chat('I love Mr. Cactus! He is my best friend ever.');
+                        break;
+                    case 16:
+                        bot.chat('I love this room');
+                        break;
+                    case 17:
+                        bot.chat('Pi=3.141592653589793238462643383279502884');
+                        break;
+                    case 18:
+                        bot.chat('I hope you like water with your lunches!');
+                        break;
+                    case 19:
+                        bot.chat('Boot! You transistorized tormentor! Boot!');
+                        break;
+                    case 20:
+                        bot.chat('The monster is headed towards the Bumblyburg water tower. He is carrying a small asparagus. Alfred! We must find a way to stop this beast!');
                         break;
                 }
                 break;
