@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.2.0";
+var version = "2.2.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -87,11 +87,13 @@ PlugAPI.getAuth({
             case ".commands":
             case ".command":
             case ".list":
+            case ".commandlist":
                 bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball");
                 break;
             case ".hey":
             case ".hello":
             case ".hi":
+            case ".aloha":
                 bot.chat("Well hey there! @" + data.from);
                 break;
             case ".woot":
@@ -119,6 +121,7 @@ PlugAPI.getAuth({
             case ".calc":
             case ".calculate":
             case ".figure":
+            case ".function":
                 var counter = 0;
                 var counter2 = 0;
                 for (var i=0; i<qualifier.length; i++) {
@@ -156,11 +159,15 @@ PlugAPI.getAuth({
                 break;
             case ".join":
             case ".jump":
+            case ".up":
+            case ".go":
                 bot.waitListJoin();
                 bot.chat("Joining The Waitlist!");
                 break;
             case ".leave":
             case ".jump down":
+            case ".down":
+            case ".stop":
                 bot.waitListLeave();
                 bot.chat("Leaving The Waitlist.");
                 break;
@@ -726,13 +733,19 @@ PlugAPI.getAuth({
             case ".coin":
                 var crowd = bot.getUsers();
                 var randomPerson = Math.floor(Math.random() * crowd.length);
-                var randomSentence = Math.floor(Math.random() * 1);
+                var randomSentence = Math.floor(Math.random() * 3);
                 switch(randomSentence){
                      case 0:
                         bot.chat("@" + crowd[randomPerson].username + "The coin was flipped, and you got heads");
                         break;
                     case 1:
                         bot.chat("@" + crowd[randomPerson].username + "The coin was flipped, and you got tails");
+                        break;
+                    case 2:
+                        bot.chat("@" + crowd[randomPerson].username + "The coins were flipped, and you got tails and heads");
+                        break;
+                    case 3:
+                        bot.chat("@" + crowd[randomPerson].username + "The coins were flipped, and you got tails and tails");
                         break;
                 }
                 break;
@@ -949,7 +962,7 @@ PlugAPI.getAuth({
             case ".lottery":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var lotteryPrizes = Math.floor(Math.random() * 20);
+                var lotteryPrizes = Math.floor(Math.random() * 25);
                 switch(lotteryPrizes){
                     case 0:
                         bot.chat('Congratulations! You have won a free song to play on the DJ Stage!');
@@ -1013,6 +1026,21 @@ PlugAPI.getAuth({
                         break;
                     case 20:
                         bot.chat('Congratulations! You have won a free piece of cheese!');
+                        break;
+                    case 21:
+                        bot.chat('Congratulations! You have won a free drink!');
+                        break;
+                    case 22:
+                        bot.chat('Congratulations! You have won a free bag of bacon!');
+                        break;
+                    case 23:
+                        bot.chat('Congratulations! You have won a free box!');
+                        break;
+                    case 24:
+                        bot.chat('Congratulations! You have won a free piece of paper!');
+                        break;
+                    case 25:
+                        bot.chat('Congratulations! You have won a free piece of turkey!');
                         break;
                 }
                 break;
@@ -1166,7 +1194,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 20);
+                var botphrase = Math.floor(Math.random() * 30);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1230,6 +1258,36 @@ PlugAPI.getAuth({
                         break;
                     case 20:
                         bot.chat('The monster is headed towards the Bumblyburg water tower. He is carrying a small asparagus. Alfred! We must find a way to stop this beast!');
+                        break;
+                    case 21:
+                        bot.chat('Hmm. Sorta looks like candy!');
+                        break;
+                    case 22:
+                        bot.chat('Am I a dog, that you come at me with sticks?');
+                        break;
+                    case 23:
+                        bot.chat('We will see who defeats who. Now we fight.');
+                        break;
+                    case 24:
+                        bot.chat('Yes!');
+                        break;
+                    case 25:
+                        bot.chat('No!');
+                        break;
+                    case 26:
+                        bot.chat('Maybe!');
+                        break;
+                    case 27:
+                        bot.chat('Silly humans, moderator powers are for robots');
+                        break;
+                    case 28:
+                        bot.chat('I wanted to play Mousetrap. You roll your dice, you move your mice. Nobody gets hurt.');
+                        break;
+                    case 29:
+                        bot.chat('Christmas is when you get stuff! You need more toys!');
+                        break;
+                    case 30:
+                        bot.chat('Sporks. They are his utensils. And they do his bidding.');
                         break;
                 }
                 break;

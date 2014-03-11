@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.2.0
+Version Number: 2.2.1
 
 Debut Date: December 10, 2013
  
@@ -267,3 +267,11 @@ March 10, 2014:
 3. Changed Wake-Up Message for the Bot
 4. Shorten Room Greeting for Users
 5. User Leave Message
+
+March 11, 2014:
+
+2.2.1:
+1. New Phrases for the Random Phrase Database
+2. New Case Names for Commands
+3. New Phrases for the Coin Database
+4. New Phrases for the Lottery Database
