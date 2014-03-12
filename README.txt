@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.2.1
+Version Number: 2.2.2
 
 Debut Date: December 10, 2013
  
@@ -275,3 +275,8 @@ March 11, 2014:
 2. New Case Names for Commands
 3. New Phrases for the Coin Database
 4. New Phrases for the Lottery Database
+
+March 12, 2014:
+
+2.2.2:
+1. New Phrases for the Random Phrase Database

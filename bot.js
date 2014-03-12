@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.2.1";
+var version = "2.2.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1194,7 +1194,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 30);
+                var botphrase = Math.floor(Math.random() * 40);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1288,6 +1288,36 @@ PlugAPI.getAuth({
                         break;
                     case 30:
                         bot.chat('Sporks. They are his utensils. And they do his bidding.');
+                        break;
+                    case 31:
+                        bot.chat('I laughed, I cried, it moved me Bob.');
+                        break;
+                    case 32:
+                        bot.chat('I am a talking weed, you are a talking carrot. Your point was?');
+                        break;
+                    case 33:
+                        bot.chat('So I repaired the chaffing dish and sent the chef out to get another jar of pickled herring! And the dinner party was saved');
+                        break;
+                    case 34:
+                        bot.chat('Never wound what you can not kill.');
+                        break;
+                    case 35:
+                        bot.chat('You break it you buy it!!');
+                        break;
+                    case 36:
+                        bot.chat('Heroes? There is no such thing.');
+                        break;
+                    case 37:
+                        bot.chat('So much better than Iron Patriot!');
+                        break;
+                    case 38:
+                        bot.chat('So you, you breathe fire?');
+                        break;
+                    case 39:
+                        bot.chat('Avengers Assemble');
+                        break;
+                    case 40:
+                        bot.chat('Plug.DJ has been rated as R, Robots Approved.');
                         break;
                 }
                 break;
