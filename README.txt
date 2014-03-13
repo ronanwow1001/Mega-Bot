@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.2.2
+Version Number: 2.2.3
 
 Debut Date: December 10, 2013
  
@@ -279,4 +279,9 @@ March 11, 2014:
 March 12, 2014:
 
 2.2.2:
+1. New Phrases for the Random Phrase Database
+
+March 13, 2014:
+
+2.2.3:
 1. New Phrases for the Random Phrase Database

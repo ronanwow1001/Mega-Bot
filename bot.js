@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.2.2";
+var version = "2.2.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1194,7 +1194,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 40);
+                var botphrase = Math.floor(Math.random() * 50);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1318,6 +1318,36 @@ PlugAPI.getAuth({
                         break;
                     case 40:
                         bot.chat('Plug.DJ has been rated as R, Robots Approved.');
+                        break;
+                    case 41:
+                        bot.chat('Do not shoot! Seriously, I do not even like working here. They are so weird!');
+                        break;
+                    case 42:
+                        bot.chat('I am sorry, I am not that kind of doctor. It is not my department.');
+                        break;
+                    case 43:
+                        bot.chat('The early bird gets the worm, but it is the second mouse that gets the cheese.');
+                        break;
+                    case 44:
+                        bot.chat('Oh my god... that was really violent.');
+                        break;
+                    case 45:
+                        bot.chat('Jarvis! Jarvis? Do not leave me, buddy...');
+                        break;
+                    case 46:
+                        bot.chat('What? I am a rumor weed! I never make anything up! I heard it from two very reliable sources! RIGHT, KIDS?');
+                        break;
+                    case 47:
+                        bot.chat('Aah! It is another space alien!');
+                        break;
+                    case 48:
+                        bot.chat('Drop the asparagus!');
+                        break;
+                    case 49:
+                        bot.chat('Why did you not tell me that before I jumped on his head?');
+                        break;
+                    case 50:
+                        bot.chat('My plate! My Art Begotti limited edition collectors plate! What happened to it?');
                         break;
                 }
                 break;
