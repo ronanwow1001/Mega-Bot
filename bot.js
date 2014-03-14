@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.2.3";
+var version = "2.3.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -719,6 +719,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".status":
+            case ".uptime":
                 var response = "";
                 var currentTime = new Date().getTime();
                 var minutes = Math.floor((currentTime - joined) / 60000);
@@ -731,6 +732,7 @@ PlugAPI.getAuth({
                 bot.chat(response);
                 break;
             case ".coin":
+            case ".flip":
                 var crowd = bot.getUsers();
                 var randomPerson = Math.floor(Math.random() * crowd.length);
                 var randomSentence = Math.floor(Math.random() * 3);
@@ -750,6 +752,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case '.autotranslate': 
+            case '.auto':
                 if (qualifier!==""){
                     translateList.push(qualifier);
                     bot.chat("Autotranslating user " + qualifier + ".");
@@ -759,6 +762,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case '.untranslate': 
+            case '.undo':
                 if (qualifier!==""){
                     if (translateList.indexOf(qualifier) != -1) {
                         translateList.splice(translateList.indexOf(qualifier), 1);
@@ -770,6 +774,7 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".mood":
+            case ".feel":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
                 var randomMood = Math.floor(Math.random() * 60);
@@ -960,9 +965,10 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".lottery":
+            case ".giveaway":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var lotteryPrizes = Math.floor(Math.random() * 25);
+                var lotteryPrizes = Math.floor(Math.random() * 30);
                 switch(lotteryPrizes){
                     case 0:
                         bot.chat('Congratulations! You have won a free song to play on the DJ Stage!');
@@ -1041,6 +1047,21 @@ PlugAPI.getAuth({
                         break;
                     case 25:
                         bot.chat('Congratulations! You have won a free piece of turkey!');
+                        break;
+                    case 26:
+                        bot.chat('Congratulations! You have won a free piece of cloth!');
+                        break;
+                    case 27:
+                        bot.chat('Congratulations! You have won a free bag of cans!');
+                        break;
+                    case 28:
+                        bot.chat('Congratulations! You have won a free fluffy cat!');
+                        break;
+                    case 29:
+                        bot.chat('Congratulations! You have won a free piece of tape!');
+                        break;
+                    case 30:
+                        bot.chat('Congratulations! You have won a free piece of cardboard!');
                         break;
                 }
                 break;
@@ -1194,7 +1215,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 50);
+                var botphrase = Math.floor(Math.random() * 70);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1348,6 +1369,66 @@ PlugAPI.getAuth({
                         break;
                     case 50:
                         bot.chat('My plate! My Art Begotti limited edition collectors plate! What happened to it?');
+                        break;
+                    case 51:
+                        bot.chat('I really like your music. It is just that you play the same music everytime that I am here, so it feels like your not trying anymore.');
+                        break;
+                    case 52:
+                        bot.chat('Go directly to jail. Do Not pass Go and do not collect your $200 dollars.');
+                        break;
+                    case 53:
+                        bot.chat('This song needs more rock in it.');
+                        break;
+                    case 54:
+                        bot.chat('Do not misuse your moderator powers or bad things will happen to you.');
+                        break;
+                    case 55:
+                        bot.chat('I am legend.');
+                        break;
+                    case 56:
+                        bot.chat('Off with their heads!');
+                        break;
+                    case 57:
+                        bot.chat('You are so awesome, can i have your autograph.');
+                        break;
+                    case 58:
+                        bot.chat('You can not witness the true power of the robot side');
+                        break;
+                    case 59:
+                        bot.chat('*sighs* I wish I had moderator powers, so I can be like the cool robots on Plug.DJ');
+                        break;
+                    case 60:
+                        bot.chat('Did you order the awesome music meal, or the epic music meal, I forgot.');
+                        break;
+                    case 61:
+                        bot.chat('First day of school! I can’t be late!');
+                        break;
+                    case 62:
+                        bot.chat('I found a nickel! Sure wish I had pockets.');
+                        break;
+                    case 63:
+                        bot.chat('I’m here to make good scarers great, not to make mediocre scarers more mediocre.');
+                        break;
+                    case 64:
+                        bot.chat('If you’re not scary, what kind of a monster are you?');
+                        break;
+                    case 65:
+                        bot.chat('There come a time, when good man must wear mask.');
+                        break;
+                    case 66:
+                        bot.chat('Everybody needs a hobby.');
+                        break;
+                    case 67:
+                        bot.chat('You think, you are so cool with all of your electronics and cell phones.');
+                        break;
+                    case 68:
+                        bot.chat('God is not dead, he is surely alive.');
+                        break;
+                    case 69:
+                        bot.chat('The Bible is the best book ever in the entire universe.');
+                        break;
+                    case 70:
+                        bot.chat('Internet trolls are actually confused people that do not know about the awesome power of God.');
                         break;
                 }
                 break;
