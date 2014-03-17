@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.3.0
+Version Number: 2.3.1
 
 Debut Date: December 10, 2013
  
@@ -67,6 +67,7 @@ Commands:
 40. .pita
 41. .8ball
 42. Mega-Bot
+43. .songlink
 
 Release Notes:
  
@@ -292,3 +293,9 @@ March 14, 2014:
 1. Added More Phrases for the Random Phrase Database
 2. Added More Phrases for the Lottery Database
 3. New Case Names for Commands
+
+March 17, 2014:
+
+2.3.1:
+1. New Song Link Command
+2. Added More Phrases for the Random Phrase Database

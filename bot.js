@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.3.0";
+var version = "2.3.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -88,7 +88,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink");
                 break;
             case ".hey":
             case ".hello":
@@ -1215,7 +1215,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 70);
+                var botphrase = Math.floor(Math.random() * 80);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1430,6 +1430,46 @@ PlugAPI.getAuth({
                     case 70:
                         bot.chat('Internet trolls are actually confused people that do not know about the awesome power of God.');
                         break;
+                    case 71:
+                        bot.chat('Compared to God, the Slime Monster is like a teeny little cornflake!');
+                        break;
+                    case 72:
+                        bot.chat('Bee doo bee doo!');
+                        break;
+                    case 73:
+                        bot.chat('You really should announce your weapons, after you fire them. For example, lipstick taser!');
+                        break;
+                    case 74:
+                        bot.chat('Sometimes I stare at it and imagine a little chick popping out. Peep, peep, peep!');
+                        break;
+                    case 75:
+                        bot.chat('Oh man, I am late again!');
+                        break;
+                    case 76:
+                        bot.chat('I am going to need a dozen robots desguised as cookies.');
+                        break;
+                    case 77:
+                        bot.chat('Assemble the minions!');
+                        break;
+                    case 78:
+                        bot.chat('We have been working on this for a while now. Anti-gravity serum.');
+                        break;
+                    case 79:
+                        bot.chat('Pins and needles!');
+                        break;
+                    case 80:
+                        bot.chat('Huh? Avery? Is that a girl name or a boy name?');
+                        break;
+                }
+                break;
+            case ".songlink":
+                if (bot.getMedia().format == 1){
+                bot.chat("@" + data.from + " " + "http://youtu.be/" + bot.getMedia().cid);
+                }else{
+                  var id = bot.getMedia().cid;
+                    SC.get('/tracks', { ids: id,}, function(tracks) {
+                    bot.chat("@"+data.from+" "+tracks[0].permalink_url);
+                    });
                 }
                 break;
             default: 
