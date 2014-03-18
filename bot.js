@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.3.1";
+var version = "2.3.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -88,7 +88,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download");
                 break;
             case ".hey":
             case ".hello":
@@ -1215,7 +1215,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 80);
+                var botphrase = Math.floor(Math.random() * 90);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1460,6 +1460,36 @@ PlugAPI.getAuth({
                     case 80:
                         bot.chat('Huh? Avery? Is that a girl name or a boy name?');
                         break;
+                    case 81:
+                        bot.chat('You are gonna be a spy?');
+                        break;
+                    case 82:
+                        bot.chat('I hate boys.');
+                        break;
+                    case 83:
+                        bot.chat('I really hate that chicken!');
+                        break;
+                    case 84:
+                        bot.chat('Peter... you killed my father.');
+                        break;
+                    case 85:
+                        bot.chat('Listen. Listen... to me now. Listen... to ME now!');
+                        break;
+                    case 86:
+                        bot.chat('No. I am alive in you, Harry. You swore to make Spider-Man pay... now make him pay.');
+                        break;
+                    case 87:
+                        bot.chat('Whoa... He just stole that pizza!');
+                        break;
+                    case 88:
+                        bot.chat('You do not trust anyone, that is your problem.');
+                        break;
+                    case 89:
+                        bot.chat('Back to formula!');
+                        break;
+                    case 90:
+                        bot.chat('OUT, AM I?');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -1470,6 +1500,15 @@ PlugAPI.getAuth({
                     SC.get('/tracks', { ids: id,}, function(tracks) {
                     bot.chat("@"+data.from+" "+tracks[0].permalink_url);
                     });
+                }
+                break;
+            case ".download":
+                if(typeof command[1] == "undefined"){
+                    bot.chat("Download your song free here: http://www.vebsi.com/");
+                }else if(command[1].indexOf("@") > -1){
+                    bot.chat(command[1]+" Download your song free here: http://www.vebsi.com/");
+                }else{
+                    bot.chat("Download your song free here: http://www.vebsi.com/");
                 }
                 break;
             default: 
