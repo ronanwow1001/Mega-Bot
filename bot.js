@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.3.2";
+var version = "2.3.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -88,7 +88,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes");
                 break;
             case ".hey":
             case ".hello":
@@ -1215,7 +1215,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 90);
+                var botphrase = Math.floor(Math.random() * 100);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1490,6 +1490,36 @@ PlugAPI.getAuth({
                     case 90:
                         bot.chat('OUT, AM I?');
                         break;
+                    case 91:
+                        bot.chat('Misery, Misery, Misery, that is what you have chosen. I offered you friendship and you spat in my face.');
+                        break;
+                    case 92:
+                        bot.chat('What have you done? WHAT HAVE YOU DONE?');
+                        break;
+                    case 93:
+                        bot.chat('Think about it, hero!');
+                        break;
+                    case 94:
+                        bot.chat('The itsy bitsy spider climbed up the water spout. Down came the Goblin and took the spider out.');
+                        break;
+                    case 95:
+                        bot.chat('I do not think it is for us to say whether a person deserves to live or die.');
+                        break;
+                    case 96:
+                        bot.chat('Your blood pressure, Mr. Jameson. Your wife told me to tell you to watch the anger.');
+                        break;
+                    case 97:
+                        bot.chat('So good...');
+                        break;
+                    case 98:
+                        bot.chat('Black-suit Spider-Man! We gotta have these, Jonah.');
+                        break;
+                    case 99:
+                        bot.chat('Eddie, the suit, you have to take it off.');
+                        break;
+                    case 100:
+                        bot.chat('I like being bad. It makes me happy.');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -1510,6 +1540,9 @@ PlugAPI.getAuth({
                 }else{
                     bot.chat("Download your song free here: http://www.vebsi.com/");
                 }
+                break;
+            case ".votes":
+                bot.chat("Users vote:  :+1: " + bot.getRoomScore().positive + " | :-1: " + bot.getRoomScore().negative + " | :purple_heart: " + bot.getRoomScore().curates);
                 break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
