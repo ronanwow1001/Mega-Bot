@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.3.4
+Version Number: 2.4.0
 
 Debut Date: December 10, 2013
  
@@ -23,6 +23,7 @@ Features:
 13. Lottery Database
 14. 8 Ball Database
 15. Say Random Phrases in Chat Box
+16. Song Stats
 
 Commands:
 1.  .commands
@@ -319,3 +320,9 @@ March 20, 2014:
 
 2.3.4:
 1. New Ping Command
+
+March 21, 2014:
+
+2.4.0:
+1. Song Stats
+2. New Phrases for Random Phrase Database

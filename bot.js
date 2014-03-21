@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.3.4";
+var version = "2.4.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -65,8 +65,7 @@ PlugAPI.getAuth({
     bot.on('error', reconnect);
 
      bot.on('djAdvance', function(data) {
-        //console.log(data, bot.getUser(data.currentDJ));
-        console.log(bot.getDJs()[0].username);//, bot.getDJs());
+        bot.chat(bot.getMedia().title + " - " + bot.getMedia().author + " - " + "got voted:  :+1: " + bot.getRoomScore().positive + " | :-1: " + bot.getRoomScore().negative + " | :purple_heart: " + bot.getRoomScore().curates);
     });
     
     bot.on('chat', function(data) {
@@ -1215,7 +1214,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 100);
+                var botphrase = Math.floor(Math.random() * 130);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1519,6 +1518,96 @@ PlugAPI.getAuth({
                         break;
                     case 100:
                         bot.chat('I like being bad. It makes me happy.');
+                        break;
+                    case 101:
+                        bot.chat('Betty, Betty, bo-Betty, banana-fana, fo-Fetty!');
+                        break;
+                    case 102:
+                        bot.chat('Shut up. Get out.');
+                        break;
+                    case 103:
+                        bot.chat('Hey, kid, you want a job?');
+                        break;
+                    case 104:
+                        bot.chat('You took him from me. He loved me.');
+                        break;
+                    case 105:
+                        bot.chat('No. He despised you. You were an embarrassment to him.');
+                        break;
+                    case 106:
+                        bot.chat('Look at little Goblin Junior. Gonna cry?');
+                        break;
+                    case 107:
+                        bot.chat('Parker! Miss Brant! That is not the position I hired you for!');
+                        break;
+                    case 108:
+                        bot.chat('I protected you in high school. Now I am gonna kick your little ass.');
+                        break;
+                    case 109:
+                        bot.chat('You want forgiveness? Get Religion.');
+                        break;
+                    case 110:
+                        bot.chat('It is Brock sir, Edward Brock Jr. I am here, humbled and humiliated, to ask you for one thing... I want you to kill Peter Parker');
+                        break;
+                    case 111:
+                        bot.chat('Oh! My Spider-Sense is tingling!');
+                        break;
+                    case 112:
+                        bot.chat('Hey, Pete! Am I interrupting?');
+                        break;
+                    case 113:
+                        bot.chat('Where do these guys COME from?');
+                        break;
+                    case 114:
+                        bot.chat('It has the characteristics of a symbiote, which needs to bond to a host in order to survive. And once it binds... it can be hard to UNbind.');
+                        break;
+                    case 115:
+                        bot.chat('Good Riddance.');
+                        break;
+                    case 116:
+                        bot.chat('I could use some help over here!');
+                        break;
+                    case 117:
+                        bot.chat('I guess you have not heard. I am the sheriff around these parts!');
+                        break;
+                    case 118:
+                        bot.chat('This could be a tragic day for the people of New York. It could be the end of Spider-Man.');
+                        break;
+                    case 119:
+                        bot.chat('It is hard to believe what is happening. The brutality of it. I - I do not know how he can take anymore.');
+                        break;
+                    case 120:
+                        bot.chat('Whoa. Buddy, love the new outfit. This is exactly what I need to scoop Parker. Gimme - Give me some of that web action.');
+                        break;
+                    case 121:
+                        bot.chat('Look, I am begging you. If you do this, I will lose everything. There is not a paper in town that will hire me.');
+                        break;
+                    case 122:
+                        bot.chat('Take your hands off me.');
+                        break;
+                    case 123:
+                        bot.chat('Peter! What are you doing? No!');
+                        break;
+                    case 124:
+                        bot.chat('Ahem. You know, in the future, if you are going to steal cars, do not dress like a car thief, man.');
+                        break;
+                    case 125:
+                        bot.chat('Really? You seriously think I am a cop? Cop in a skin-tight red and blue suit?');
+                        break;
+                    case 126:
+                        bot.chat('If you want the truth, Peter, come and get it!');
+                        break;
+                    case 127:
+                        bot.chat('Easy, Bug Boy.');
+                        break;
+                    case 128:
+                        bot.chat('Let me ask you a question. Do I look like the mayor of Tokyo to you?');
+                        break;
+                    case 129:
+                        bot.chat('Do not... make me... have to... hurt you!');
+                        break;
+                    case 130:
+                        bot.chat('You should LEAVE HIM ALONE!');
                         break;
                 }
                 break;
