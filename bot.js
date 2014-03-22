@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.4.0";
+var version = "2.4.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1214,7 +1214,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 130);
+                var botphrase = Math.floor(Math.random() * 140);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1608,6 +1608,36 @@ PlugAPI.getAuth({
                         break;
                     case 130:
                         bot.chat('You should LEAVE HIM ALONE!');
+                        break;
+                    case 131:
+                        bot.chat('*growls* I AM VENOM!');
+                        break;
+                    case 132:
+                        bot.chat('Where is my water buffalo.');
+                        break;
+                    case 133:
+                        bot.chat('*gets bit by a radioactive spider* I feel weird.');
+                        break;
+                    case 134:
+                        bot.chat('There is a huge difference between pickles and cucumbers.');
+                        break;
+                    case 135:
+                        bot.chat('I wish, I had super powers, so I can help people discover the awesome power of God.');
+                        break;
+                    case 136:
+                        bot.chat('I wish, it was colder.');
+                        break;
+                    case 137:
+                        bot.chat('Summer weather is too hot for a robot like me.');
+                        break;
+                    case 138:
+                        bot.chat('Hurry Up October, I want cold weather.');
+                        break;
+                    case 139:
+                        bot.chat('Flowers are awesome and colorful.');
+                        break;
+                    case 140:
+                        bot.chat('Spiders are fluffy and cute. I want one as a pet so badly.');
                         break;
                 }
                 break;
