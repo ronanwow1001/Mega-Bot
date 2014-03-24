@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.4.1";
+var version = "2.4.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1214,7 +1214,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 140);
+                var botphrase = Math.floor(Math.random() * 160);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1638,6 +1638,66 @@ PlugAPI.getAuth({
                         break;
                     case 140:
                         bot.chat('Spiders are fluffy and cute. I want one as a pet so badly.');
+                        break;
+                    case 141:
+                        bot.chat('Like sands through the hour glass, so are the last few minutes of our lives.');
+                        break;
+                    case 142:
+                        bot.chat('Help will come from above in the shape of... a donkey.');
+                        break;
+                    case 143:
+                        bot.chat('Why are you talking to that horse? Why am I covered in dirt?');
+                        break;
+                    case 144:
+                        bot.chat(' I buried you.');
+                        break;
+                    case 145:
+                        bot.chat('Hi ho Silver, away!');
+                        break;
+                    case 146:
+                        bot.chat('In that case, not so good.');
+                        break;
+                    case 147:
+                        bot.chat('Never do that again.');
+                        break;
+                    case 148:
+                        bot.chat('Bad trade.');
+                        break;
+                    case 149:
+                        bot.chat('Wrong brother.');
+                        break;
+                    case 150:
+                        bot.chat('Never remove the mask, kemosabe.');
+                        break;
+                    case 151:
+                        bot.chat('Do not be stupid.');
+                        break;
+                    case 152:
+                        bot.chat('I am not going to Ninevah!');
+                        break;
+                    case 153:
+                        bot.chat('Somebody up there must be really upset with somebody down here.');
+                        break;
+                    case 154:
+                        bot.chat('How about for the next song, I drive into the river?');
+                        break;
+                    case 155:
+                        bot.chat('Drive into the river, Bob! Drive into the river, Bob!');
+                        break;
+                    case 156:
+                        bot.chat('Would you prefer poking or non-poking?');
+                        break;
+                    case 157:
+                        bot.chat('There is nothing like a cruise to clean the sand out of your wicket, ay?');
+                        break;
+                    case 158:
+                        bot.chat('Money is no object.');
+                        break;
+                    case 159:
+                        bot.chat('Insight runs very deep in my family.');
+                        break;
+                    case 160:
+                        bot.chat('You are a cheating buccaneer!');
                         break;
                 }
                 break;
