@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.4.2";
+var version = "2.4.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1214,7 +1214,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 160);
+                var botphrase = Math.floor(Math.random() * 180);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1698,6 +1698,66 @@ PlugAPI.getAuth({
                         break;
                     case 160:
                         bot.chat('You are a cheating buccaneer!');
+                        break;
+                    case 161:
+                        bot.chat('How am I supposed to cheat at Go Fish?');
+                        break;
+                    case 162:
+                        bot.chat('Something touched me!');
+                        break;
+                    case 163:
+                        bot.chat('What you need is a little compassion.');
+                        break;
+                    case 164:
+                        bot.chat('You are so vain. I bet you think this movie is about you.');
+                        break;
+                    case 165:
+                        bot.chat('Big goofy asparagus in a turban.');
+                        break;
+                    case 166:
+                        bot.chat('Does anyone have ibuprofen? I need ibuprofen!');
+                        break;
+                    case 167:
+                        bot.chat('Sorry I am late. Work was murder.');
+                        break;
+                    case 168:
+                        bot.chat('I trust my barber.');
+                        break;
+                    case 169:
+                        bot.chat('Follow the cold shiver running down your spine...');
+                        break;
+                    case 170:
+                        bot.chat('Settle down, tough guy.');
+                        break;
+                    case 171:
+                        bot.chat('You are useless you...!');
+                        break;
+                    case 172:
+                        bot.chat('Speak of the Devil!');
+                        break;
+                    case 173:
+                        bot.chat('Take care of yourself, son. Do not make the same mistake I did.');
+                        break;
+                    case 174:
+                        bot.chat('Your friendly neighborhood Spider-Man.');
+                        break;
+                    case 175:
+                        bot.chat('Well, Harry is in love with her. She is still his girl.');
+                        break;
+                    case 176:
+                        bot.chat('We will meet again, Spider-Man!');
+                        break;
+                    case 177:
+                        bot.chat('He stinks and I do not like him.');
+                        break;
+                    case 178:
+                        bot.chat('You have spun your last web, Spider-Man.');
+                        break;
+                    case 179:
+                        bot.chat('Yeah, I hate the little things.');
+                        break;
+                    case 180:
+                        bot.chat('Go web! Fly! Up, up, and away web! Shazaam! Go! Go! Go web go! Tally ho.');
                         break;
                 }
                 break;
