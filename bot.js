@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.4.3";
+var version = "2.4.4";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1214,7 +1214,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 180);
+                var botphrase = Math.floor(Math.random() * 200);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1758,6 +1758,66 @@ PlugAPI.getAuth({
                         break;
                     case 180:
                         bot.chat('Go web! Fly! Up, up, and away web! Shazaam! Go! Go! Go web go! Tally ho.');
+                        break;
+                    case 181:
+                        bot.chat('Peter, what possibly makes you think I would want to know that?');
+                        break;
+                    case 182:
+                        bot.chat('Hey freak show! You are going nowhere. I got you for three minutes. Three minutes of PLAYTIME!');
+                        break;
+                    case 183:
+                        bot.chat('Finish it. FINISH IT!');
+                        break;
+                    case 184:
+                        bot.chat('Sorry I am late, it is a jungle out there; I had to beat an old lady with a stick to get these cranberries.');
+                        break;
+                    case 185:
+                        bot.chat(' I want you to find your friend Spider-Man. Tell him to meet me at the Westside Tower at 3 o-clock.');
+                        break;
+                    case 186:
+                        bot.chat('Now... lets see who is behind the mask');
+                        break;
+                    case 187:
+                        bot.chat('That is a fly, Peter.');
+                        break;
+                    case 188:
+                        bot.chat('Ready to play God?');
+                        break;
+                    case 189:
+                        bot.chat('Do you have any idea what you really are?');
+                        break;
+                    case 190:
+                        bot.chat('We all have secrets: the ones we keep... and the ones that are kept from us.');
+                        break;
+                    case 191:
+                        bot.chat('I mean who gets kissed by Spider-Man, right?');
+                        break;
+                    case 192:
+                        bot.chat('An orange?');
+                        break;
+                    case 193:
+                        bot.chat('This is none of your business. Go. Go.');
+                        break;
+                    case 194:
+                        bot.chat('YOU TELL MY WIFE...');
+                        break;
+                    case 195:
+                        bot.chat('Time to take your pill.');
+                        break;
+                    case 196:
+                        bot.chat('Drink plenty of water.');
+                        break;
+                    case 197:
+                        bot.chat('My daughter was dying, I needed money.');
+                        break;
+                    case 198:
+                        bot.chat('Hey look, it is Spider-Man!');
+                        break;
+                    case 199:
+                        bot.chat('The real star of Christmas is not something you can steal. In fact, it is not something at all.');
+                        break;
+                    case 200:
+                        bot.chat('Oh my goodness! The youth pastor is stuck in the baptismal!');
                         break;
                 }
                 break;
