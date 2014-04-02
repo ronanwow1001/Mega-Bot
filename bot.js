@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.4.4";
+var version = "2.5.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -132,7 +132,7 @@ PlugAPI.getAuth({
                     } 
                 }
                 qualifier=qualifier.replace(/x/g, '*');
-                if (qualifier!=="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && (!(/([a-zA-Z])/g.test(qualifier))) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && counter==counter2){
+                if (qualifier!="" && !(/\d\(/g.test(qualifier)) && !(/[\!\,\@\'\"\?\#\$\%\&\_\=\<\>\:\;\[\]\{\}\`\~\||log]/g.test(qualifier)) &&  !(/\^\s{0,}\d{0,}\s{0,}\^/g.test(qualifier)) && !(/\)\d/g.test(qualifier)) && !(/^[\+\*\/\^]/g.test(qualifier)) && !(/[\+\-\*\/\^]$/g.test(qualifier)) && !(/[\+\-\*\/\^]\s{0,}[\+\*\/\^]/g.test(qualifier)) && !(/\d\s{1,}\d/g.test(qualifier)) && !(/\s\.\s/g.test(qualifier)) && !(/\.\d\./g.test(qualifier)) && !(/\d\.\s{1,}\d/g.test(qualifier)) && !(/\d\s{1,}\.\d/g.test(qualifier)) && !(/\.\./g.test(qualifier)) && (!(/([a-zA-Z])/g.test(qualifier))) && counter==counter2){
                     var func=qualifier;
                     func+=" + (0*x) + (0*y)";
                     var realfunc=mlexer.parseString(func);
@@ -210,6 +210,30 @@ PlugAPI.getAuth({
                         }
                         else {
                             bot.chat("No weather found.");
+                        }
+                    });
+                }
+                break;
+            case ".temp": 
+            case ".temperature":
+                if (qualifier==""){
+                    bot.chat("Try .temp followed by a US state, city, or zip to look up.");
+                }
+                else{
+                    google_geocoding.geocode(qualifier, function(err, location) {
+                        if (location!=null){
+                            weather.getWeather(location.lat, location.lng, function(err, data){
+                                if (data!=null){
+                                    var temp="Current temperature in "+data.location.areaDescription+": "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
+                                    bot.chat(temp);
+                                }
+                                else{
+                                    bot.chat("No temperature found.");
+                                }
+                            });
+                        }
+                        else{
+                            bot.chat("No temperature found.");
                         }
                     });
                 }
@@ -1214,7 +1238,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 200);
+                var botphrase = Math.floor(Math.random() * 210);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1819,6 +1843,36 @@ PlugAPI.getAuth({
                     case 200:
                         bot.chat('Oh my goodness! The youth pastor is stuck in the baptismal!');
                         break;
+                    case 201:
+                        bot.chat('Plug.DJ is a awesome place for robots.');
+                        break;
+                    case 202:
+                        bot.chat('*sighs* Humans think, robots are a waste of space on this planet.');
+                        break;
+                    case 203:
+                        bot.chat('Treat others, the way you wanted to be treated.');
+                        break;
+                    case 204:
+                        bot.chat('God will protect us from the dark.');
+                        break;
+                    case 205:
+                        bot.chat('God died on the cross to get rid of all of our sins, not just one sin.');
+                        break;
+                    case 206:
+                        bot.chat('Of course I am programmed, I major in JavaScript.');
+                        break;
+                    case 207:
+                        bot.chat('What is the difference between tomatos and potatos?');
+                        break;
+                    case 208:
+                        bot.chat('Summer, the season where you get easily burned up.');
+                        break;
+                    case 209:
+                        bot.chat('*reels in something* OH MY GOD, I just caught a shark.');
+                        break;
+                    case 210:
+                        bot.chat('*digs up something* HOLY VEGGIES, I just found a T-REX Fossil.');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -1888,7 +1942,7 @@ PlugAPI.getAuth({
                                 from: 'en',
                                 to: bot.getUsers()[i].language
                             };
-                            if (bot.getUsers()[i].language != 'en'){
+                            if (languageCodes.indexOf(bot.getUsers()[i].language) > -1 && bot.getUsers()[i].language != 'en'){
                                 client.initialize_token(function(keys){ 
                                     client.translate(params, function(err, data){
                                         bot.chat(command + " " + data);
