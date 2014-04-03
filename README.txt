@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.5.0
+Version Number: 2.5.1
 
 Debut Date: December 10, 2013
  
@@ -73,6 +73,7 @@ Commands:
 45. .votes
 46. .ping
 47. .temp
+48. .songid
 
 Release Notes:
  
@@ -354,3 +355,9 @@ April 2, 2014:
 1. New Phrases for the Random Phrase Database
 2. Code Tweaks
 3. New Temperature Command
+
+April 3, 2014:
+
+2.5.1:
+1. New Song ID Command
+2. New Phrases for Random Phrase Database

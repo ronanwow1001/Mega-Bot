@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.5.0";
+var version = "2.5.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -87,7 +87,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid");
                 break;
             case ".hey":
             case ".hello":
@@ -1238,7 +1238,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 210);
+                var botphrase = Math.floor(Math.random() * 220);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1873,6 +1873,36 @@ PlugAPI.getAuth({
                     case 210:
                         bot.chat('*digs up something* HOLY VEGGIES, I just found a T-REX Fossil.');
                         break;
+                    case 211:
+                        bot.chat('ugh, chores are a huge waste of time.');
+                        break;
+                    case 212:
+                        bot.chat('God made you special, and he loves you very much.');
+                        break;
+                    case 213:
+                        bot.chat('/me wishes he had money.');
+                        break;
+                    case 214:
+                        bot.chat('Here is a credit card, kid, go buy yourself a super awesome gaming computer.');
+                        break;
+                    case 215:
+                        bot.chat('Bots should be allowed to become mods and senior moderators on turntable.fm.');
+                        break;
+                    case 216:
+                        bot.chat('Bots should be allowed to have fun.');
+                        break;
+                    case 217:
+                        bot.chat('Bots should be allowed to be silly.');
+                        break;
+                    case 218:
+                        bot.chat('Happy Birthday to all the bots around the world.');
+                        break;
+                    case 219:
+                        bot.chat('*tastes his coffee* sheesh, This coffee tastes aweful. It tastes like salty water. This is why soda is more awesome than coffee');
+                        break;
+                    case 220:
+                        bot.chat('Coffee is for losers. Be like the cool people and drink soda.');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -1899,6 +1929,9 @@ PlugAPI.getAuth({
                 break;
             case ".ping":
                 bot.chat("@"+ data.from +" Pong!");
+                break;
+            case ".songid":
+                bot.chat(bot.getMedia().cid);
                 break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
