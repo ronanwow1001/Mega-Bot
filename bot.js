@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.5.1";
+var version = "2.6.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -65,7 +65,7 @@ PlugAPI.getAuth({
     bot.on('error', reconnect);
 
      bot.on('djAdvance', function(data) {
-        bot.chat(bot.getMedia().title + " - " + bot.getMedia().author + " - " + "got voted:  :+1: " + bot.getRoomScore().positive + " | :-1: " + bot.getRoomScore().negative + " | :purple_heart: " + bot.getRoomScore().curates);
+        bot.chat("Now Playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
     });
     
     bot.on('chat', function(data) {
@@ -1238,7 +1238,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 220);
+                var botphrase = Math.floor(Math.random() * 260);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -1902,6 +1902,126 @@ PlugAPI.getAuth({
                         break;
                     case 220:
                         bot.chat('Coffee is for losers. Be like the cool people and drink soda.');
+                        break;
+                    case 221:
+                        bot.chat('Soda is way more awesome than Coffee.');
+                        break;
+                    case 222:
+                        bot.chat('What they did to me, what I am, can not be undone.');
+                        break;
+                    case 223:
+                        bot.chat('I have been trying to find you for over a year. My employers dying, he wants to thank you for saving his life. It is an honour to meet the Wolverine.');
+                        break;
+                    case 224:
+                        bot.chat('That is not who I am anymore.');
+                        break;
+                    case 225:
+                        bot.chat('That hurt.');
+                        break;
+                    case 226:
+                        bot.chat('Eternity can be a curse. The losses you have had to suffer... a man can run out of things to care for, lose his purpose.');
+                        break;
+                    case 227:
+                        bot.chat('We will accept your surrender with respect.');
+                        break;
+                    case 228:
+                        bot.chat('What kind of monster are you?');
+                        break;
+                    case 229:
+                        bot.chat('The Wolverine!');
+                        break;
+                    case 230:
+                        bot.chat('You brought me here to say goodbye. Sayonara.');
+                        break;
+                    case 231:
+                        bot.chat('My apologies, I have not properly introduced myself. Finn McMissile, British intelligence.');
+                        break;
+                    case 232:
+                        bot.chat('Tow Mater, average intelligence.');
+                        break;
+                    case 233:
+                        bot.chat('Speed. I am speed.');
+                        break;
+                    case 234:
+                        bot.chat('Ha ha ha! Really? You are speed? Then Francesco is TRIPLE speed! "Francesco... he is triple speed!" Ho oh! Francesco likes this McQueen! He is a really getting him into the zone!');
+                        break;
+                    case 235:
+                        bot.chat('He is sooo getting beat today...');
+                        break;
+                    case 236:
+                        bot.chat('I will have some of that there pistachio ice cream.');
+                        break;
+                    case 237:
+                        bot.chat('No, no. Wasabi.');
+                        break;
+                    case 238:
+                        bot.chat('Oh, same old, Same old, what is up with you?');
+                        break;
+                    case 239:
+                        bot.chat('Chi trova un amico, trova un tesoro.');
+                        break;
+                    case 240:
+                        bot.chat('What does that mean?');
+                        break;
+                    case 241:
+                        bot.chat('"Whoever finds a friend, finds a treasure."');
+                        break;
+                    case 242:
+                        bot.chat('A wise car hears one word and understands two...');
+                        break;
+                    case 243:
+                        bot.chat('Bona seda!');
+                        break;
+                    case 244:
+                        bot.chat('Uh, nice to meet you, Francesco.');
+                        break;
+                    case 245:
+                        bot.chat('Yes, nice to meet you too. You are very good looking. Not as good as I thought, but you are good!');
+                        break;
+                    case 246:
+                        bot.chat('Scuse me, can I get a picture with you?');
+                        break;
+                    case 247:
+                        bot.chat('Ah, anything for McQueens friend.');
+                        break;
+                    case 248:
+                        bot.chat('Miss Sally is gonna flip when she sees this!');
+                        break;
+                    case 249:
+                        bot.chat('She is Lightning McQueens girlfriend.');
+                        break;
+                    case 250:
+                        bot.chat('Ooh...');
+                        break;
+                    case 251:
+                        bot.chat('She is a big fan of yers.');
+                        break;
+                    case 252:
+                        bot.chat('Hey, she has a-good taste.');
+                        break;
+                    case 253:
+                        bot.chat('Finn, one hour to Porto Corsa.');
+                        break;
+                    case 254:
+                        bot.chat('Thank you, Stephenson.');
+                        break;
+                    case 255:
+                        bot.chat('Ha ha. Cool! Hey computer, make me a German truck!');
+                        break;
+                    case 256:
+                        bot.chat('My condolences.');
+                        break;
+                    case 257:
+                        bot.chat('Do not try the free pistachio ice cream! It done turn!');
+                        break;
+                    case 258:
+                        bot.chat('Siddley. Paris, tout de suite.');
+                        break;
+                    case 259:
+                        bot.chat('Treehugger.');
+                        break;
+                    case 260:
+                        bot.chat('What are you laughing at?');
                         break;
                 }
                 break;
