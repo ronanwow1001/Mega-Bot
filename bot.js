@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.6.0";
+var version = "2.7.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1238,7 +1238,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 260);
+                var botphrase = Math.floor(Math.random() * 300);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2022,6 +2022,126 @@ PlugAPI.getAuth({
                         break;
                     case 260:
                         bot.chat('What are you laughing at?');
+                        break;
+                    case 261:
+                        bot.chat('Winter is a grand old time/On this, there are no ifs or buts/But remember all that salt and grime/Can rust your bolts and freeze your -...');
+                        break;
+                    case 262:
+                        bot.chat('Hey, look, there he is!');
+                        break;
+                    case 263:
+                        bot.chat('You hurt your what?');
+                        break;
+                    case 264:
+                        bot.chat('What is your name?');
+                        break;
+                    case 265:
+                        bot.chat('No, uh... no, I know your name. Is your name Mater too?');
+                        break;
+                    case 266:
+                        bot.chat('Will you turn that disrespectful junk OFF?');
+                        break;
+                    case 267:
+                        bot.chat('Here she comes!');
+                        break;
+                    case 268:
+                        bot.chat('Okay, places, everybody! Hurry! Act natural.');
+                        break;
+                    case 269:
+                        bot.chat('Oh, for the love of Chrysler! Can we please ask someone for directions?');
+                        break;
+                    case 270:
+                        bot.chat('Turn right to go left! Guess what? I tried it, and you know what? This crazy thing happened - I went right!');
+                        break;
+                    case 271:
+                        bot.chat('Thanks for the tip!');
+                        break;
+                    case 272:
+                        bot.chat('Git-R-Done!');
+                        break;
+                    case 273:
+                        bot.chat('Thanks to you, Lightning, we had a banner year!');
+                        break;
+                    case 274:
+                        bot.chat('I mean, we might even clear enough to buy you some headlights!');
+                        break;
+                    case 275:
+                        bot.chat('Well, so is my brother, but he still needs headlights!');
+                        break;
+                    case 276:
+                        bot.chat('Oh, hey, Mr. The King.');
+                        break;
+                    case 277:
+                        bot.chat('You got more talent in one lugnut than a lot of cars has got on their whole body.');
+                        break;
+                    case 278:
+                        bot.chat('Okay, here we go. Focus. Speed. I am speed. One winner, forty-two losers. I eat losers for breakfast. Breakfast? Maybe I should have had breakfast? Brekkie could be good for me. No, no, no, focus. Speed. Faster than fast, quicker than quick. I am Lightning.');
+                        break;
+                    case 279:
+                        bot.chat('YOU ARE A TOY - CAR!');
+                        break;
+                    case 280:
+                        bot.chat('You are a sad, strange little wagon. You have my pity. Farewell!');
+                        break;
+                    case 281:
+                        bot.chat('Oh, yeah? Well, good riddance, you loony!');
+                        break;
+                    case 282:
+                        bot.chat('Freebird!');
+                        break;
+                    case 283:
+                        bot.chat('You are famous race car? A real race car?');
+                        break;
+                    case 284:
+                        bot.chat('I have followed racing my entire life, my whole life!');
+                        break;
+                    case 285:
+                        bot.chat('Then you know who I am. I am Lightning McQueen.');
+                        break;
+                    case 286:
+                        bot.chat('Lightning McQueen!');
+                        break;
+                    case 287:
+                        bot.chat('Yes! Yes!');
+                        break;
+                    case 288:
+                        bot.chat('I must scream it to the world, my excitement from the top of someplace very high. Do you know many Ferraris?');
+                        break;
+                    case 289:
+                        bot.chat('What?');
+                        break;
+                    case 290:
+                        bot.chat('Luigi follow only the Ferraris.');
+                        break;
+                    case 291:
+                        bot.chat('Perfecto. Guido!');
+                        break;
+                    case 292:
+                        bot.chat('Pit Stop!');
+                        break;
+                    case 293:
+                        bot.chat('He ha ha, what did Luigi tell you, eh?');
+                        break;
+                    case 294:
+                        bot.chat('Wow, you were right, better then a Ferrari, huh?');
+                        break;
+                    case 295:
+                        bot.chat('Eh, no.');
+                        break;
+                    case 296:
+                        bot.chat('My friend Guido, he always dream of giving a real race car, a pit stop.');
+                        break;
+                    case 297:
+                        bot.chat('Fine. Race your own way.');
+                        break;
+                    case 298:
+                        bot.chat('No pit stoppo. Comprende?');
+                        break;
+                    case 299:
+                        bot.chat('I need to get to California, pronto. Where am I?');
+                        break;
+                    case 300:
+                        bot.chat('Red, will you move over? I want to get a look at that sexy hotrod.');
                         break;
                 }
                 break;
