@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.7.0";
+var version = "2.8.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1238,7 +1238,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 300);
+                var botphrase = Math.floor(Math.random() * 340);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2142,6 +2142,126 @@ PlugAPI.getAuth({
                         break;
                     case 300:
                         bot.chat('Red, will you move over? I want to get a look at that sexy hotrod.');
+                        break;
+                    case 301:
+                        bot.chat('Do you want to stay at the Cozy Cone or what?');
+                        break;
+                    case 302:
+                        bot.chat('Huh?');
+                        break;
+                    case 303:
+                        bot.chat('I mean, if you do, you gotta be clean, because even here, in hillbilly hell, we have standards.');
+                        break;
+                    case 304:
+                        bot.chat('Mater! What did I tell you about talking to the accused?');
+                        break;
+                    case 305:
+                        bot.chat('To not to.');
+                        break;
+                    case 306:
+                        bot.chat('You know, I once knew this girl Doreen. Good-looking girl. Looked just like a Jaguar, only she was a truck! You know, I used to crash into her just so I could speak to her.');
+                        break;
+                    case 307:
+                        bot.chat('What... are you talking about?');
+                        break;
+                    case 308:
+                        bot.chat('I dunno.');
+                        break;
+                    case 309:
+                        bot.chat('GOODBYE! Okay, I am good.');
+                        break;
+                    case 310:
+                        bot.chat('Ka-chow!');
+                        break;
+                    case 311:
+                        bot.chat('Oh, I love being me.');
+                        break;
+                    case 312:
+                        bot.chat('Fly away, Stanley. Be free!');
+                        break;
+                    case 313:
+                        bot.chat('Oh, I am SO not taking you to dinner.');
+                        break;
+                    case 314:
+                        bot.chat('Hey, I know this may be a bad time right now, but you owe me $32,000 in legal fees.');
+                        break;
+                    case 315:
+                        bot.chat('What?');
+                        break;
+                    case 316:
+                        bot.chat('Oh, right. That makes perfect sense. Turn right to go left. Yes, thank you! Or should I say No, thank you, because in Opposite World, maybe that really means thank you.');
+                        break;
+                    case 317:
+                        bot.chat('Ka-chicka! Ka-chicka!');
+                        break;
+                    case 318:
+                        bot.chat('In your dreams, Thunder.');
+                        break;
+                    case 319:
+                        bot.chat('Well, you know, because Thunder always comes after... Lightning!');
+                        break;
+                    case 320:
+                        bot.chat('When was the last time you cared about something except yourself, hot rod? You name me one time, and I will take it all back.');
+                        break;
+                    case 321:
+                        bot.chat('*sees a glowstick* SO SHINY!');
+                        break;
+                    case 322:
+                        bot.chat('Uh-huh. I thought so.');
+                        break;
+                    case 323:
+                        bot.chat('Hey, yo, DJ!');
+                        break;
+                    case 324:
+                        bot.chat('What up?');
+                        break;
+                    case 325:
+                        bot.chat('Crazy grandpa car.');
+                        break;
+                    case 326:
+                        bot.chat('Shall we cruise?');
+                        break;
+                    case 327:
+                        bot.chat('Flo! What do you have at your store?');
+                        break;
+                    case 328:
+                        bot.chat('OK, boys, stay with me.');
+                        break;
+                    case 329:
+                        bot.chat('Throw him outta here, Sheriff! I want him out of my courtroom, I want him out of our town! Case dismissed!');
+                        break;
+                    case 330:
+                        bot.chat('Music. Sweet music.');
+                        break;
+                    case 331:
+                        bot.chat('Oh, oh, oh, oh, I like your style. You drive the hard bargain, eh? OK, we make you a new deal. You buy one tire, I give you three for free!');
+                        break;
+                    case 332:
+                        bot.chat('This is it, my last offer: you buy one tire, I give you seven snow tires for free!');
+                        break;
+                    case 333:
+                        bot.chat('Low and slow?');
+                        break;
+                    case 334:
+                        bot.chat('Oh, yeah, baby!');
+                        break;
+                    case 335:
+                        bot.chat('Respect the classics, man! It is Hendrix!');
+                        break;
+                    case 336:
+                        bot.chat('My name is Mater.');
+                        break;
+                    case 337:
+                        bot.chat('Mater?');
+                        break;
+                    case 338:
+                        bot.chat('Yeah, like tuh-mater, but without the "tuh."');
+                        break;
+                    case 339:
+                        bot.chat('Oh, dude... are you crying?');
+                        break;
+                    case 340:
+                        bot.chat('All rise! The honorable Doc Hudson presiding!');
                         break;
                 }
                 break;
