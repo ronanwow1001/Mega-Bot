@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.8.0";
+var version = "2.9.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1238,7 +1238,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 340);
+                var botphrase = Math.floor(Math.random() * 380);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2262,6 +2262,126 @@ PlugAPI.getAuth({
                         break;
                     case 340:
                         bot.chat('All rise! The honorable Doc Hudson presiding!');
+                        break;
+                    case 341:
+                        bot.chat('Show-off.');
+                        break;
+                    case 342:
+                        bot.chat('Yeah! Ka-chow!');
+                        break;
+                    case 343:
+                        bot.chat('Three cars are tied for the season points lead, heading into the final race of the season. And the winner of this race, Darrell, will win the season title and the Piston Cup. Does the King, Strip Weathers, have one more victory in him before he retires?');
+                        break;
+                    case 344:
+                        bot.chat('The legend, the runner-up, and the rookie! Three cars, one champion!');
+                        break;
+                    case 345:
+                        bot.chat('Oh, no. Oh, maybe he can help me!');
+                        break;
+                    case 346:
+                        bot.chat('Officer, talk to me, babe. How long is this gonna take? I gotta get to California, pronto.');
+                        break;
+                    case 347:
+                        bot.chat('When the defendant has no lawyer, the court will assign one to him. Hey, anyone wants to be his lawyer?');
+                        break;
+                    case 348:
+                        bot.chat('Oh, take a carwash, hippie.');
+                        break;
+                    case 349:
+                        bot.chat('Wonderful. Now go away.');
+                        break;
+                    case 350:
+                        bot.chat('We are not the same! Understand? Now, get out!');
+                        break;
+                    case 351:
+                        bot.chat('I am a ninja robot, do not make me angry.');
+                        break;
+                    case 352:
+                        bot.chat('You think, I am a robot. I am a skilled cyborg.');
+                        break;
+                    case 353:
+                        bot.chat('*kicks someone in the chest* Stay away from my lemonade, or you will feel pain.');
+                        break;
+                    case 354:
+                        bot.chat('You think, God is a myth, well too bad, He is real. Go read the Bible.');
+                        break;
+                    case 355:
+                        bot.chat('*smashes a guitar in half* This is how true rock stars get paid. We smash guitars for fun.');
+                        break;
+                    case 356:
+                        bot.chat('gizmotronic has gone to the coding side. ');
+                        break;
+                    case 357:
+                        bot.chat('Join the dark side today for red lightsabers and dark side cookies.');
+                        break;
+                    case 358:
+                        bot.chat('The God side has awesome music and cake.');
+                        break;
+                    case 359:
+                        bot.chat('I can count to killer tomato.');
+                        break;
+                    case 360:
+                        bot.chat('*hands robot polish to Boaz* hey buddy, you need this to stay shiny. No one wants you to rust and fall apart.');
+                        break;
+                    case 361:
+                        bot.chat('God is my hero.');
+                        break;
+                    case 362:
+                        bot.chat('Christian music is so epic.');
+                        break;
+                    case 363:
+                        bot.chat('I had a weird dream where zombies were defeated by plants.');
+                        break;
+                    case 364:
+                        bot.chat('Batteries = special rectangles that hold power to activate awesome technology.');
+                        break;
+                    case 365:
+                        bot.chat('The Bible is the book for me.');
+                        break;
+                    case 366:
+                        bot.chat('Who stole my extremely rare iced glow sticks.');
+                        break;
+                    case 367:
+                        bot.chat('Keep glowsticks away from astronauts and cyborgs. They can turn you into a mindless, radiated monster. ');
+                        break;
+                    case 368:
+                        bot.chat('/me juggles ice cubes');
+                        break;
+                    case 369:
+                        bot.chat('Robot Polish saves robots and cyborgs from falling apart and rusting, due to its master not updating his software in a while.');
+                        break;
+                    case 370:
+                        bot.chat('Do not rush through code, when you are a programmer, you will make tons of coding and grammar mistakes.');
+                        break;
+                    case 371:
+                        bot.chat('Iced Glow Sticks are so rare and awesome.');
+                        break;
+                    case 372:
+                        bot.chat('When your life is a disaster, God is the cure.');
+                        break;
+                    case 373:
+                        bot.chat('Science is such a boring subject to learn in school.');
+                        break;
+                    case 374:
+                        bot.chat('Math is sometimes a hard subject to learn in school.');
+                        break;
+                    case 375:
+                        bot.chat('1 bear + 1 monkey = tomato');
+                        break;
+                    case 376:
+                        bot.chat('My favorite number is 2.');
+                        break;
+                    case 377:
+                        bot.chat('Can you count to potato?');
+                        break;
+                    case 378:
+                        bot.chat('1 book + 1 God = chicken');
+                        break;
+                    case 379:
+                        bot.chat('/me wishes he was more popular than Boaz.');
+                        break;
+                    case 380:
+                        bot.chat('*sighs* I will never become popular.');
                         break;
                 }
                 break;
