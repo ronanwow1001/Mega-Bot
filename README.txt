@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.9.0
+Version Number: 2.9.1
 
 Debut Date: December 10, 2013
  
@@ -74,6 +74,7 @@ Commands:
 46. .ping
 47. .temp
 48. .songid
+49. .title
 
 Release Notes:
  
@@ -382,3 +383,8 @@ April 7, 2014:
 
 2.9.0:
 1. Random Phrase Database is now fully coded in its advanced code glory
+
+April 8, 2014:
+
+2.9.1:
+1. New Song Title Command
