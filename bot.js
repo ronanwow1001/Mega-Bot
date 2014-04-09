@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.9.1";
+var version = "2.9.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -87,7 +87,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song");
                 break;
             case ".hey":
             case ".hello":
@@ -2415,6 +2415,12 @@ PlugAPI.getAuth({
                 break;
             case ".title":
                 bot.chat(bot.getMedia().title);
+                break;
+            case ".author":
+                bot.chat(bot.getMedia().author);
+                break;
+            case ".song":
+                bot.chat(bot.getMedia().title + " - " + bot.getMedia().author);
                 break;
             default: 
                 languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];

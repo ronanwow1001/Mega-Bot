@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.9.1
+Version Number: 2.9.2
 
 Debut Date: December 10, 2013
  
@@ -75,6 +75,8 @@ Commands:
 47. .temp
 48. .songid
 49. .title
+50. .author
+51. .song
 
 Release Notes:
  
@@ -388,3 +390,9 @@ April 8, 2014:
 
 2.9.1:
 1. New Song Title Command
+
+April 9, 2014:
+
+2.9.2:
+1. New Song Author Command
+2. New Song Command
