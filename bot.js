@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "2.9.2";
+var version = "2.9.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -262,6 +262,7 @@ PlugAPI.getAuth({
                                 summary=summary.replace(/(&auml;)/g, 'ä');
                                 summary=summary.replace(/(&iacute;)/g, 'í');
                                 summary=summary.replace(/(&oacute;)/g, 'ó');
+                                summary=summary.replace(/(&Scaron;)/g, 'Š');
                                 summary=summary.replace(/<[^>]+>/g, '');
                                 if (summary.indexOf(" 1) ") != -1){
                                     summary=summary.substring(summary.lastIndexOf(" 1) ")+4);
@@ -312,6 +313,9 @@ PlugAPI.getAuth({
                                 summary=summary.replace(/(&eacute;)/g, 'é');
                                 summary=summary.replace(/(&aacute;)/g, 'á');
                                 summary=summary.replace(/(&auml;)/g, 'ä');
+                                summary=summary.replace(/(&iacute;)/g, 'í');
+                                summary=summary.replace(/(&oacute;)/g, 'ó');
+                                summary=summary.replace(/(&Scaron;)/g, 'Š');
                                 summary=summary.replace(/<[^>]+>/g, '');
                                 if (summary.length>250){
                                     summary=summary.substring(0, 247)+"...";
