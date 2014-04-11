@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 2.9.3
+Version Number: 3.0.0
 
 Debut Date: December 10, 2013
  
@@ -77,6 +77,7 @@ Commands:
 49. .title
 50. .author
 51. .song
+52. .jonah
 
 Release Notes:
  
@@ -401,3 +402,8 @@ April 10, 2014:
 
 2.9.3:
 1. Code Tweaks
+
+April 11, 2014:
+
+3.0.0:
+1. Bible Verse Database for Book of Jonah
