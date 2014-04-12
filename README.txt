@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.0.0
+Version Number: 3.0.1
 
 Debut Date: December 10, 2013
  
@@ -407,3 +407,8 @@ April 11, 2014:
 
 3.0.0:
 1. Bible Verse Database for Book of Jonah
+
+April 12, 2014:
+
+3.0.1:
+1. Code Tweaks

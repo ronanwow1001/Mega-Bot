@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.0.0";
+var version = "3.0.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -2433,169 +2433,169 @@ PlugAPI.getAuth({
                 var Jonah = Math.floor(Math.random() * 54);
                 switch(Jonah){
                     case 0:
-                        bot.chat('Jonah 1:1: Now the word of the Lord came to Jonah the son of Amittai, saying, (ESV)');
+                        bot.chat('Jonah 1:1: Now the word of the Lord came to Jonah the son of Amittai, saying,');
                         break;
                     case 1:
-                        bot.chat('Jonah 1:2: Arise, go to Nineveh, that great city, and call out against it, for their evil has come up before me. (ESV)');
+                        bot.chat('Jonah 1:2: Arise, go to Nineveh, that great city, and call out against it, for their evil has come up before me.');
                         break;
                     case 2:
-                        bot.chat('Jonah 1:3a: But Jonah rose to flee to Tarshish from the presence of the Lord. He went down to Joppa and found a ship going to Tarshish. (ESV)');
+                        bot.chat('Jonah 1:3a: But Jonah rose to flee to Tarshish from the presence of the Lord. He went down to Joppa and found a ship going to Tarshish.');
                         break;
                     case 3:
-                        bot.chat('Jonah 1:3b: So he paid the fare and went down into it, to go with them to Tarshish, away from the presence of the Lord. (ESV)');
+                        bot.chat('Jonah 1:3b: So he paid the fare and went down into it, to go with them to Tarshish, away from the presence of the Lord.');
                         break;
                     case 4:
-                        bot.chat('Jonah 1:4: But the Lord hurled a great wind upon the sea, and there was a mighty tempest on the sea, so that the ship threatened to break up. (ESV)');
+                        bot.chat('Jonah 1:4: But the Lord hurled a great wind upon the sea, and there was a mighty tempest on the sea, so that the ship threatened to break up.');
                         break;
                     case 5:
-                        bot.chat('Jonah 1:5a: Then the mariners were afraid, and each cried out to his god. (ESV)');
+                        bot.chat('Jonah 1:5a: Then the mariners were afraid, and each cried out to his god.');
                         break;
                     case 6:
-                        bot.chat('Jonah 1:5b: And they hurled the cargo that was in the ship into the sea to lighten it for them. (ESV)');
+                        bot.chat('Jonah 1:5b: And they hurled the cargo that was in the ship into the sea to lighten it for them.');
                         break;
                     case 7:
-                        bot.chat('Jonah 1:5c: But Jonah had gone down into the inner part of the ship and had lain down and was fast asleep. (ESV)');
+                        bot.chat('Jonah 1:5c: But Jonah had gone down into the inner part of the ship and had lain down and was fast asleep.');
                         break;
                     case 8:
-                        bot.chat('Jonah 1:6a: So the captain came and said to him, “What do you mean, you sleeper? (ESV)');
+                        bot.chat('Jonah 1:6a: So the captain came and said to him, “What do you mean, you sleeper?');
                         break;
                     case 9:
-                        bot.chat('Jonah 1:6b: Arise, call out to your god! Perhaps the god will give a thought to us, that we may not perish. (ESV)');
+                        bot.chat('Jonah 1:6b: Arise, call out to your god! Perhaps the god will give a thought to us, that we may not perish.');
                         break;
                     case 10:
-                        bot.chat('Jonah 1:7a: And they said to one another, “Come, let us cast lots, that we may know on whose account this evil has come upon us. (ESV)');
+                        bot.chat('Jonah 1:7a: And they said to one another, “Come, let us cast lots, that we may know on whose account this evil has come upon us.');
                         break;
                     case 11:
-                        bot.chat('Jonah 1:7b: So they cast lots, and the lot fell on Jonah. (ESV) ');
+                        bot.chat('Jonah 1:7b: So they cast lots, and the lot fell on Jonah.');
                         break;
                     case 12:
-                        bot.chat('Jonah 1:8a: Then they said to him, “Tell us on whose account this evil has come upon us. (ESV) ');
+                        bot.chat('Jonah 1:8a: Then they said to him, “Tell us on whose account this evil has come upon us.');
                         break;
                     case 13:
-                        bot.chat('Jonah 1:8b: What is your occupation? And where do you come from? What is your country? And of what people are you? (ESV)');
+                        bot.chat('Jonah 1:8b: What is your occupation? And where do you come from? What is your country? And of what people are you?');
                         break;
                     case 14:
-                        bot.chat('Jonah 1:9: And he said to them, “I am a Hebrew, and I fear the Lord, the God of heaven, who made the sea and the dry land. (ESV)');
+                        bot.chat('Jonah 1:9: And he said to them, “I am a Hebrew, and I fear the Lord, the God of heaven, who made the sea and the dry land.');
                         break;
                     case 15:
-                        bot.chat('Jonah 1:10a: Then the men were exceedingly afraid and said to him, “What is this that you have done!” (ESV) ');
+                        bot.chat('Jonah 1:10a: Then the men were exceedingly afraid and said to him, “What is this that you have done!” ');
                         break;
                     case 16:
-                        bot.chat('Jonah 1:10b: For the men knew that he was fleeing from the presence of the Lord, because he had told them. (ESV)');
+                        bot.chat('Jonah 1:10b: For the men knew that he was fleeing from the presence of the Lord, because he had told them.');
                         break;
                     case 17:
-                        bot.chat('Jonah 1:11: Then they said to him, “What shall we do to you, that the sea may quiet down for us?” For the sea grew more and more tempestuous. (ESV)');
+                        bot.chat('Jonah 1:11: Then they said to him, “What shall we do to you, that the sea may quiet down for us?” For the sea grew more and more tempestuous.');
                         break;
                     case 18:
-                        bot.chat('Jonah 1:12: He said to them, “Pick me up and hurl me into the sea; then the sea will quiet down for you, for I know it is because of me that this great tempest has come upon you. (ESV)');
+                        bot.chat('Jonah 1:12: He said to them, “Pick me up and hurl me into the sea; then the sea will quiet down for you, for I know it is because of me that this great tempest has come upon you.');
                         break;
                     case 19:
-                        bot.chat('Jonah 1:13: Nevertheless, the men rowed hard to get back to dry land, but they could not, for the sea grew more and more tempestuous against them. (ESV)');
+                        bot.chat('Jonah 1:13: Nevertheless, the men rowed hard to get back to dry land, but they could not, for the sea grew more and more tempestuous against them.');
                         break;
                     case 20:
-                        bot.chat('Jonah 1:14: Therefore they called out to the Lord, “O Lord, let us not perish for this mans life, and lay not on us innocent blood, for you, O Lord, have done as it pleased you. (ESV)');
+                        bot.chat('Jonah 1:14: Therefore they called out to the Lord, “O Lord, let us not perish for this mans life, and lay not on us innocent blood, for you, O Lord, have done as it pleased you.');
                         break;
                     case 21:
-                        bot.chat('Jonah 1:15: So they picked up Jonah and hurled him into the sea, and the sea ceased from its raging. (ESV)');
+                        bot.chat('Jonah 1:15: So they picked up Jonah and hurled him into the sea, and the sea ceased from its raging.');
                         break;
                     case 22:
-                        bot.chat('Jonah 1:16: Then the men feared the Lord exceedingly, and they offered a sacrifice to the Lord and made vows. (ESV)');
+                        bot.chat('Jonah 1:16: Then the men feared the Lord exceedingly, and they offered a sacrifice to the Lord and made vows.');
                         break;
                     case 23:
-                        bot.chat('Jonah 1:17: And the Lord appointed a great fish to swallow up Jonah. And Jonah was in the belly of the fish three days and three nights. (ESV)');
+                        bot.chat('Jonah 1:17: And the Lord appointed a great fish to swallow up Jonah. And Jonah was in the belly of the fish three days and three nights.');
                         break;
                     case 24:
-                        bot.chat('Jonah 2:1: Then Jonah prayed to the Lord his God from the belly of the fish, (ESV)');
+                        bot.chat('Jonah 2:1: Then Jonah prayed to the Lord his God from the belly of the fish,');
                         break;
                     case 25:
-                        bot.chat('Jonah 2:2: saying,“I called out to the Lord, out of my distress,and he answered me; out of the belly of Sheol I cried, and you heard my voice. (ESV)');
+                        bot.chat('Jonah 2:2: saying,“I called out to the Lord, out of my distress,and he answered me; out of the belly of Sheol I cried, and you heard my voice.');
                         break;
                     case 26:
-                        bot.chat('Jonah 2:3: For you cast me into the deep,into the heart of the seas,and the flood surrounded me; all your waves and your billows passed over me. (ESV)');
+                        bot.chat('Jonah 2:3: For you cast me into the deep,into the heart of the seas,and the flood surrounded me; all your waves and your billows passed over me.');
                         break;
                     case 27:
-                        bot.chat('Jonah 2:4: Then I said, ‘I am driven away from your sight; yet I shall again look upon your holy temple.(ESV)');
+                        bot.chat('Jonah 2:4: Then I said, ‘I am driven away from your sight; yet I shall again look upon your holy temple');
                         break;
                     case 28:
-                        bot.chat('Jonah 2:5: The waters closed in over me to take my life; the deep surrounded me; (ESV)');
+                        bot.chat('Jonah 2:5: The waters closed in over me to take my life; the deep surrounded me;');
                         break;
                     case 29:
-                        bot.chat('Jonah 2:6: weeds were wrapped about my head at the roots of the mountains. I went down to the land whose bars closed upon me forever; yet you brought up my life from the pit, O Lord my God. (ESV)');
+                        bot.chat('Jonah 2:6: weeds were wrapped about my head at the roots of the mountains. I went down to the land whose bars closed upon me forever; yet you brought up my life from the pit, O Lord my God.');
                         break;
                     case 30:
-                        bot.chat('Jonah 2:7: When my life was fainting away, I remembered the Lord, and my prayer came to you, into your holy temple. (ESV)');
+                        bot.chat('Jonah 2:7: When my life was fainting away, I remembered the Lord, and my prayer came to you, into your holy temple.');
                         break;
                     case 31:
-                        bot.chat('Jonah 2:8: Those who pay regard to vain idols forsake their hope of steadfast love. (ESV)');
+                        bot.chat('Jonah 2:8: Those who pay regard to vain idols forsake their hope of steadfast love.');
                         break;
                     case 32:
-                        bot.chat('Jonah 2:9: But I with the voice of thanksgiving will sacrifice to you; what I have vowed I will pay. Salvation belongs to the Lord! (ESV) ”');
+                        bot.chat('Jonah 2:9: But I with the voice of thanksgiving will sacrifice to you; what I have vowed I will pay. Salvation belongs to the Lord!”');
                         break;
                     case 33:
-                        bot.chat('Jonah 2:10: And the Lord spoke to the fish, and it vomited Jonah out upon the dry land. (ESV)');
+                        bot.chat('Jonah 2:10: And the Lord spoke to the fish, and it vomited Jonah out upon the dry land.');
                         break;
                     case 34:
-                        bot.chat('Jonah 3:1: Then the word of the Lord came to Jonah the second time, saying, (ESV)');
+                        bot.chat('Jonah 3:1: Then the word of the Lord came to Jonah the second time, saying,');
                         break;
                     case 35:
-                        bot.chat('Jonah 3:2: “Arise, go to Nineveh, that great city, and call out against it the message that I tell you.” (ESV)');
+                        bot.chat('Jonah 3:2: “Arise, go to Nineveh, that great city, and call out against it the message that I tell you.”');
                         break;
                     case 36:
-                        bot.chat('Jonah 3:3: So Jonah arose and went to Nineveh, according to the word of the Lord. Now Nineveh was an exceedingly great city,[a] three days journey in breadth.[b] (ESV)');
+                        bot.chat('Jonah 3:3: So Jonah arose and went to Nineveh, according to the word of the Lord. Now Nineveh was an exceedingly great city,[a] three days journey in breadth.[b]');
                         break;
                     case 37:
-                        bot.chat('Jonah 3:4: Jonah began to go into the city, going a days journey. And he called out, “Yet forty days, and Nineveh shall be overthrown!” (ESV)');
+                        bot.chat('Jonah 3:4: Jonah began to go into the city, going a days journey. And he called out, “Yet forty days, and Nineveh shall be overthrown!”');
                         break;
                     case 38:
-                        bot.chat('Jonah 3:5: And the people of Nineveh believed God. They called for a fast and put on sackcloth, from the greatest of them to the least of them. (ESV)');
+                        bot.chat('Jonah 3:5: And the people of Nineveh believed God. They called for a fast and put on sackcloth, from the greatest of them to the least of them.');
                         break;
                     case 39:
-                        bot.chat('Jonah 3:6: The word reached[c] the king of Nineveh, and he arose from his throne, removed his robe, covered himself with sackcloth, and sat in ashes. (ESV)');
+                        bot.chat('Jonah 3:6: The word reached[c] the king of Nineveh, and he arose from his throne, removed his robe, covered himself with sackcloth, and sat in ashes.');
                         break;
                     case 40:
-                        bot.chat('Jonah 3:7: And he issued a proclamation and published through Nineveh, “By the decree of the king and his nobles: Let neither man nor beast, herd nor flock, taste anything. Let them not feed or drink water, (ESV)');
+                        bot.chat('Jonah 3:7: And he issued a proclamation and published through Nineveh, “By the decree of the king and his nobles: Let neither man nor beast, herd nor flock, taste anything. Let them not feed or drink water,');
                         break;
                     case 41:
-                        bot.chat('Jonah 3:8: but let man and beast be covered with sackcloth, and let them call out mightily to God. Let everyone turn from his evil way and from the violence that is in his hands. (ESV)');
+                        bot.chat('Jonah 3:8: but let man and beast be covered with sackcloth, and let them call out mightily to God. Let everyone turn from his evil way and from the violence that is in his hands.');
                         break;
                     case 42:
-                        bot.chat('Jonah 3:9: Who knows? God may turn and relent and turn from his fierce anger, so that we may not perish. (ESV)”');
+                        bot.chat('Jonah 3:9: Who knows? God may turn and relent and turn from his fierce anger, so that we may not perish.”');
                         break;
                     case 43:
-                        bot.chat('Jonah 3:10: When God saw what they did, how they turned from their evil way, God relented of the disaster that he had said he would do to them, and he did not do it. (ESV)');
+                        bot.chat('Jonah 3:10: When God saw what they did, how they turned from their evil way, God relented of the disaster that he had said he would do to them, and he did not do it.');
                         break;
                     case 44:
-                        bot.chat('Jonah 4:1: But it displeased Jonah exceedingly,[a] and he was angry. (ESV)');
+                        bot.chat('Jonah 4:1: But it displeased Jonah exceedingly,[a] and he was angry.');
                         break;
                     case 45:
-                        bot.chat('Jonah 4:2: And he prayed to the Lord and said, “O Lord, is not this what I said when I was yet in my country? That is why I made haste to flee to Tarshish; for I knew that you are a gracious God and merciful, slow to anger and abounding in steadfast love, and relenting from disaster. (ESV)');
+                        bot.chat('Jonah 4:2: And he prayed to the Lord and said, “O Lord, is not this what I said when I was yet in my country? That is why I made haste to flee to Tarshish; for I knew that you are a gracious God and merciful, slow to anger and abounding in steadfast love, and relenting from disaster.');
                         break;
                     case 46:
-                        bot.chat('Jonah 4:3: Therefore now, O Lord, please take my life from me, for it is better for me to die than to live.” (ESV)');
+                        bot.chat('Jonah 4:3: Therefore now, O Lord, please take my life from me, for it is better for me to die than to live.”');
                         break;
                     case 47:
-                        bot.chat('Jonah 4:4: And the Lord said, “Do you do well to be angry?” (ESV)');
+                        bot.chat('Jonah 4:4: And the Lord said, “Do you do well to be angry?”');
                         break;
                     case 48:
-                        bot.chat('Jonah 4:5: Jonah went out of the city and sat to the east of the city and made a booth for himself there. He sat under it in the shade, till he should see what would become of the city. (ESV)');
+                        bot.chat('Jonah 4:5: Jonah went out of the city and sat to the east of the city and made a booth for himself there. He sat under it in the shade, till he should see what would become of the city.');
                         break;
                     case 49:
-                        bot.chat('Jonah 4:6: Now the Lord God appointed a plant[b] and made it come up over Jonah, that it might be a shade over his head, to save him from his discomfort.[c] So Jonah was exceedingly glad because of the plant. (ESV)');
+                        bot.chat('Jonah 4:6: Now the Lord God appointed a plant[b] and made it come up over Jonah, that it might be a shade over his head, to save him from his discomfort.[c] So Jonah was exceedingly glad because of the plant.');
                         break;
                     case 50:
-                        bot.chat('Jonah 4:7: But when dawn came up the next day, God appointed a worm that attacked the plant, so that it withered. (ESV)');
+                        bot.chat('Jonah 4:7: But when dawn came up the next day, God appointed a worm that attacked the plant, so that it withered.');
                         break;
                     case 51:
-                        bot.chat('Jonah 4:8: When the sun rose, God appointed a scorching east wind, and the sun beat down on the head of Jonah so that he was faint. And he asked that he might die and said, “It is better for me to die than to live.” (ESV)');
+                        bot.chat('Jonah 4:8: When the sun rose, God appointed a scorching east wind, and the sun beat down on the head of Jonah so that he was faint. And he asked that he might die and said, “It is better for me to die than to live.”');
                         break;
                     case 52:
-                        bot.chat('Jonah 4:9: But God said to Jonah, “Do you do well to be angry for the plant?” And he said, “Yes, I do well to be angry, angry enough to die.” (ESV)');
+                        bot.chat('Jonah 4:9: But God said to Jonah, “Do you do well to be angry for the plant?” And he said, “Yes, I do well to be angry, angry enough to die.”');
                         break;
                     case 53:
-                        bot.chat('Jonah 4:10: And the Lord said, “You pity the plant, for which you did not labor, nor did you make it grow, which came into being in a night and perished in a night. (ESV)');
+                        bot.chat('Jonah 4:10: And the Lord said, “You pity the plant, for which you did not labor, nor did you make it grow, which came into being in a night and perished in a night.');
                         break;
                     case 54:
-                        bot.chat('Jonah 4:11: And should not I pity Nineveh, that great city, in which there are more than 120,000 persons who do not know their right hand from their left, and also much cattle?” (ESV)');
+                        bot.chat('Jonah 4:11: And should not I pity Nineveh, that great city, in which there are more than 120,000 persons who do not know their right hand from their left, and also much cattle?”');
                         break;
                 }
                 break;
