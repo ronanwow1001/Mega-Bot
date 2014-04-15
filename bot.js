@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.0.1";
+var version = "3.1.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -71,7 +71,7 @@ PlugAPI.getAuth({
     bot.on('chat', function(data) {
         //if (data.from == 'christian-anything-2') {
             var command = data.message.split(' ')[0];
-            var firstIndex = data.message.indexOf(' ');
+            var firstIndex = data.message.indexOf('');
             var qualifier = "";
             if (firstIndex!=-1) {
                 qualifier = data.message.substring(firstIndex+1, data.message.length); 
@@ -87,7 +87,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, jonah, philemon");
                 break;
             case ".hey":
             case ".hello":
@@ -185,7 +185,7 @@ PlugAPI.getAuth({
                                 if (data!==null){
                                     var weekForecast="Forecast for "+data.location.areaDescription+": Current: "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
                                     for (var i=0; i<7; i++){
-                                        var day = data.time.startPeriodName[i].split(' ');
+                                        var day = data.time.startPeriodName[i].split('');
                                         if (day[1]!='Night'){
                                             weekForecast=weekForecast+"; "+data.time.startPeriodName[i]+": ";
                                         }
@@ -489,12 +489,12 @@ PlugAPI.getAuth({
                 linkQualifier=linkQualifier.replace(/ /g, '%20');
                 dict.query(linkQualifier.toLowerCase(), function(err, result) {
                     result=result.replace(/<vi>(.*?)<\/vi>|<dx>(.*?)<\/dx>|<dro>(.*?)<\/dro>|<uro>(.*?)<\/uro>|<svr>(.*?)<\/svr>|<sin>(.*?)<\/sin>|<set>(.*?)<\/set>|<pl>(.*?)<\/pl>|<pt>(.*?)<\/pt>|<ss>(.*?)<\/ss>|<ca>(.*?)<\/ca>|<art>(.*?)<\/art>|<ew>(.*?)<\/ew>|<hw>(.*?)<\/hw>|<sound>(.*?)<\/sound>|<pr>(.*?)<\/pr>|<fl>(.*?)<\/fl>|<date>(.*?)<\/date>|<sxn>(.*?)<\/sxn>|<ssl>(.*?)<\/ssl>/g, '');
-                    result=result.replace(/<vt>(.*?)<\/vt>/g,' ');
-                    result=result.replace(/<\/sx> <sx>|<sd>/g,', ');
-                    result=result.replace(/\s{1,}<sn>/g, '; ');
-                    result=result.replace(/\s{1,}<un>/g, ': ');
+                    result=result.replace(/<vt>(.*?)<\/vt>/g,'');
+                    result=result.replace(/<\/sx> <sx>|<sd>/g,',');
+                    result=result.replace(/\s{1,}<sn>/g, ';');
+                    result=result.replace(/\s{1,}<un>/g, ':');
                     result=result.replace(/<(?!\/entry\s*\/?)[^>]+>/g, '');
-                    result=result.replace(/\s{1,}:/g,': ');
+                    result=result.replace(/\s{1,}:/g,':');
                     if (result.indexOf(":") != -1 && (result.indexOf(":")<result.indexOf("1:") || result.indexOf("1:") == -1) && (result.indexOf(":")<result.indexOf("1 a") || result.indexOf("1 a") == -1)) {
                         result=result.substring(result.indexOf(":")+1);
                     }
@@ -1242,7 +1242,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 380);
+                var botphrase = Math.floor(Math.random() * 400);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2313,7 +2313,7 @@ PlugAPI.getAuth({
                         bot.chat('*smashes a guitar in half* This is how true rock stars get paid. We smash guitars for fun.');
                         break;
                     case 356:
-                        bot.chat('gizmotronic has gone to the coding side. ');
+                        bot.chat('gizmotronic has gone to the coding side.');
                         break;
                     case 357:
                         bot.chat('Join the dark side today for red lightsabers and dark side cookies.');
@@ -2346,7 +2346,7 @@ PlugAPI.getAuth({
                         bot.chat('Who stole my extremely rare iced glow sticks.');
                         break;
                     case 367:
-                        bot.chat('Keep glowsticks away from astronauts and cyborgs. They can turn you into a mindless, radiated monster. ');
+                        bot.chat('Keep glowsticks away from astronauts and cyborgs. They can turn you into a mindless, radiated monster.');
                         break;
                     case 368:
                         bot.chat('/me juggles ice cubes');
@@ -2386,6 +2386,66 @@ PlugAPI.getAuth({
                         break;
                     case 380:
                         bot.chat('*sighs* I will never become popular.');
+                        break;
+                    case 381:
+                        bot.chat('My name will go down as the greatest thief of all time!');
+                        break;
+                    case 382:
+                        bot.chat('You mean our names, right?');
+                        break;
+                    case 383:
+                        bot.chat('Of course. My name first, then spacebar, spacebar, spacebar... your name.');
+                        break;
+                    case 384:
+                        bot.chat('Not one single person noticed I had been replaced by an evil criminal mastermind?');
+                        break;
+                    case 385:
+                        bot.chat('It sounds worse than it was...');
+                        break;
+                    case 386:
+                        bot.chat('No, it is as bad as it sounds.');
+                        break;
+                    case 387:
+                        bot.chat('Dominic: International Tour Manager.');
+                        break;
+                    case 388:
+                        bot.chat('"Dominic Bad Guy"?');
+                        break;
+                    case 389:
+                        bot.chat('"Bad-gee". It is French.');
+                        break;
+                    case 390:
+                        bot.chat('It is The Muppet Show with our very special guest, Lynne Redgrave! Yea-a-a-a-a-a-a-y!');
+                        break;
+                    case 391:
+                        bot.chat('Yea-a-a-a-a-a-a-esss!');
+                        break;
+                    case 392:
+                        bot.chat('Hi-ho, Kermit the Frog here...');
+                        break;
+                    case 393:
+                        bot.chat('Hi-ho, Kyer-mit thee Frog heere.');
+                        break;
+                    case 394:
+                        bot.chat('the lovers, the dreamers and me-e-e-e!');
+                        break;
+                    case 395:
+                        bot.chat('Thee louvers, thee dreemers and chee-e-e-e-e-se!');
+                        break;
+                    case 396:
+                        bot.chat('Nailed it.');
+                        break;
+                    case 397:
+                        bot.chat('Check this out!');
+                        break;
+                    case 398:
+                        bot.chat('Oh, look, it is Kermit!');
+                        break;
+                    case 399:
+                        bot.chat('What did you do with Kermit?');
+                        break;
+                    case 400:
+                        bot.chat('Do you guys think that Kermit has been acting a little weird lately?');
                         break;
                 }
                 break;
@@ -2478,7 +2538,7 @@ PlugAPI.getAuth({
                         bot.chat('Jonah 1:9: And he said to them, “I am a Hebrew, and I fear the Lord, the God of heaven, who made the sea and the dry land.');
                         break;
                     case 15:
-                        bot.chat('Jonah 1:10a: Then the men were exceedingly afraid and said to him, “What is this that you have done!” ');
+                        bot.chat('Jonah 1:10a: Then the men were exceedingly afraid and said to him, “What is this that you have done!”');
                         break;
                     case 16:
                         bot.chat('Jonah 1:10b: For the men knew that he was fleeing from the presence of the Lord, because he had told them.');
@@ -2596,6 +2656,89 @@ PlugAPI.getAuth({
                         break;
                     case 54:
                         bot.chat('Jonah 4:11: And should not I pity Nineveh, that great city, in which there are more than 120,000 persons who do not know their right hand from their left, and also much cattle?”');
+                        break;
+                }
+                break;
+            case ".philemon":
+            case ".Philemon":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var Philemon = Math.floor(Math.random() * 24);
+                switch(Philemon){
+                    case 0:
+                        bot.chat('Philemon 1:1: Paul, a prisoner for Christ Jesus, and Timothy our brother, To Philemon our beloved fellow worker');
+                        break;
+                    case 1:
+                        bot.chat('Philemon 1:2: and Apphia our sister and Archippus our fellow soldier, and the church in your house:');
+                        break;
+                    case 2:
+                        bot.chat('Philemon 1:3: Grace to you and peace from God our Father and the Lord Jesus Christ.');
+                        break;
+                    case 3:
+                        bot.chat('Philemon 1:4: I thank my God always when I remember you in my prayers,');
+                        break;
+                    case 4:
+                        bot.chat('Philemon 1:5: because I hear of your love and of the faith that you have toward the Lord Jesus and for all the saints,');
+                        break;
+                    case 5:
+                        bot.chat('Philemon 1:6: and I pray that the sharing of your faith may become effective for the full knowledge of every good thing that is in us for the sake of Christ.');
+                        break;
+                    case 6:
+                        bot.chat('Philemon 1:7: For I have derived much joy and comfort from your love, my brother, because the hearts of the saints have been refreshed through you.');
+                        break;
+                    case 7:
+                        bot.chat('Philemon 1:8: Accordingly, though I am bold enough in Christ to command you to do what is required,');
+                        break;
+                    case 8:
+                        bot.chat('Philemon 1:9: yet for loves sake I prefer to appeal to you—I, Paul, an old man and now a prisoner also for Christ Jesus—');
+                        break;
+                    case 9:
+                        bot.chat('Philemon 1:10: I appeal to you for my child, Onesimus,[b] whose father I became in my imprisonment.');
+                        break;
+                    case 10:
+                        bot.chat('Philemon 1:11: (Formerly he was useless to you, but now he is indeed useful to you and to me.)');
+                        break;
+                    case 11:
+                        bot.chat('Philemon 1:12: I am sending him back to you, sending my very heart.');
+                        break;
+                    case 12:
+                        bot.chat('Philemon 1:13:  I would have been glad to keep him with me, in order that he might serve me on your behalf during my imprisonment for the gospel,');
+                        break;
+                    case 13:
+                        bot.chat('Philemon 1:14: but I preferred to do nothing without your consent in order that your goodness might not be by compulsion but of your own accord.');
+                        break;
+                    case 14:
+                        bot.chat('Philemon 1:15: For this perhaps is why he was parted from you for a while, that you might have him back forever,');
+                        break;
+                    case 15:
+                        bot.chat('Philemon 1:16: no longer as a bondservant[c] but more than a bondservant, as a beloved brother—especially to me, but how much more to you, both in the flesh and in the Lord.');
+                        break;
+                    case 16:
+                        bot.chat('Philemon 1:17: So if you consider me your partner, receive him as you would receive me.');
+                        break;
+                    case 17:
+                        bot.chat('Philemon 1:18: If he has wronged you at all, or owes you anything, charge that to my account.');
+                        break;
+                    case 18:
+                        bot.chat('Philemon 1:19: I, Paul, write this with my own hand: I will repay it—to say nothing of your owing me even your own self.');
+                        break;
+                    case 19:
+                        bot.chat('Philemon 1:20: Yes, brother, I want some benefit from you in the Lord. Refresh my heart in Christ.');
+                        break;
+                    case 20:
+                        bot.chat('Philemon 1:21: Confident of your obedience, I write to you, knowing that you will do even more than I say.');
+                        break;
+                    case 21:
+                        bot.chat('Philemon 1:22: At the same time, prepare a guest room for me, for I am hoping that through your prayers I will be graciously given to you.');
+                        break;
+                    case 22:
+                        bot.chat('Philemon 1:23: Epaphras, my fellow prisoner in Christ Jesus, sends greetings to you,');
+                        break;
+                    case 23:
+                        bot.chat('Philemon 1:24: and so do Mark, Aristarchus, Demas, and Luke, my fellow workers.');
+                        break;
+                    case 24:
+                        bot.chat('Philemon 1:25: The grace of the Lord Jesus Christ be with your spirit.');
                         break;
                 }
                 break;
