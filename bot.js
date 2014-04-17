@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.1.0";
+var version = "3.1.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1242,7 +1242,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 400);
+                var botphrase = Math.floor(Math.random() * 410);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2446,6 +2446,36 @@ PlugAPI.getAuth({
                         break;
                     case 400:
                         bot.chat('Do you guys think that Kermit has been acting a little weird lately?');
+                        break;
+                    case 401:
+                        bot.chat('That is ridiculous! He has never been so caring and devoted to me!');
+                        break;
+                    case 402:
+                        bot.chat('Yeah, that is what we are saying!');
+                        break;
+                    case 403:
+                        bot.chat('There is only one guy in this world who can save us! There is only one frog who can restore order, bring justice, and set things right!');
+                        break;
+                    case 404:
+                        bot.chat('You are talking about Kermit, right?');
+                        break;
+                    case 405:
+                        bot.chat('[Holding Madrid newspaper] Check out our review. Five jamon serranos.');
+                        break;
+                    case 406:
+                        bot.chat('Wow. Citizen Kane only got four jamon serranos.');
+                        break;
+                    case 407:
+                        bot.chat('[On the sign in German] Die Muppets?');
+                        break;
+                    case 408:
+                        bot.chat('I can not believe the reviews are out this early.');
+                        break;
+                    case 409:
+                        bot.chat('Or maybe that is the suggestion box.');
+                        break;
+                    case 410:
+                        bot.chat('[after the closing credits] The movie is over, Ma. You can go home now.');
                         break;
                 }
                 break;

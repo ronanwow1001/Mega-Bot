@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.1.0
+Version Number: 3.1.1
 
 Debut Date: December 10, 2013
  
@@ -420,3 +420,8 @@ April 15, 2014:
 1. New Phrases for the Random Phrase Database
 2. Bible Verse Database for Book of Philemon
 3. Added Jonah and Philemon Commands to Commands List
+
+April 17, 2014:
+
+3.1.1:
+1. New Phrases for the Random Phrase Database
