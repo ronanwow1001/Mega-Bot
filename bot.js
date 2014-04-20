@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.1.1";
+var version = "3.1.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1242,7 +1242,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 410);
+                var botphrase = Math.floor(Math.random() * 412);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2476,6 +2476,12 @@ PlugAPI.getAuth({
                         break;
                     case 410:
                         bot.chat('[after the closing credits] The movie is over, Ma. You can go home now.');
+                        break;
+                    case 411:
+                        bot.chat('[holding up a C.I.A. badge] C.I.A.');
+                        break;
+                    case 412:
+                        bot.chat('[holding up an Interpol badge] Interpol.');
                         break;
                 }
                 break;
