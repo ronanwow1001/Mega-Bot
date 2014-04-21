@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.1.2";
+var version = "3.1.3";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1242,7 +1242,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 412);
+                var botphrase = Math.floor(Math.random() * 427);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2482,6 +2482,51 @@ PlugAPI.getAuth({
                         break;
                     case 412:
                         bot.chat('[holding up an Interpol badge] Interpol.');
+                        break;
+                    case 413:
+                        bot.chat('This is my travel badge. [holds up a larger C.I.A. badge]');
+                        break;
+                    case 414:
+                        bot.chat('Here is my real badge.');
+                        break;
+                    case 415:
+                        bot.chat('You must have been looking at the wrong badge. [opens up his coat and his shirt, revealing an enormous Interpol badge underneath; Sam then unwraps a gigantic C.I.A. badge]');
+                        break;
+                    case 416:
+                        bot.chat('You were saying?');
+                        break;
+                    case 417:
+                        bot.chat('You know, eh, I think they did it.');
+                        break;
+                    case 418:
+                        bot.chat('No, they did not!');
+                        break;
+                    case 419:
+                        bot.chat('Yes, they did, and we can pin it.');
+                        break;
+                    case 420:
+                        bot.chat('If they did it, how did they do it?');
+                        break;
+                    case 421:
+                        bot.chat('Gonzo, I do not want to do this.');
+                        break;
+                    case 422:
+                        bot.chat('What? This is gonna be fantastic!');
+                        break;
+                    case 423:
+                        bot.chat('Are you sure?');
+                        break;
+                    case 424:
+                        bot.chat('[confidently] Nope.');
+                        break;
+                    case 425:
+                        bot.chat('[Pretending to be Kermit] A heartwarming lesson about sharing or waiting your turn or the number three.');
+                        break;
+                    case 426:
+                        bot.chat('It is time to light the lights. [Detonates explosives]');
+                        break;
+                    case 427:
+                        bot.chat('[seeing Miss Piggy, flips table to reveal a candlelit dinner] Looks like it is time for good cop, romantic cop!');
                         break;
                 }
                 break;
