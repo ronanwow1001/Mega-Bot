@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.1.3";
+var version = "3.1.4";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -65,7 +65,7 @@ PlugAPI.getAuth({
     bot.on('error', reconnect);
 
      bot.on('djAdvance', function(data) {
-        bot.chat("Now Playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
+        bot.chat(bot.getDJs()[0].username + " - " + "is now playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
     });
     
     bot.on('chat', function(data) {
