@@ -3,27 +3,26 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.1.4
+Version Number: 3.2.0
 
 Debut Date: December 10, 2013
  
 Features:
 1. Welcome Greeting
-2. Auto Reconnects back to Plug.DJ
-3. Commands System
-4. Math-Lexer API Support
-5. Google Geocoding API Support
-6. Weathers API Support
-7. Last.FM API Support
-8. Dictionary API Support
-9. Wikipedia API Support
-10. Microsoft Translator API Support
-11. Mood Database
-12. Coin Flipping Ability
-13. Lottery Database
-14. 8 Ball Database
-15. Say Random Phrases in Chat Box
-16. Song Stats
+2. Commands System
+3. Math-Lexer API Support
+4. Google Geocoding API Support
+5. Weathers API Support
+6. Last.FM API Support
+7. Dictionary API Support
+8. Wikipedia API Support
+9. Microsoft Translator API Support
+10. Mood Database
+11. Coin Flipping Ability
+12. Lottery Database
+13. 8 Ball Database
+14. Say Random Phrases in Chat Box
+15. Song Stats
 
 Commands:
 1.  .commands
@@ -440,3 +439,11 @@ April 28, 2014:
 
 3.1.4:
 1. Added a small piece of code to the Now Playing Message
+
+April 29, 2014:
+
+3.2.0:
+1. Removed Reconnecting code, because it causes spam issues with the Plug.DJ Servers
+2. Fixed Commands List
+3. Bible Verse Database for Book of 2 John
+4. New Phrases for Random Phrase Database

@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.1.4";
+var version = "3.2.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -57,14 +57,7 @@ PlugAPI.getAuth({
         bot.chat('Bye, have a wonderful day!');
     });
     
-    var reconnect = function() { 
-        bot.connect(ROOM);
-    };
-
-    bot.on('close', reconnect);
-    bot.on('error', reconnect);
-
-     bot.on('djAdvance', function(data) {
+    bot.on('djAdvance', function(data) {
         bot.chat(bot.getDJs()[0].username + " - " + "is now playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
     });
     
@@ -87,7 +80,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, jonah, philemon");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john");
                 break;
             case ".hey":
             case ".hello":
@@ -1242,7 +1235,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 427);
+                var botphrase = Math.floor(Math.random() * 429);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2528,6 +2521,12 @@ PlugAPI.getAuth({
                     case 427:
                         bot.chat('[seeing Miss Piggy, flips table to reveal a candlelit dinner] Looks like it is time for good cop, romantic cop!');
                         break;
+                    case 428:
+                        bot.chat('Ich bin ein berliner.');
+                        break;
+                    case 429:
+                        bot.chat('More like "Ein frankfurter".');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -2820,6 +2819,53 @@ PlugAPI.getAuth({
                         break;
                     case 24:
                         bot.chat('Philemon 1:25: The grace of the Lord Jesus Christ be with your spirit.');
+                        break;
+                }
+                break;
+            case ".2john":
+            case ".2John":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var SecondJohn = Math.floor(Math.random() * 12);
+                switch(SecondJohn){
+                    case 0:
+                        bot.chat('2 John 1:1: The elder to the elect lady and her children, whom I love in truth, and not only I, but also all who know the truth,');
+                        break;
+                    case 1:
+                        bot.chat('2 John 1:2: because of the truth that abides in us and will be with us forever:');
+                        break;
+                    case 2:
+                        bot.chat('2 John 1:3: Grace, mercy, and peace will be with us, from God the Father and from Jesus Christ the Fathers Son, in truth and love.');
+                        break;
+                    case 3:
+                        bot.chat('2 John 1:4: I rejoiced greatly to find some of your children walking in the truth, just as we were commanded by the Father.');
+                        break;
+                    case 4:
+                        bot.chat('2 John 1:5: And now I ask you, dear lady—not as though I were writing you a new commandment, but the one we have had from the beginning—that we love one another.');
+                        break;
+                    case 5:
+                        bot.chat('2 John 1:6: And this is love, that we walk according to his commandments; this is the commandment, just as you have heard from the beginning, so that you should walk in it.');
+                        break;
+                    case 6:
+                        bot.chat('2 John 1:7: For many deceivers have gone out into the world, those who do not confess the coming of Jesus Christ in the flesh. Such a one is the deceiver and the antichrist.');
+                        break;
+                    case 7:
+                        bot.chat('2 John 1:8: Watch yourselves, so that you may not lose what we have worked for, but may win a full reward.');
+                        break;
+                    case 8:
+                        bot.chat('2 John 1:9: Everyone who goes on ahead and does not abide in the teaching of Christ, does not have God. Whoever abides in the teaching has both the Father and the Son.');
+                        break;
+                    case 9:
+                        bot.chat('2 John 1:10: If anyone comes to you and does not bring this teaching, do not receive him into your house or give him any greeting,');
+                        break;
+                    case 10:
+                        bot.chat('2 John 1:11: for whoever greets him takes part in his wicked works.');
+                        break;
+                    case 11:
+                        bot.chat('2 John 1:12: Though I have much to write to you, I would rather not use paper and ink. Instead I hope to come to you and talk face to face, so that our joy may be complete.');
+                        break;
+                    case 12:
+                        bot.chat('2 John 1:13: The children of your elect sister greet you.');
                         break;
                 }
                 break;
