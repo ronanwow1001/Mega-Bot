@@ -78,6 +78,7 @@ Commands:
 51. .song
 52. .jonah
 53. .philemon
+54. .2john
 
 Release Notes:
  
