@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.2.0
+Version Number: 3.2.1
 
 Debut Date: December 10, 2013
  
@@ -448,3 +448,8 @@ April 29, 2014:
 2. Fixed Commands List
 3. Bible Verse Database for Book of 2 John
 4. New Phrases for Random Phrase Database
+
+May 1, 2014:
+
+3.2.1:
+1. New Phrases for Random Phrase Database

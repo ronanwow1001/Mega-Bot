@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.2.0";
+var version = "3.2.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1235,7 +1235,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 429);
+                var botphrase = Math.floor(Math.random() * 444);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2526,6 +2526,51 @@ PlugAPI.getAuth({
                         break;
                     case 429:
                         bot.chat('More like "Ein frankfurter".');
+                        break;
+                    case 430:
+                        bot.chat('You do anything fun Saturday night?');
+                        break;
+                    case 431:
+                        bot.chat('Well, all the guys in my barbershop quartet are dead. So no, not really.');
+                        break;
+                    case 432:
+                        bot.chat('Before we get started, does anyone want to get out?');
+                        break;
+                    case 433:
+                        bot.chat('Get me Hill now!');
+                        break;
+                    case 434:
+                        bot.chat('Communications array is offline.');
+                        break;
+                    case 435:
+                        bot.chat('Then what is not broken?');
+                        break;
+                    case 436:
+                        bot.chat('Air conditioning is fully operational.');
+                        break;
+                    case 437:
+                        bot.chat('You know me...');
+                        break;
+                    case 438:
+                        bot.chat('No, I do not!');
+                        break;
+                    case 439:
+                        bot.chat('I am not going to fight you...');
+                        break;
+                    case 440:
+                        bot.chat('Your name is James Barnes...');
+                        break;
+                    case 441:
+                        bot.chat('SHUT UP!');
+                        break;
+                    case 442:
+                        bot.chat('You are my friend...');
+                        break;
+                    case 443:
+                        bot.chat('You are my MISSION!');
+                        break;
+                    case 444:
+                        bot.chat('Then finish it... because I am with you til the end of the line...');
                         break;
                 }
                 break;
