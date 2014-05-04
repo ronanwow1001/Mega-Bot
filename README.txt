@@ -25,17 +25,17 @@ Features:
 15. Song Stats
 
 Commands:
-1.  .commands
-2.	.hey
-3.	.woot
-4.	.meh
-5.	.props
-6.	.calc
-7.	.join
-8.	.leave
-9.	.skip
+1. .commands
+2. .hey
+3. .woot
+4. .meh
+5. .props
+6. .calc
+7. .join
+8. .leave
+9. .skip
 10. .forecast
-11.	.version
+11. .version
 12. .artist
 13. .track
 14. .genre
