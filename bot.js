@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.2.1";
+var version = "3.2.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1235,7 +1235,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 444);
+                var botphrase = Math.floor(Math.random() * 450);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2571,6 +2571,24 @@ PlugAPI.getAuth({
                         break;
                     case 444:
                         bot.chat('Then finish it... because I am with you til the end of the line...');
+                        break;
+                    case 445:
+                        bot.chat('You need to keep BOTH eyes open.');
+                        break;
+                    case 446:
+                        bot.chat('Can any of you boys direct me to the Smithsonian? I am here to pick up a fossil.');
+                        break;
+                    case 447:
+                        bot.chat('On your left.');
+                        break;
+                    case 448:
+                        bot.chat('Bucky?');
+                        break;
+                    case 449:
+                        bot.chat('Who the hell is Bucky?');
+                        break;
+                    case 450:
+                        bot.chat('Do not look at me. I do what he does - just slower.');
                         break;
                 }
                 break;
