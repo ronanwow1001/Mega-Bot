@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.2.2";
+var version = "3.3.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -29,6 +29,8 @@ var weather = require('weathers');
 var api = require('dictionaryapi');
 var Wiki = require("wikijs");
 var MsTranslator = require('mstranslator'); 
+var request = require('request'); 
+var time = require('time'); 
 var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXYbYnioSklbU0CSRM5gBBhag4piJ9F+9M="}); 
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
@@ -80,7 +82,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john");
                 break;
             case ".hey":
             case ".hello":
@@ -2930,6 +2932,94 @@ PlugAPI.getAuth({
                     case 12:
                         bot.chat('2 John 1:13: The children of your elect sister greet you.');
                         break;
+                }
+                break;
+            case ".time": 
+                if (qualifier==""){
+                    bot.chat("Try .time followed by a place to look up.");
+                }
+                else {
+                    google_geocoding.geocode(qualifier, function(err, location) {
+                        if (location!=null){
+                            var link = 'http://api.geonames.org/findNearbyPlaceNameJSON?lat=' + location.lat + '&lng=' + location.lng + '&username=jbader89&style=full'
+                            request(link, function (error, response, body) {
+                                if (!error && response.statusCode == 200) {
+                                    var info = JSON.parse(body);
+                                    if (info != undefined){
+                                        var timezone = info.geonames[0].timezone.timeZoneId;
+                                        var currentTime = new time.Date();
+                                        currentTime.setTimezone(timezone);
+                                        var ampm = "";
+                                        var hours = "";
+                                        var mins = currentTime.toString().split(' ')[4].substring(2,5);
+                                        if (currentTime.toString().split(' ')[4].substring(0,2) == "00"){
+                                            hours = "12";
+                                            ampm = "AM";
+                                        }
+                                        else if (Number(currentTime.toString().split(' ')[4].substring(0,2)) < 13){
+                                            hours = currentTime.toString().split(' ')[4].substring(0,2);
+                                            ampm = "AM";
+                                            if (hours[0]=="0"){
+                                                hours = hours[1];
+                                            }
+                                            else if (hours=="12"){
+                                                ampm = "PM";
+                                            }
+                                        }
+                                        else {
+                                            hours = String(Number(currentTime.toString().split(' ')[4].substring(0,2)) - 12);
+                                            ampm = "PM";
+                                        }
+                                        var stateOrCity = '';
+                                        if (info.geonames[0].adminName1 != ''){
+                                            stateOrCity = info.geonames[0].adminName1 + ", ";
+                                        }
+                                        bot.chat("Current time in " + stateOrCity + info.geonames[0].countryName + ": " + hours + mins + " " + ampm);
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            bot.chat("No time found.");
+                        }
+                    });
+                }
+                break;
+            case ".1john":
+            case ".1John":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var FirstJohn = Math.floor(Math.random() * 9);
+                switch(FirstJohn){
+                    case 0:
+                        bot.chat('1 John 1:1: That which was from the beginning, which we have heard, which we have seen with our eyes, which we looked upon and have touched with our hands, concerning the word of life—');
+                        break;
+                    case 1:
+                        bot.chat('1 John 1:2: the life was made manifest, and we have seen it, and testify to it and proclaim to you the eternal life, which was with the Father and was made manifest to us—');
+                        break;
+                    case 2:
+                        bot.chat('1 John 1:3: that which we have seen and heard we proclaim also to you, so that you too may have fellowship with us; and indeed our fellowship is with the Father and with his Son Jesus Christ.');
+                        break;
+                    case 3:
+                        bot.chat('1 John 1:4: And we are writing these things so that our joy may be complete.');
+                        break;
+                    case 4:
+                        bot.chat('1 John 1:5: This is the message we have heard from him and proclaim to you, that God is light, and in him is no darkness at all.');
+                        break;
+                    case 5:
+                        bot.chat('1 John 1:6: If we say we have fellowship with him while we walk in darkness, we lie and do not practice the truth.');
+                        break;
+                    case 6:
+                        bot.chat('1 John 1:7: But if we walk in the light, as he is in the light, we have fellowship with one another, and the blood of Jesus his Son cleanses us from all sin.');
+                        break;
+                    case 7:
+                        bot.chat('1 John 1:8: If we say we have no sin, we deceive ourselves, and the truth is not in us.');
+                        break;
+                    case 8:
+                        bot.chat('1 John 1:9: If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.');
+                        break;
+                    case 9:
+                        bot.chat('1 John 1:10: If we say we have not sinned, we make him a liar, and his word is not in us.');
                 }
                 break;
             default: 
