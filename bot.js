@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.3.0";
+var version = "3.3.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 450);
+                var botphrase = Math.floor(Math.random() * 460);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2591,6 +2591,36 @@ PlugAPI.getAuth({
                         break;
                     case 450:
                         bot.chat('Do not look at me. I do what he does - just slower.');
+                        break;
+                    case 451:
+                        bot.chat('Captain, in Order to build a better world, sometimes means tearing the old one down... And that makes enemies.');
+                        break;
+                    case 452:
+                        bot.chat('[after posing as fiance for Natasha] That was not my first kiss since 1945. I am 95, I am not dead.');
+                        break;
+                    case 453:
+                        bot.chat('The price of freedom is high... and it is a price I am willing to pay! You told me not trust anyone and this is how it ends: EVERYTHING goes!');
+                        break;
+                    case 454:
+                        bot.chat('This is not the age of spies. This is not even the age of heroes. This is the age of miracles... and there is nothing more horrifying than a miracle.');
+                        break;
+                    case 455:
+                        bot.chat('How do we tell the good guys from the bad guys?');
+                        break;
+                    case 456:
+                        bot.chat('If they are shooting at you, they are bad!');
+                        break;
+                    case 457:
+                        bot.chat('Bye bye, bikinis');
+                        break;
+                    case 458:
+                        bot.chat('Yeah, I bet you look terrible in them now.');
+                        break;
+                    case 459:
+                        bot.chat('You are a lot heavier than you look.');
+                        break;
+                    case 460:
+                        bot.chat('I had a big breakfast.');
                         break;
                 }
                 break;

@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.3.0
+Version Number: 3.3.1
 
 Debut Date: December 10, 2013
  
@@ -466,3 +466,8 @@ May 7, 2014:
 3.3.0:
 1. Bible Verse Database for Book of 1 John
 2. Time Command
+
+May 9, 2014:
+
+3.3.1:
+1. New Phrases for Random Phrase Database
