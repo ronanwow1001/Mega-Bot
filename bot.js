@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.3.1";
+var version = "3.3.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 460);
+                var botphrase = Math.floor(Math.random() * 470);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2621,6 +2621,36 @@ PlugAPI.getAuth({
                         break;
                     case 460:
                         bot.chat('I had a big breakfast.');
+                        break;
+                    case 461:
+                        bot.chat('This is not freedom. This is fear.');
+                        break;
+                    case 462:
+                        bot.chat('You are wrong about me. I am nice like that.');
+                        break;
+                    case 463:
+                        bot.chat('HYDRA, S.H.I.E.L.D., two sides of a coin that is no longer currency.');
+                        break;
+                    case 464:
+                        bot.chat('Are you ready for the world to see you as you really are? Look out the window, you know how the game works: disorder, war, all it takes is one step.');
+                        break;
+                    case 465:
+                        bot.chat('I thought the punishment usually came AFTER the crime.');
+                        break;
+                    case 466:
+                        bot.chat('Even when I had nothing, I had Bucky.');
+                        break;
+                    case 467:
+                        bot.chat('Kiss me.');
+                        break;
+                    case 468:
+                        bot.chat('What?');
+                        break;
+                    case 469:
+                        bot.chat('Public displays of affection make people very uncomfortable.');
+                        break;
+                    case 470:
+                        bot.chat('Yes, they do.');
                         break;
                 }
                 break;
