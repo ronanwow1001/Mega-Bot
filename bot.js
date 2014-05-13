@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.3.2";
+var version = "3.4.0";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -82,7 +82,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john");
                 break;
             case ".hey":
             case ".hello":
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 470);
+                var botphrase = Math.floor(Math.random() * 480);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2652,6 +2652,36 @@ PlugAPI.getAuth({
                     case 470:
                         bot.chat('Yes, they do.');
                         break;
+                    case 471:
+                        bot.chat('Him again? He is in this game more than I am! Who does he think he is?');
+                        break;
+                    case 472:
+                        bot.chat('I am still hungry! I need something to eat!');
+                        break;
+                    case 473:
+                        bot.chat('Thanks for your help, Spider-Man. There is always a place in this operation for a hero like you.');
+                        break;
+                    case 474:
+                        bot.chat('Like I have time for that. I got a trigonometry exam tomorrow, my aunt needs me to pick-up a dozen eggs, and I am drowning in angst.');
+                        break;
+                    case 475:
+                        bot.chat('Super villains, meet my super-suit.');
+                        break;
+                    case 476:
+                        bot.chat('Yes, that suit. It requires some tailoring.');
+                        break;
+                    case 477:
+                        bot.chat('Is it me, or did it just get drafty in here?');
+                        break;
+                    case 478:
+                        bot.chat('We got to save America from the Red Skull!');
+                        break;
+                    case 479:
+                        bot.chat('HULK SMASH SKULL!');
+                        break;
+                    case 480:
+                        bot.chat('Huh? Hulk rip pants.');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -3080,6 +3110,59 @@ PlugAPI.getAuth({
                         break;
                     case 9:
                         bot.chat('1 John 1:10: If we say we have not sinned, we make him a liar, and his word is not in us.');
+                }
+                break;
+            case ".3john":
+            case ".3John":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var ThirdJohn = Math.floor(Math.random() * 14);
+                switch(ThirdJohn){
+                    case 0:
+                        bot.chat('3 John 1:1: The elder to the beloved Gaius, whom I love in truth.');
+                        break;
+                    case 1:
+                        bot.chat('3 John 1:2: Beloved, I pray that all may go well with you and that you may be in good health, as it goes well with your soul.');
+                        break;
+                    case 2:
+                        bot.chat('3 John 1:3: For I rejoiced greatly when the brothers came and testified to your truth, as indeed you are walking in the truth.');
+                        break;
+                    case 3:
+                        bot.chat('3 John 1:4: I have no greater joy than to hear that my children are walking in the truth.');
+                        break;
+                    case 4:
+                        bot.chat('3 John 1:5: Beloved, it is a faithful thing you do in all your efforts for these brothers, strangers as they are,');
+                        break;
+                    case 5:
+                        bot.chat('3 John 1:6: who testified to your love before the church. You will do well to send them on their journey in a manner worthy of God.');
+                        break;
+                    case 6:
+                        bot.chat('3 John 1:7: For they have gone out for the sake of the name, accepting nothing from the Gentiles.');
+                        break;
+                    case 7:
+                        bot.chat('3 John 1:8: Therefore we ought to support people like these, that we may be fellow workers for the truth.');
+                        break;
+                    case 8:
+                        bot.chat('3 John 1:9: I have written something to the church, but Diotrephes, who likes to put himself first, does not acknowledge our authority.');
+                        break;
+                    case 9:
+                        bot.chat('3 John 1:10: So if I come, I will bring up what he is doing, talking wicked nonsense against us. And not content with that, he refuses to welcome the brothers, and also stops those who want to and puts them out of the church.');
+                        break;
+                    case 10:
+                        bot.chat('3 John 1:11: Beloved, do not imitate evil but imitate good. Whoever does good is from God; whoever does evil has not seen God.');
+                        break;
+                    case 11:
+                        bot.chat('3 John 1:12: Demetrius has received a good testimony from everyone, and from the truth itself. We also add our testimony, and you know that our testimony is true.');
+                        break;
+                    case 12:
+                        bot.chat('3 John 1:13: I had much to write to you, but I would rather not write with pen and ink.');
+                        break;
+                    case 13:
+                        bot.chat('3 John 1:14: I hope to see you soon, and we will talk face to face.');
+                        break;
+                    case 14:
+                        bot.chat('3 John 1:15: Peace be to you. The friends greet you. Greet the friends, each by name.');
+                        break;
                 }
                 break;
             default: 
