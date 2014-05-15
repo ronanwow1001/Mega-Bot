@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.4.0
+Version Number: 3.4.1
 
 Debut Date: December 10, 2013
  
@@ -483,3 +483,8 @@ May 13, 2014:
 3.4.0:
 1. New Phrases for the Random Phrase Database
 2. Bible Verse Database for Book of 3 John
+
+May 15, 2014:
+
+3.4.1:
+1. New Phrases for the Random Phrase Database

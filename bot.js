@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.4.0";
+var version = "3.4.1";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 480);
+                var botphrase = Math.floor(Math.random() * 490);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2681,6 +2681,36 @@ PlugAPI.getAuth({
                         break;
                     case 480:
                         bot.chat('Huh? Hulk rip pants.');
+                        break;
+                    case 481:
+                        bot.chat('That is why my red, white and blue is form-fitting yet flexible. I love American ingenuity.');
+                        break;
+                    case 482:
+                        bot.chat('Doc Octopus? You are a real doctor, right? Cause I have a pain right here... down there... oh, and that bit over there, wow!');
+                        break;
+                    case 483:
+                        bot.chat('Your cheap health plan does not cover office visits.');
+                        break;
+                    case 484:
+                        bot.chat('You come to my lovely Asteroid M, but I do not get a house-warming gift?');
+                        break;
+                    case 485:
+                        bot.chat('I say thee... NAY!');
+                        break;
+                    case 486:
+                        bot.chat('Good luck magnetizing the god-hammer, that belongs to Thor. Oh, I have demagnetized my armor just for this occasion.');
+                        break;
+                    case 487:
+                        bot.chat('I took a bath. That is all I did.');
+                        break;
+                    case 488:
+                        bot.chat('Finally, my vengeance will be realized on your pathetic planet! I will harness the power of Galactus! He will have the earth for breakfast and Asgard for lunch!');
+                        break;
+                    case 489:
+                        bot.chat('Wow, he is gonna be pretty full. That is quite a lot of protein, even for a big guy.');
+                        break;
+                    case 490:
+                        bot.chat('Alright! I let these big-wigs go, once you bring me some of those... Uh, Cosmic Bricks!');
                         break;
                 }
                 break;
