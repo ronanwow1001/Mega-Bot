@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.4.1";
+var version = "3.4.2";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 490);
+                var botphrase = Math.floor(Math.random() * 500);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2711,6 +2711,36 @@ PlugAPI.getAuth({
                         break;
                     case 490:
                         bot.chat('Alright! I let these big-wigs go, once you bring me some of those... Uh, Cosmic Bricks!');
+                        break;
+                    case 491:
+                        bot.chat('Why did they not make me the supervisor here! That guy has got sand for brains!');
+                        break;
+                    case 492:
+                        bot.chat('You understand the web, do you?');
+                        break;
+                    case 493:
+                        bot.chat('The web? Yeah, it is a job and a hobby.');
+                        break;
+                    case 494:
+                        bot.chat('Do not tell me you got here on a really long spider line?');
+                        break;
+                    case 495:
+                        bot.chat('Uh, no. You are not the only one that can fly. Compliments of Mr. Nick Fury and S.H.I.E.L.D.');
+                        break;
+                    case 496:
+                        bot.chat('You know, I could fit you with a rocket-propelled iron suit if you want.');
+                        break;
+                    case 497:
+                        bot.chat('Sounds... heavy.');
+                        break;
+                    case 498:
+                        bot.chat('I hope Fury knows what he is doing. I tend not play well with people who have been attacking me and trying to steal all my stuff.');
+                        break;
+                    case 499:
+                        bot.chat('If we were only children again, I would resolve this by giving Loki what you mortals call a wedgie... But I fear the elevation of undergarments will save us now.');
+                        break;
+                    case 500:
+                        bot.chat('Maybe not, but I will pay good money to see that.');
                         break;
                 }
                 break;
