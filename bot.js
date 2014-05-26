@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.4.3";
+var version = "3.4.4";
 
 var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
 var joined = new Date().getTime();
@@ -476,7 +476,7 @@ PlugAPI.getAuth({
                 break;
             case ".about":
             case ".bot":
-                bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of my commands, type .commands");
+                bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of commands, type .commands");
                 break;
             case ".define": 
                 var dict = new api.DictionaryAPI(api.COLLEGIATE, 'cf2109fd-f2d0-4451-a081-17b11c48069b');
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 504);
+                var botphrase = Math.floor(Math.random() * 508);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2753,6 +2753,18 @@ PlugAPI.getAuth({
                         break;
                     case 504:
                         bot.chat('Excelsior!');
+                        break;
+                    case 505:
+                        bot.chat('Where does he get these unbreakable toys?');
+                        break;
+                    case 506:
+                        bot.chat('No, thanks. I do not want to get joy buzzed.');
+                        break;
+                    case 507:
+                        bot.chat('Oh, do not worry. I do not want to shake hands, I want your watch. Nice running into you. Let us do it again, sometime.');
+                        break;
+                    case 508:
+                        bot.chat('Oh, we will.');
                         break;
                 }
                 break;
