@@ -3,9 +3,9 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.4.4";
+var version = "3.5.0";
 
-var Theme = "The current theme for this room is Christian Music, sung by Christian Bands";
+var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
 var translateList = [];
 
@@ -39,7 +39,7 @@ PlugAPI.getAuth({
     password: 'Starwarskotor1'
 }, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
     if(err) {
-        console.log("An error occurred: " + err);
+        console.log("An error has occurred: " + err);
         return;
     }
     var bot = new PlugAPI(auth, UPDATECODE);
@@ -52,7 +52,7 @@ PlugAPI.getAuth({
         bot.chat('Ready for Action!');
          
     bot.on('userJoin', function(data) {
-        bot.chat('Welcome to Christian Anything. Have fun and worship with us to celebrate our king, God.');
+        bot.chat('Relax and worship with us to celebrate our king, God.');
     });
     
     bot.on('userLeave', function(data) {
@@ -82,7 +82,7 @@ PlugAPI.getAuth({
             case ".command":
             case ".list":
             case ".commandlist":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-Bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude");
                 break;
             case ".hey":
             case ".hello":
@@ -141,14 +141,14 @@ PlugAPI.getAuth({
                         }
                     }
                     else {
-                        bot.chat("/me does not compute.");
+                        bot.chat("/me does not compute correctly.");
                     }
                 }
                 else if (qualifier===""){
                     bot.chat("Try .calc followed by something to calculate.");
                 }
                 else {
-                    bot.chat("/me does not compute.");
+                    bot.chat("/me does not compute correctly.");
                 }
                 break;
             case ".join":
@@ -199,12 +199,12 @@ PlugAPI.getAuth({
                                     bot.chat(weekForecast);
                                 }
                                 else {
-                                    bot.chat("No weather found.");
+                                    bot.chat("No weather has been found.");
                                 }
                             });
                         }
                         else {
-                            bot.chat("No weather found.");
+                            bot.chat("No weather has been found.");
                         }
                     });
                 }
@@ -223,12 +223,12 @@ PlugAPI.getAuth({
                                     bot.chat(temp);
                                 }
                                 else{
-                                    bot.chat("No temperature found.");
+                                    bot.chat("No temperature has been found.");
                                 }
                             });
                         }
                         else{
-                            bot.chat("No temperature found.");
+                            bot.chat("No temperature has been found.");
                         }
                     });
                 }
@@ -286,11 +286,11 @@ PlugAPI.getAuth({
                                 bot.chat("For more info: http://www.last.fm/music/" + lastfmArtist);
                             }
                             else {
-                                bot.chat("No artist info found.");
+                                bot.chat("No artist info has been found.");
                             }
                         }
                         else {
-                            bot.chat("No artist info found.");
+                            bot.chat("No artist info has been found.");
                         }
                     }
                 });
@@ -318,11 +318,11 @@ PlugAPI.getAuth({
                                 bot.chat(summary);
                             }
                             else {
-                                bot.chat("No track info found.");
+                                bot.chat("No track info has been found.");
                             }
                         }
                         else {
-                            bot.chat("No track info found.");
+                            bot.chat("No track info has been found.");
                         }
                     }
                 });
@@ -354,7 +354,7 @@ PlugAPI.getAuth({
                                 bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
                             }
                             else{
-                                bot.chat("No genre found.");
+                                bot.chat("No genre has been found.");
                             }
                         }
                         else{
@@ -362,7 +362,7 @@ PlugAPI.getAuth({
                                 bot.chat("Genre of "+artistChoice+": "+tags);
                             }
                             else{
-                                bot.chat("No genre found.");
+                                bot.chat("No genre has been found.");
                             }
                         }
                     }
@@ -390,7 +390,7 @@ PlugAPI.getAuth({
                         });
                     }
                     else{
-                        bot.chat("No album found.");
+                        bot.chat("No album has been found.");
                     }
                 });
                 break;
@@ -463,7 +463,7 @@ PlugAPI.getAuth({
                         bot.chat("Upcoming events for " + artistChoice + ": " + upcomingEvents);
                     }
                     else{
-                        bot.chat("No upcoming events found.");
+                        bot.chat("No upcoming events have been found.");
                     }
                 });
                 break;
@@ -512,7 +512,7 @@ PlugAPI.getAuth({
                         bot.chat("For more info: http://www.merriam-webster.com/dictionary/" + linkQualifier);
                     }
                     else {
-                        bot.chat("No definition found.");
+                        bot.chat("No definition has been found.");
                     }
                 });
                 break;
@@ -533,7 +533,7 @@ PlugAPI.getAuth({
                             bot.chat(info[0].username + ": " + info[0].permalink_url);
                         }
                         else {
-                             bot.chat("No soundcloud found.");
+                             bot.chat("No soundcloud has been found.");
                          }
                     }
                 });
@@ -623,7 +623,7 @@ PlugAPI.getAuth({
                                                                     bot.chat("For more info: http://en.wikipedia.org/wiki/" + queryChoice);
                                                                 }
                                                                 else {
-                                                                    bot.chat("No wiki found.");
+                                                                    bot.chat("No wiki has been found.");
                                                                 }
                                                             });
                                                         });
@@ -639,7 +639,7 @@ PlugAPI.getAuth({
                                                     }
                                                 }
                                                 else {
-                                                    bot.chat("No wiki found.");
+                                                    bot.chat("No wiki has been found.");
                                                 }    
                                             });
                                         });
@@ -647,7 +647,7 @@ PlugAPI.getAuth({
                                 });
                             }
                             else {
-                                bot.chat("No wiki found.");
+                                bot.chat("No wiki has been found.");
                             } 
                         });
                     });
@@ -660,13 +660,13 @@ PlugAPI.getAuth({
                 bot.chat("Feel the power of the dark side.");
                 break;
             case ".rank":
-                bot.chat("To rank up in this room: Be kind to the community, love God, and post family-friendly stuff in the chatbox.");
+                bot.chat("Be kind to the community, love God, and post family-friendly stuff in the chatbox.");
                 break;
             case ".like":
-                bot.chat("If you like this room: refer your friends and family, add a bookmark/favorite to us in your browser, refer your church group, and come back often. :)");
+                bot.chat("Refer your friends and family, add a bookmark/favorite to us in your browser, refer your church group, and come back often. :)");
                 break;
             case ".theme":
-                bot.chat(Theme);
+                bot.chat(theme);
                 break;
             case ".translate": 
                 var languageCodes = ["ar","bg","ca","zh-CHS","zh-CHT","cs","da","nl","en","et","fa","fi","fr","de","el","ht","he","hi","hu","id","it","ja","ko","lv","lt","ms","mww","no","pl","pt","ro","ru","sk","sl","es","sv","th","tr","uk","ur","vi"];
@@ -750,7 +750,7 @@ PlugAPI.getAuth({
                     minutes = minutes - 60;
                     hours++;
                 }
-                hours === 0 ? response = "Running for " + minutes + "m" : response = "Running for " + hours + "h " + minutes + "m";
+                hours === 0 ? response = "Running for " + minutes + "minutes" : response = "Running for " + hours + "hours " + minutes + "minutes";
                 bot.chat(response);
                 break;
             case ".coin":
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 508);
+                var botphrase = Math.floor(Math.random() * 512);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2766,6 +2766,18 @@ PlugAPI.getAuth({
                     case 508:
                         bot.chat('Oh, we will.');
                         break;
+                    case 509:
+                        bot.chat('Hey guys, need a hand?');
+                        break;
+                    case 510:
+                        bot.chat('With what, parking?');
+                        break;
+                    case 511:
+                        bot.chat('Yeah, sorry, I wanted to be there for your award, I mean the award that goes to Bruce Wayne. I got tied up.');
+                        break;
+                    case 512:
+                        bot.chat('Me too. Kids are not invited.');
+                        break;
                 }
                 break;
             case ".songlink":
@@ -2780,11 +2792,11 @@ PlugAPI.getAuth({
                 break;
             case ".download":
                 if(typeof command[1] == "undefined"){
-                    bot.chat("Download your song free here: http://www.vebsi.com/");
+                    bot.chat("Download your song for free here: http://www.vebsi.com/");
                 }else if(command[1].indexOf("@") > -1){
                     bot.chat(command[1]+" Download your song free here: http://www.vebsi.com/");
                 }else{
-                    bot.chat("Download your song free here: http://www.vebsi.com/");
+                    bot.chat("Download your song for free here: http://www.vebsi.com/");
                 }
                 break;
             case ".votes":
@@ -3154,7 +3166,7 @@ PlugAPI.getAuth({
                             });
                         }
                         else {
-                            bot.chat("No time found.");
+                            bot.chat("No time has been found.");
                         }
                     });
                 }
@@ -3246,6 +3258,89 @@ PlugAPI.getAuth({
                         break;
                     case 14:
                         bot.chat('3 John 1:15: Peace be to you. The friends greet you. Greet the friends, each by name.');
+                        break;
+                }
+                break;
+            case ".jude":
+            case ".Jude":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var Jude = Math.floor(Math.random() * 24);
+                switch(Jude){
+                    case 0:
+                        bot.chat('Jude 1:1 Jude, a servant of Jesus Christ and brother of James, To those who are called, beloved in God the Father and kept for Jesus Christ:');
+                        break;
+                    case 1:
+                        bot.chat('Jude 1:2: May mercy, peace, and love be multiplied to you.');
+                        break;
+                    case 2:
+                        bot.chat('Jude 1:3: Beloved, although I was very eager to write to you about our common salvation, I found it necessary to write appealing to you to contend for the faith that was once for all delivered to the saints.');
+                        break;
+                    case 3:
+                        bot.chat('Jude 1:4: For certain people have crept in unnoticed who long ago were designated for this condemnation, ungodly people, who pervert the grace of our God into sensuality and deny our only Master and Lord, Jesus Christ.');
+                        break;
+                    case 4:
+                        bot.chat('Jude 1:5: Now I want to remind you, although you once fully knew it, that Jesus, who saved people out of the land of Egypt, afterward destroyed those who did not believe.');
+                        break;
+                    case 5:
+                        bot.chat('Jude 1:6: And the angels who did not stay within their own position of authority, but left their proper dwelling, he has kept in eternal chains under gloomy darkness until the judgment of the great day—');
+                        break;
+                    case 6:
+                        bot.chat('Jude 1:7: just as Sodom and Gomorrah and the surrounding cities, which likewise indulged in sexual immorality and pursued unnatural desire, serve as an example by undergoing a punishment of eternal fire.');
+                        break;
+                    case 7:
+                        bot.chat('Jude 1:8: Yet in like manner these people also, relying on their dreams, defile the flesh, reject authority, and blaspheme the glorious ones.');
+                        break;
+                    case 8:
+                        bot.chat('Jude 1:9: But when the archangel Michael, contending with the devil, was disputing about the body of Moses, he did not presume to pronounce a blasphemous judgment, but said, “The Lord rebuke you.”');
+                        break;
+                    case 9:
+                        bot.chat('Jude 1:10: But these people blaspheme all that they do not understand, and they are destroyed by all that they, like unreasoning animals, understand instinctively.');
+                        break;
+                    case 10:
+                        bot.chat('Jude 1:11: Woe to them! For they walked in the way of Cain and abandoned themselves for the sake of gain to the error of Balaam and perished in the rebellion of Korah.');
+                        break;
+                    case 11:
+                        bot.chat('Jude 1:12: These are hidden reefs at your love feasts, as they feast with you without fear, shepherds feeding themselves; waterless clouds, swept along by winds; fruitless trees in late autumn, twice dead, uprooted;');
+                        break;
+                    case 12:
+                        bot.chat('Jude 1:13: wild waves of the sea, casting up the foam of their own shame; wandering stars, for whom the gloom of utter darkness has been reserved forever.');
+                        break;
+                    case 13:
+                        bot.chat('Jude 1:14: It was also about these that Enoch, the seventh from Adam, prophesied, saying, “Behold, the Lord comes with ten thousands of his holy ones,');
+                        break;
+                    case 14:
+                        bot.chat('Jude 1:15: to execute judgment on all and to convict all the ungodly of all their deeds of ungodliness that they have committed in such an ungodly way, and of all the harsh things that ungodly sinners have spoken against him.”');
+                        break;
+                    case 15:
+                        bot.chat('Jude 1:16: These are grumblers, malcontents, following their own sinful desires; they are loud-mouthed boasters, showing favoritism to gain advantage.');
+                        break;
+                    case 16:
+                        bot.chat('Jude 1:17: But you must remember, beloved, the predictions of the apostles of our Lord Jesus Christ.');
+                        break;
+                    case 17:
+                        bot.chat('Jude 1:18: They said to you, “In the last time there will be scoffers, following their own ungodly passions.”');
+                        break;
+                    case 18:
+                        bot.chat('Jude 1:19: It is these who cause divisions, worldly people, devoid of the Spirit.');
+                        break;
+                    case 19:
+                        bot.chat('Jude 1:20: But you, beloved, building yourselves up in your most holy faith and praying in the Holy Spirit,');
+                        break;
+                    case 20:
+                        bot.chat('Jude 1:21: keep yourselves in the love of God, waiting for the mercy of our Lord Jesus Christ that leads to eternal life.');
+                        break;
+                    case 21:
+                        bot.chat('Jude 1:22: And have mercy on those who doubt;');
+                        break;
+                    case 22:
+                        bot.chat('Jude 1:23: save others by snatching them out of the fire; to others show mercy with fear, hating even the garment stained by the flesh.');
+                        break;
+                    case 23:
+                        bot.chat('Jude 1:24: Now to him who is able to keep you from stumbling and to present you blameless before the presence of his glory with great joy,');
+                        break;
+                    case 24:
+                        bot.chat('Jude 1:25: to the only God, our Savior, through Jesus Christ our Lord, be glory, majesty, dominion, and authority, before all time and now and forever. Amen.');
                         break;
                 }
                 break;
