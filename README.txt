@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.5.0
+Version Number: 3.5.1
 
 Debut Date: December 10, 2013
  
@@ -511,3 +511,8 @@ May 28, 2014:
 1. Bible Verse Database for Book of Jude
 2. Code Tweaks
 3. New Phrases for Random Phrase Database
+
+May 31, 2014:
+
+3.5.1:
+1. New Phrases for Random Phrase Database

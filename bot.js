@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.5.0";
+var version = "3.5.1";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -49,7 +49,7 @@ PlugAPI.getAuth({
     bot.on('roomJoin', function(data) {
         // data object has information on the room - list of users, song currently playing, etc.
         console.log("Joined " + ROOM + ": ", data);
-        bot.chat('Ready for Action!');
+        bot.chat('Action Time!');
          
     bot.on('userJoin', function(data) {
         bot.chat('Relax and worship with us to celebrate our king, God.');
@@ -1237,7 +1237,7 @@ PlugAPI.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 512);
+                var botphrase = Math.floor(Math.random() * 523);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2777,6 +2777,39 @@ PlugAPI.getAuth({
                         break;
                     case 512:
                         bot.chat('Me too. Kids are not invited.');
+                        break;
+                    case 513:
+                        bot.chat('[to Batman] I can see you smirking in there. X-ray vision.');
+                        break;
+                    case 514:
+                        bot.chat('How would you like to be out of Arkham right now, and given a chance to take revenge on Batman and the rest of this ungrateful city?');
+                        break;
+                    case 515:
+                        bot.chat('I have to be crazy to say no to that offer. Unless you are just one of the voices in my head. In which case, I am crazy anyway.');
+                        break;
+                    case 516:
+                        bot.chat('Uh, Batman, maybe he can help with this. I mean, he has had a lot of experience dealing with Lex Luthor.');
+                        break;
+                    case 517:
+                        bot.chat('We do not need him.');
+                        break;
+                    case 518:
+                        bot.chat('Well it seems just like now we needed him.');
+                        break;
+                    case 519:
+                        bot.chat('We would have been fine jumping off the roof.');
+                        break;
+                    case 520:
+                        bot.chat('I think we would have broken our legs.');
+                        break;
+                    case 521:
+                        bot.chat('We have broken our legs before.');
+                        break;
+                    case 522:
+                        bot.chat('Yeah, but I did not like it. I mean, if we just call him.');
+                        break;
+                    case 523:
+                        bot.chat('Robin, we can not go through life expecting Superman or anyone else to save us whenever things get tough. The only people we can rely on is ourselves.');
                         break;
                 }
                 break;
