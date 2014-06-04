@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.5.1
+Version Number: 3.6.0
 
 Debut Date: December 10, 2013
  
@@ -83,6 +83,7 @@ Commands:
 56. .1john
 57. .3john
 58. .jude
+59. .obadiah
 
 Release Notes:
  
@@ -516,3 +517,8 @@ May 31, 2014:
 
 3.5.1:
 1. New Phrases for Random Phrase Database
+
+June 4, 2014:
+
+3.6.0:
+1. Bible Verse Database for Book of Obadiah
