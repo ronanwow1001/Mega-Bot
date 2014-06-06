@@ -3,7 +3,7 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.6.0";
+var version = "3.6.1";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -42,7 +42,8 @@ PlugAPI.getAuth({
         console.log("An error has occurred: " + err);
         return;
     }
-    var bot = new PlugAPI(auth, UPDATECODE);
+    
+	var bot = new PlugAPI(auth, UPDATECODE);
 	bot.connect(ROOM);
 
     bot.on('roomJoin', function(data) {
@@ -51,7 +52,7 @@ PlugAPI.getAuth({
         bot.chat('Action Time!');
          
     bot.on('userJoin', function(data) {
-        bot.chat('Relax and worship with us to celebrate our king, God.');
+        bot.chat('Relax and worship with us.');
     });
     
     bot.on('userLeave', function(data) {
@@ -78,43 +79,24 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-            case ".command":
-            case ".list":
-            case ".commandlist":
                 bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude, .obadiah");
                 break;
             case ".hey":
-            case ".hello":
-            case ".hi":
-            case ".aloha":
                 bot.chat("Well hey there! @" + data.from);
                 break;
             case ".woot":
-            case ".awesome":
-            case ".love":
-            case ".dance":
                 bot.woot();
                 bot.chat("I love this song.");
                 break;
             case ".meh":
-            case ".lame":
-            case ".hate":
-            case ".boo":
                 bot.meh();
                 bot.chat("I hate this song.");
                 break;
             case ".props":
-            case ".propsicle":
-            case ".propstick":
-            case ".propbat":
-                console.log(bot.getDJs()[0].username, bot.getDJs(), bot.getDJs()[0]);
                 bot.chat("Epic Play! @" + bot.getDJs()[0].username);
                 bot.woot();
                 break;
             case ".calc":
-            case ".calculate":
-            case ".figure":
-            case ".function":
                 var counter = 0;
                 var counter2 = 0;
                 for (var i=0; i<qualifier.length; i++) {
@@ -151,16 +133,10 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".join":
-            case ".jump":
-            case ".up":
-            case ".go":
                 bot.waitListJoin();
                 bot.chat("Joining The Waitlist!");
                 break;
             case ".leave":
-            case ".jump down":
-            case ".down":
-            case ".stop":
                 bot.waitListLeave();
                 bot.chat("Leaving The Waitlist.");
                 break;
@@ -209,11 +185,10 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".temp": 
-            case ".temperature":
                 if (qualifier==""){
                     bot.chat("Try .temp followed by a US state, city, or zip to look up.");
                 }
-                else{
+                else {
                     google_geocoding.geocode(qualifier, function(err, location) {
                         if (location!=null){
                             weather.getWeather(location.lat, location.lng, function(err, data){
@@ -221,12 +196,12 @@ PlugAPI.getAuth({
                                     var temp="Current temperature in "+data.location.areaDescription+": "+data.currentobservation.Temp+"°F "+data.currentobservation.Weather;
                                     bot.chat(temp);
                                 }
-                                else{
+                                else {
                                     bot.chat("No temperature has been found.");
                                 }
                             });
                         }
-                        else{
+                        else {
                             bot.chat("No temperature has been found.");
                         }
                     });
@@ -470,11 +445,9 @@ PlugAPI.getAuth({
                 bot.chat("Check me out on GitHub! https://github.com/Spiderlover/Mega-Bot");
                 break;
             case ".help":
-            case ".plugdj":
                 bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
                 break;
             case ".about":
-            case ".bot":
                 bot.chat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of commands, type .commands");
                 break;
             case ".define": 
@@ -516,7 +489,6 @@ PlugAPI.getAuth({
                 });
                 break;
             case ".soundcloud": 
-            case ".sc":
                 artistChoice="";
                 if (qualifier===""){
                     artistChoice = bot.getMedia().author;
@@ -558,7 +530,6 @@ PlugAPI.getAuth({
                 });
                 break;
             case ".facebook":
-            case ".fb":
                 bot.chat("Join our Facebook group: https://www.facebook.com/groups/285521331540409/");
                 break;
             case ".wiki": 
@@ -740,7 +711,6 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".status":
-            case ".uptime":
                 var response = "";
                 var currentTime = new Date().getTime();
                 var minutes = Math.floor((currentTime - joined) / 60000);
@@ -753,7 +723,6 @@ PlugAPI.getAuth({
                 bot.chat(response);
                 break;
             case ".coin":
-            case ".flip":
                 var crowd = bot.getUsers();
                 var randomPerson = Math.floor(Math.random() * crowd.length);
                 var randomSentence = Math.floor(Math.random() * 3);
@@ -773,7 +742,6 @@ PlugAPI.getAuth({
                 }
                 break;
             case '.autotranslate': 
-            case '.auto':
                 if (qualifier!==""){
                     translateList.push(qualifier);
                     bot.chat("Autotranslating user " + qualifier + ".");
@@ -783,7 +751,6 @@ PlugAPI.getAuth({
                 }
                 break;
             case '.untranslate': 
-            case '.undo':
                 if (qualifier!==""){
                     if (translateList.indexOf(qualifier) != -1) {
                         translateList.splice(translateList.indexOf(qualifier), 1);
@@ -795,7 +762,6 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".mood":
-            case ".feel":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
                 var randomMood = Math.floor(Math.random() * 60);
@@ -986,7 +952,6 @@ PlugAPI.getAuth({
                 }
                 break;
             case ".lottery":
-            case ".giveaway":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
                 var lotteryPrizes = Math.floor(Math.random() * 30);

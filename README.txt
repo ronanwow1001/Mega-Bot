@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.6.0
+Version Number: 3.6.1
 
 Debut Date: December 10, 2013
  
@@ -522,3 +522,8 @@ June 4, 2014:
 
 3.6.0:
 1. Bible Verse Database for Book of Obadiah
+
+June 6, 2014:
+
+3.6.1:
+1. Code Tweaks
