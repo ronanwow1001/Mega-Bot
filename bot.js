@@ -3,24 +3,24 @@ var ROOM = 'christian-anything-2';
 var UPDATECODE = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.6.1";
+var version = "3.6.2";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
 var translateList = [];
 
 var lastfm = new Lastfm({
-    api_key: 'dc116468a760d9c586562d79e302aadf',
-    api_secret: 'c68c25364ccfa0961f60abe9250f8233',
-    username: 'kingzimmer',
-    password: 'Starwarskotor12345'
+    api_key: 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    api_secret: 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    username: 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    password: 'xxxxxxxxxxxxxxxxxxxxxxxx'
 });
 
 var LastfmAPI = require('lastfmapi');
 
 var lfm = new LastfmAPI({
-    api_key : 'dc116468a760d9c586562d79e302aadf',
-    secret : 'c68c25364ccfa0961f60abe9250f8233'
+    api_key : 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    secret : 'xxxxxxxxxxxxxxxxxxxxxxxx'
 });
 
 var mlexer = require('math-lexer');
@@ -35,8 +35,8 @@ var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXY
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugAPI.getAuth({
-    username: 'PlugDJBot2',
-    password: 'Starwarskotor1'
+    username: 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    password: 'xxxxxxxxxxxxxxxxxxxxxxxx'
 }, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
     if(err) {
         console.log("An error has occurred: " + err);
