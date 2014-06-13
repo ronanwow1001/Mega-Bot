@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.6.2
+Version Number: 3.7.0
 
 Debut Date: December 10, 2013
  
@@ -84,6 +84,7 @@ Commands:
 57. .3john
 58. .jude
 59. .obadiah
+60. .titus
 
 Release Notes:
  
@@ -532,3 +533,9 @@ June 7, 2014:
 
 3.6.2:
 1. Removed My Login Info for the Bot
+
+June 13, 2014:
+
+3.7.0:
+1. Bible Verse Database for Book of Titus
+2. Code Tweaks

@@ -1,9 +1,9 @@
-var PlugAPI = require('./plugapi');
-var ROOM = 'christian-anything-2';
-var UPDATECODE = 'h90'; 
+var plugapi = require('./plugapi');
+var room = 'christian-anything-2';
+var updatecode = 'h90';
 
 var Lastfm = require('simple-lastfm');
-var version = "3.6.2";
+var version = "3.7.0";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -34,21 +34,21 @@ var time = require('time');
 var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXYbYnioSklbU0CSRM5gBBhag4piJ9F+9M="}); 
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
-PlugAPI.getAuth({
-    username: 'xxxxxxxxxxxxxxxxxxxxxxxx',
-    password: 'xxxxxxxxxxxxxxxxxxxxxxxx'
+plugapi.getAuth({
+    username: 'PlugDJBot2',
+    password: 'Starwarskotor1'
 }, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
     if(err) {
         console.log("An error has occurred: " + err);
         return;
     }
     
-	var bot = new PlugAPI(auth, UPDATECODE);
-	bot.connect(ROOM);
+	var bot = new plugapi(auth, updatecode);
+	bot.connect(room);
 
     bot.on('roomJoin', function(data) {
         // data object has information on the room - list of users, song currently playing, etc.
-        console.log("Joined " + ROOM + ": ", data);
+        console.log("Joined " + room + ": ", data);
         bot.chat('Action Time!');
          
     bot.on('userJoin', function(data) {
@@ -60,7 +60,7 @@ PlugAPI.getAuth({
     });
     
     bot.on('djAdvance', function(data) {
-        bot.chat(bot.getDJs()[0].username + " - " + "is now playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
+        bot.chat(bot.getDJs()[0].username + " - " + "is playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
     });
     
     bot.on('chat', function(data) {
@@ -79,7 +79,7 @@ PlugAPI.getAuth({
             switch (command)
             {
             case ".commands":
-                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude, .obadiah");
+                bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude, .obadiah, .titus");
                 break;
             case ".hey":
                 bot.chat("Well hey there! @" + data.from);
@@ -3409,6 +3409,152 @@ PlugAPI.getAuth({
                         break;
                     case 20:
                         bot.chat('Obadiah 1:21: Saviors shall go up to Mount Zion to rule Mount Esau, and the kingdom shall be the Lords.');
+                        break;
+                }
+                break;
+			case ".titus":
+            case ".Titus":
+                crowd = bot.getUsers();
+                randomPerson = Math.floor(Math.random() * crowd.length);
+                var Titus = Math.floor(Math.random() * 45);
+                switch(Titus){
+                    case 0:
+                        bot.chat('Titus 1:1: Paul, a servant of God and an apostle of Jesus Christ, for the sake of the faith of the elect of God and their knowledge of the truth, which accords with godliness,');
+                        break;
+                    case 1:
+                        bot.chat('Titus 1:2: in hope of eternal life, which God, who never lies, promised before the ages began');
+                        break;
+                    case 2:
+                        bot.chat('Titus 1:3: and at the proper time manifested in his word through the preaching with which I have been entrusted by the command of God our Savior;');
+                        break;
+                    case 3:
+                        bot.chat('Titus 1:4: To Titus, my true child in a common faith: Grace and peace from God the Father and Christ Jesus our Savior.');
+                        break;
+                    case 4:
+                        bot.chat('Titus 1:5: This is why I left you in Crete, so that you might put what remained into order, and appoint elders in every town as I directed you—');
+                        break;
+                    case 5:
+                        bot.chat('Titus 1:6: if anyone is above reproach, the husband of one wife, and his children are believers and not open to the charge of debauchery or insubordination.');
+                        break;
+                    case 6:
+                        bot.chat('Titus 1:7: For an overseer, as the steward of God, must be above reproach. He must not be arrogant or quick-tempered or a drunkard or violent or greedy for gain,');
+                        break;
+                    case 7:
+                        bot.chat('Titus 1:8: but hospitable, a lover of good, self-controlled, upright, holy, and disciplined.');
+                        break;
+                    case 8:
+                        bot.chat('Titus 1:9: He must hold firm to the trustworthy word as taught, so that he may be able to give instruction in sound[f] doctrine and also to rebuke those who contradict it.');
+                        break;
+                    case 9:
+                        bot.chat('Titus 1:10: For there are many who are insubordinate, empty talkers and deceivers, especially those of the circumcision party.');
+                        break;
+                    case 10:
+                        bot.chat('Titus 1:11: They must be silenced, since they are upsetting whole families by teaching for shameful gain what they ought not to teach.');
+                        break;
+                    case 11:
+                        bot.chat('Titus 1:12: One of the Cretans, a prophet of their own, said, “Cretans are always liars, evil beasts, lazy gluttons.”');
+                        break;
+                    case 12:
+                        bot.chat('Titus 1:13: This testimony is true. Therefore rebuke them sharply, that they may be sound in the faith,');
+                        break;
+                    case 13:
+                        bot.chat('Titus 1:14: not devoting themselves to Jewish myths and the commands of people who turn away from the truth.');
+                        break;
+                    case 14:
+                        bot.chat('Titus 1:15: To the pure, all things are pure, but to the defiled and unbelieving, nothing is pure; but both their minds and their consciences are defiled.');
+                        break;
+                    case 15:
+                        bot.chat('Titus 1:16: They profess to know God, but they deny him by their works. They are detestable, disobedient, unfit for any good work.');
+                        break;
+                    case 16:
+                        bot.chat('Titus 2:1: But as for you, teach what accords with sound doctrine.');
+                        break;
+                    case 17:
+                        bot.chat('Titus 2:2: Older men are to be sober-minded, dignified, self-controlled, sound in faith, in love, and in steadfastness.');
+                        break;
+                    case 18:
+                        bot.chat('Titus 2:3: Older women likewise are to be reverent in behavior, not slanderers or slaves to much wine. They are to teach what is good,');
+                        break;
+                    case 19:
+                        bot.chat('Titus 2:4: and so train the young women to love their husbands and children,');
+                        break;
+                    case 20:
+                        bot.chat('Titus 2:5: to be self-controlled, pure, working at home, kind, and submissive to their own husbands, that the word of God may not be reviled.');
+                        break;
+                    case 21:
+                        bot.chat('Titus 2:6: Likewise, urge the younger men to be self-controlled.');
+                        break;
+                    case 22:
+                        bot.chat('Titus 2:7: Show yourself in all respects to be a model of good works, and in your teaching show integrity, dignity,');
+                        break;
+                    case 23:
+                        bot.chat('Titus 2:8: and sound speech that cannot be condemned, so that an opponent may be put to shame, having nothing evil to say about us.');
+                        break;
+                    case 24:
+                        bot.chat('Titus 2:9: Bondservants are to be submissive to their own masters in everything; they are to be well-pleasing, not argumentative,');
+                        break;
+                    case 25:
+                        bot.chat('Titus 2:10: not pilfering, but showing all good faith, so that in everything they may adorn the doctrine of God our Savior.');
+                        break;
+                    case 26:
+                        bot.chat('Titus 2:11: For the grace of God has appeared, bringing salvation for all people,');
+                        break;
+                    case 27:
+                        bot.chat('Titus 2:12: training us to renounce ungodliness and worldly passions, and to live self-controlled, upright, and godly lives in the present age,');
+                        break;
+                    case 28:
+                        bot.chat('Titus 2:13: waiting for our blessed hope, the appearing of the glory of our great God and Savior Jesus Christ,');
+                        break;
+                    case 29:
+                        bot.chat('Titus 2:14: who gave himself for us to redeem us from all lawlessness and to purify for himself a people for his own possession who are zealous for good works.');
+                        break;
+                    case 30:
+                        bot.chat('Titus 2:15: Declare these things; exhort and rebuke with all authority. Let no one disregard you.');
+                        break;
+                    case 31:
+                        bot.chat('Titus 3:1: Remind them to be submissive to rulers and authorities, to be obedient, to be ready for every good work,');
+                        break;
+                    case 32:
+                        bot.chat('Titus 3:2: to speak evil of no one, to avoid quarreling, to be gentle, and to show perfect courtesy toward all people.');
+                        break;
+                    case 33:
+                        bot.chat('Titus 3:3: For we ourselves were once foolish, disobedient, led astray, slaves to various passions and pleasures, passing our days in malice and envy, hated by others and hating one another.');
+                        break;
+                    case 34:
+                        bot.chat('Titus 3:4: But when the goodness and loving kindness of God our Savior appeared,');
+                        break;
+                    case 35:
+                        bot.chat('Titus 3:5: he saved us, not because of works done by us in righteousness, but according to his own mercy, by the washing of regeneration and renewal of the Holy Spirit,');
+                        break;
+                    case 36:
+                        bot.chat('Titus 3:6: whom he poured out on us richly through Jesus Christ our Savior,');
+                        break;
+                    case 37:
+                        bot.chat('Titus 3:7: so that being justified by his grace we might become heirs according to the hope of eternal life.');
+                        break;
+                    case 38:
+                        bot.chat('Titus 3:8: The saying is trustworthy, and I want you to insist on these things, so that those who have believed in God may be careful to devote themselves to good works. These things are excellent and profitable for people.');
+                        break;
+                    case 39:
+                        bot.chat('Titus 3:9: But avoid foolish controversies, genealogies, dissensions, and quarrels about the law, for they are unprofitable and worthless.');
+                        break;
+                    case 40:
+                        bot.chat('Titus 3:10: As for a person who stirs up division, after warning him once and then twice, have nothing more to do with him,');
+                        break;    
+                    case 41:
+                        bot.chat('Titus 3:11: knowing that such a person is warped and sinful; he is self-condemned.');
+                        break;
+                    case 42:
+                        bot.chat('Titus 3:12: When I send Artemas or Tychicus to you, do your best to come to me at Nicopolis, for I have decided to spend the winter there.');
+                        break;
+                    case 43:
+                        bot.chat('Titus 3:13: Do your best to speed Zenas the lawyer and Apollos on their way; see that they lack nothing.');
+                        break;
+                    case 44:
+                        bot.chat('Titus 3:14: And let our people learn to devote themselves to good works, so as to help cases of urgent need, and not be unfruitful.');
+                        break;
+                    case 45:
+                        bot.chat('Titus 3:15: All who are with me send greetings to you. Greet those who love us in the faith. Grace be with you all.');
                         break;
                 }
                 break;
