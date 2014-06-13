@@ -35,8 +35,8 @@ var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXY
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 plugapi.getAuth({
-    username: 'PlugDJBot2',
-    password: 'Starwarskotor1'
+    username: 'xxxxxxxxxxxxxxxxxxxxxxxx',
+    password: 'xxxxxxxxxxxxxxxxxxxxxxxx'
 }, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
     if(err) {
         console.log("An error has occurred: " + err);
