@@ -3,7 +3,7 @@ var room = 'christian-anything-2';
 var updatecode = 'h90';
 
 var Lastfm = require('simple-lastfm');
-var version = "3.7.0";
+var version = "3.7.1";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -1201,7 +1201,7 @@ plugapi.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 523);
+                var botphrase = Math.floor(Math.random() * 530);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2774,6 +2774,27 @@ plugapi.getAuth({
                         break;
                     case 523:
                         bot.chat('Robin, we can not go through life expecting Superman or anyone else to save us whenever things get tough. The only people we can rely on is ourselves.');
+                        break;
+                    case 524:
+                        bot.chat('[hears a Muzak version of Superman theme] What is that song? Sounds familiar.');
+                        break;
+                    case 525:
+                        bot.chat('I do not listen to music.');
+                        break;
+                    case 526:
+                        bot.chat('Wait a second. What are you going to do the Dynamic Dumb-Dumb?');
+                        break;
+                    case 527:
+                        bot.chat('Joker, I have an election to win.');
+                        break;
+                    case 528:
+                        bot.chat('But who will I play with if he is dead?');
+                        break;
+                    case 529:
+                        bot.chat('Robin is still around. If we eliminate Batman, Robin will probably put on the suit and say he is Batman.');
+                        break;
+                    case 530:
+                        bot.chat('So, Bats, you need a little help rebuilding the Batcave?');
                         break;
                 }
                 break;

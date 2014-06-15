@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.7.0
+Version Number: 3.7.1
 
 Debut Date: December 10, 2013
  
@@ -539,3 +539,8 @@ June 13, 2014:
 3.7.0:
 1. Bible Verse Database for Book of Titus
 2. Code Tweaks
+
+June 15, 2014:
+
+3.7.1:
+1. New Phrases for Random Phrase Database
