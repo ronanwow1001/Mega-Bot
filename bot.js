@@ -3,7 +3,7 @@ var room = 'christian-anything-2';
 var updatecode = 'h90';
 
 var Lastfm = require('simple-lastfm');
-var version = "3.7.1";
+var version = "3.7.2";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -1201,7 +1201,7 @@ plugapi.getAuth({
             case "@Mega-Bot":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
-                var botphrase = Math.floor(Math.random() * 530);
+                var botphrase = Math.floor(Math.random() * 540);
                 switch(botphrase){
                     case 0:
                         bot.chat('Exterminate, Exterminate');
@@ -2795,6 +2795,36 @@ plugapi.getAuth({
                         break;
                     case 530:
                         bot.chat('So, Bats, you need a little help rebuilding the Batcave?');
+                        break;
+                    case 531:
+                        bot.chat('No, Robin and I...');
+                        break;
+                    case 532:
+                        bot.chat('Yes, we like some help. Say it with me.');
+                        break;
+                    case 533:
+                        bot.chat('Okay, we probably could use some.');
+                        break;
+                    case 534:
+                        bot.chat('Are you asking me? Are you asking me to help you rebuild the Batcave?');
+                        break;
+                    case 535:
+                        bot.chat('Well, no I was asking Green Lantern.');
+                        break;
+                    case 536:
+                        bot.chat('I do not think this is your colour.');
+                        break;
+                    case 537:
+                        bot.chat('Riddle me this, what is green and is in your wallet?');
+                        break;
+                    case 538:
+                        bot.chat('Uh, money?');
+                        break;
+                    case 539:
+                        bot.chat('[Steals Money] Not anymore!');
+                        break;
+                    case 540:
+                        bot.chat('Hide and Seek, Batman! [Runs away to hide]');
                         break;
                 }
                 break;
