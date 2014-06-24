@@ -1,26 +1,26 @@
 var plugapi = require('./plugapi');
 var room = 'christian-anything-2';
-var updatecode = 'h90';
+var updatecode = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.7.2";
+var version = "3.7.3";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
 var translateList = [];
 
 var lastfm = new Lastfm({
-    api_key: 'xxxxxxxxxxxxxxxxxxxxxxxx',
-    api_secret: 'xxxxxxxxxxxxxxxxxxxxxxxx',
-    username: 'xxxxxxxxxxxxxxxxxxxxxxxx',
-    password: 'xxxxxxxxxxxxxxxxxxxxxxxx'
+    api_key: 'dc116468a760d9c586562d79e302aadf',
+    api_secret: 'c68c25364ccfa0961f60abe9250f8233',
+    username: 'kingzimmer',
+    password: 'Starwarskotor12345'
 });
 
 var LastfmAPI = require('lastfmapi');
 
 var lfm = new LastfmAPI({
-    api_key : 'xxxxxxxxxxxxxxxxxxxxxxxx',
-    secret : 'xxxxxxxxxxxxxxxxxxxxxxxx'
+    api_key : 'dc116468a760d9c586562d79e302aadf',
+    secret : 'c68c25364ccfa0961f60abe9250f8233'
 });
 
 var mlexer = require('math-lexer');
@@ -35,8 +35,8 @@ var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXY
 
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 plugapi.getAuth({
-    username: 'xxxxxxxxxxxxxxxxxxxxxxxx',
-    password: 'xxxxxxxxxxxxxxxxxxxxxxxx'
+    username: 'PlugDJBot2',
+    password: 'Starwarskotor1'
 }, function(err, auth) { // if err is defined, an error occurred, most likely incorrect login
     if(err) {
         console.log("An error has occurred: " + err);
@@ -442,7 +442,7 @@ plugapi.getAuth({
                 });
                 break;
             case ".github":
-                bot.chat("Check me out on GitHub! https://github.com/Spiderlover/Mega-Bot");
+                bot.chat("GitHub: https://github.com/Spiderlover/Mega-Bot");
                 break;
             case ".help":
                 bot.chat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
@@ -3463,7 +3463,7 @@ plugapi.getAuth({
                         break;
                 }
                 break;
-			case ".titus":
+            case ".titus":
             case ".Titus":
                 crowd = bot.getUsers();
                 randomPerson = Math.floor(Math.random() * crowd.length);
