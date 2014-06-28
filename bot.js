@@ -3,7 +3,7 @@ var room = 'christian-anything-2';
 var updatecode = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.7.3";
+var version = "3.8.0";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -47,14 +47,13 @@ plugapi.getAuth({
 	bot.connect(room);
 
     bot.on('roomJoin', function(data) {
-        // data object has information on the room - list of users, song currently playing, etc.
-        console.log("Joined " + room + ": ", data);
-        bot.chat('Action Time!');
-         
+		console.log("Joined " + room + ": ", data);
+        bot.chat("Action Time!");
+    
     bot.on('userJoin', function(data) {
         bot.chat('Relax and worship with us.');
-    });
-    
+    });    
+       
     bot.on('userLeave', function(data) {
         bot.chat('Bye, have a wonderful day!');
     });
@@ -134,15 +133,15 @@ plugapi.getAuth({
                 break;
             case ".join":
                 bot.waitListJoin();
-                bot.chat("Joining The Waitlist!");
+                bot.chat("Joined Waitlist!");
                 break;
             case ".leave":
                 bot.waitListLeave();
-                bot.chat("Leaving The Waitlist.");
+                bot.chat("Left Waitlist.");
                 break;
             case ".skip":
                 bot.skipSong(bot.getDJs()[0].id);
-                bot.chat("Skipping The Song!");
+                bot.chat("Skipped Song!");
                 break;
             case ".forecast": 
                 if (qualifier===""){
