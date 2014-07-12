@@ -51,11 +51,11 @@ plugapi.getAuth({
         bot.chat("Action Time!");
     
     bot.on('userJoin', function(data) {
-        bot.chat('Relax and worship with us.');
+        bot.chat('Relax with us.');
     });    
        
     bot.on('userLeave', function(data) {
-        bot.chat('Bye, have a wonderful day!');
+        bot.chat('Have a wonderful day!');
     });
     
     bot.on('djAdvance', function(data) {
