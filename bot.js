@@ -3,7 +3,7 @@ var room = 'christian-anything-2';
 var updatecode = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.8.0";
+var version = "3.8.1";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -89,10 +89,10 @@ plugapi.getAuth({
                 break;
             case ".meh":
                 bot.meh();
-                bot.chat("I hate this song.");
+                bot.chat("I do not like this song.");
                 break;
             case ".props":
-                bot.chat("Epic Play! @" + bot.getDJs()[0].username);
+                bot.chat("Amazing Play! @" + bot.getDJs()[0].username);
                 bot.woot();
                 break;
             case ".calc":
