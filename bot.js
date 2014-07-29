@@ -3,7 +3,7 @@ var room = 'christian-anything-2';
 var updatecode = 'h90'; 
 
 var Lastfm = require('simple-lastfm');
-var version = "3.8.1";
+var version = "3.9.0";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -47,18 +47,19 @@ plugapi.getAuth({
 	bot.connect(room);
 
     bot.on('roomJoin', function(data) {
-		console.log("Joined " + room + ": ", data);
+        console.log("Joined " + room + ": ", data);
         bot.chat("Action Time!");
     
     bot.on('userJoin', function(data) {
-        bot.chat('Relax with us.');
+        bot.chat('Relax and worship with us.');
     });    
        
     bot.on('userLeave', function(data) {
-        bot.chat('Have a wonderful day!');
+        bot.chat('Bye, have a wonderful day!');
     });
     
     bot.on('djAdvance', function(data) {
+        bot.chat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.curates + " :thumbsdown: " + data.lastPlay.score.negative);
         bot.chat(bot.getDJs()[0].username + " - " + "is playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
     });
     
@@ -89,10 +90,10 @@ plugapi.getAuth({
                 break;
             case ".meh":
                 bot.meh();
-                bot.chat("I do not like this song.");
+                bot.chat("I hate this song.");
                 break;
             case ".props":
-                bot.chat("Amazing Play! @" + bot.getDJs()[0].username);
+                bot.chat("Epic Play! @" + bot.getDJs()[0].username);
                 bot.woot();
                 break;
             case ".calc":
