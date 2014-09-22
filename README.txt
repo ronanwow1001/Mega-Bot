@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 3.9.0
+Version Number: 4.0.0
 
 Debut Date: December 10, 2013
  
@@ -569,3 +569,8 @@ July 29, 2014:
 
 3.9.0:
 1. Tweaked Song Stats Code, so now the bot says the stats for the last song and the info for the next song.
+
+September 22, 2014:
+
+4.0.0:
+1. Support for new Plug.DJ Update
