@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.0.0";
+var version = "4.0.1";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -444,10 +444,10 @@ var bot = new plugapi({
                 });
                 break;
             case ".github":
-                bot.sendChat("GitHub: https://github.com/Spiderlover/Mega-Bot");
+                bot.sendChat("https://github.com/Spiderlover/Mega-Bot");
                 break;
             case ".help":
-                bot.sendChat("Welcome to Plug.DJ! You can populate your playlists by finding songs with YouTube and Soundcloud.");
+                bot.sendChat("You can populate your playlists by finding songs with YouTube and Soundcloud.");
                 break;
             case ".about":
                 bot.sendChat("Hey, I'm Mega-Bot, your personal room-control bot. My master, God's Vegetables, created me. For a list of commands, type .commands");
@@ -532,7 +532,7 @@ var bot = new plugapi({
                 });
                 break;
             case ".facebook":
-                bot.sendChat("Join our Facebook group: https://www.facebook.com/groups/285521331540409/");
+                bot.sendChat("https://www.facebook.com/groups/285521331540409/");
                 break;
             case ".wiki": 
                 if (qualifier!==""){
@@ -3071,10 +3071,10 @@ var bot = new plugapi({
                         bot.sendChat('Philemon 1:8: Accordingly, though I am bold enough in Christ to command you to do what is required,');
                         break;
                     case 8:
-                        bot.sendChat('Philemon 1:9: yet for loves sake I prefer to appeal to you—I, Paul, an old man and now a prisoner also for Christ Jesus—');
+                        bot.sendChat('Philemon 1:9: yet for loves sake I prefer to appeal to you — I, Paul, an old man and now a prisoner also for Christ Jesus—');
                         break;
                     case 9:
-                        bot.sendChat('Philemon 1:10: I appeal to you for my child, Onesimus,[b] whose father I became in my imprisonment.');
+                        bot.sendChat('Philemon 1:10: I appeal to you for my child, Onesimus, whose father I became in my imprisonment.');
                         break;
                     case 10:
                         bot.sendChat('Philemon 1:11: (Formerly he was useless to you, but now he is indeed useful to you and to me.)');
@@ -3092,7 +3092,7 @@ var bot = new plugapi({
                         bot.sendChat('Philemon 1:15: For this perhaps is why he was parted from you for a while, that you might have him back forever,');
                         break;
                     case 15:
-                        bot.sendChat('Philemon 1:16: no longer as a bondservant[c] but more than a bondservant, as a beloved brother—especially to me, but how much more to you, both in the flesh and in the Lord.');
+                        bot.sendChat('Philemon 1:16: no longer as a bondservant but more than a bondservant, as a beloved brother—especially to me, but how much more to you, both in the flesh and in the Lord.');
                         break;
                     case 16:
                         bot.sendChat('Philemon 1:17: So if you consider me your partner, receive him as you would receive me.');
