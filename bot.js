@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.0.1";
+var version = "4.0.2";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -32,14 +32,12 @@ var request = require('request');
 var time = require('time'); 
 var client = new MsTranslator({client_id:"MegaBot", client_secret: "BUjjotOXGYXYbYnioSklbU0CSRM5gBBhag4piJ9F+9M="}); 
 
-
-    
 var bot = new plugapi({
     "email": "xxxxxxxxxxxxxxxxxxxxxxxx",
     "password": "xxxxxxxxxxxxxxxxxxxxxxxx"
 });
 	
-	bot.connect('room');
+	bot.connect(room);
 
     var reconnect = function() { 
     bot.connect(room); 
@@ -48,24 +46,7 @@ var bot = new plugapi({
     bot.on('close', reconnect);
     bot.on('error', reconnect);
 
-    bot.on('roomJoin', function(data) {
-        console.log("Joined " + room);
-        bot.sendChat("Action Time!");
-    
-    bot.on('userJoin', function(data) {
-        bot.sendChat('Relax and worship with us.');
-    });    
-       
-    bot.on('userLeave', function(data) {
-        bot.sendChat('Bye, have a wonderful day!');
-    });
-    
-    bot.on('advance', function(data) {
-        //bot.sendChat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.curates + " :thumbsdown: " + data.lastPlay.score.negative);
-        //bot.sendChat(bot.getDJs()[0].username + " - " + "is playing" + " - " + bot.getMedia().title + " - " + bot.getMedia().author);
-    });
-    
-    bot.on('chat', function(data) {
+bot.on('chat', function(data) {
         //if (data.from == 'christian-anything-2') {
             var command = data.message.split(' ')[0];
             var firstIndex = data.message.indexOf('');
@@ -3666,4 +3647,3 @@ var bot = new plugapi({
                 break;
             }
         });
-    });
