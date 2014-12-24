@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 4.0.2
+Version Number: 4.1.0
 
 Debut Date: December 10, 2013
  
@@ -584,3 +584,8 @@ December 23, 2014:
 
 4.0.2:
 1. Code Improvements
+
+December 24, 2014:
+
+4.1.0:
+1. Tweaks and Improvements
