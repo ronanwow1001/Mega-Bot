@@ -184,7 +184,7 @@ var mehs = 4;
 bot.on('vote', function(data) {
     roomScore = bot.getRoomScore();
     if (roomScore.negative > mehs && setmehs){
-        bot.chat("@" + dj.username + " Your tune does not fall within the established genre of the Chillout Mixer. Please type .noplay or .yesplay for more info.");
+        bot.chat("@" + dj.username + " Your tune does not fall within the established genre of Christian Anything.");
         bot.moderateForceSkip(dj.id);
     }
 });
