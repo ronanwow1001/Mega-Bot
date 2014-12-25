@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.1.1";
+var version = "4.1.2";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -47,10 +47,137 @@ var bot = new plugapi({
     bot.on('error', reconnect);
 
     
+	var media = null;
+    var waitlist = null;
     var dj = null;
+    var staff = null;
+    var users = null;
     var roomScore = null;
 
+//Event which triggers when the bot joins the room
+bot.on('roomJoin', function(data) {
+    bot.getMedia(function(plugMedia){
+        media = plugMedia;
+    });
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+    });
+    bot.getDJ(function(plugDJ){
+        dj = plugDJ;
+    });
+    bot.getStaff(function(plugStaff){
+        staff = plugStaff;
+    });
+    bot.getUsers(function(plugUsers){
+        users = plugUsers;
+    });
+    console.log("I'm live!");
+});
 
+//Event which triggers when new DJ starts playing a song
+bot.on('advance', function(data) {
+    bot.getMedia(function(plugMedia){
+        media = plugMedia;
+    });
+    bot.getDJ(function(plugDJ){
+        dj = plugDJ;
+    });
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+    });
+    var noSpaceName = media.author.toLowerCase().replace(/ +/g, "");
+    var wordCheck = false;
+    var authorWords = media.author.toLowerCase().split(' ');
+    for (var i=0; i < authorWords.length; i++){
+        //console.log(authorWords[i]);
+        if (dj.username.toLowerCase().indexOf(authorWords[i]) > -1 && authorWords[i].match(/[a-zA-Z]/g)){
+            wordCheck = true;
+        }
+    }
+    //console.log("No Space Name: " + noSpaceName + ", Word Check: " + wordCheck + ", Author: " + dj.username.toLowerCase());
+    if (dj.username.toLowerCase() == media.author.toLowerCase() || dj.username.toLowerCase() == noSpaceName || wordCheck){
+        var link = 'http://api.soundcloud.com/users.json?q=' + media.author + '&consumer_key=apigee';
+        request(link, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var info = JSON.parse(body);
+                if (info[0] != undefined){
+                    bot.chat(info[0].username + ": " + info[0].permalink_url);
+                }
+            }
+        });
+    }
+    // if (data.lastPlay.score != null) {
+    //     bot.chat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.grabs + " :thumbsdown: " + data.lastPlay.score.negative);
+    //     bot.chat(":musical_note: " + data.dj.username + " started playing \"" + data.media.title + "\" by " + data.media.author + " :musical_note:");
+    // }
+});
+
+//Event which triggers when the waitlist changes
+bot.on('waitListUpdate', function(data) {
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+    });
+    bot.getStaff(function(plugStaff){
+        staff = plugStaff;
+    });
+    bot.getUsers(function(plugUsers){
+        users = plugUsers;
+    });
+});
+
+//Event which triggers when user skips his song
+bot.on('skip', function(data) {
+    bot.getMedia(function(plugMedia){
+        media = plugMedia;
+    });
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+    });
+    bot.getDJ(function(plugDJ){
+        dj = plugDJ;
+    });
+    bot.getStaff(function(plugStaff){
+        staff = plugStaff;
+    });
+    bot.getUsers(function(plugUsers){
+        users = plugUsers;
+    });
+});
+
+//Event which triggers when a mod skips the song
+bot.on('modSkip', function(data) {
+    bot.getMedia(function(plugMedia){
+        media = plugMedia;
+    });
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+    });
+    bot.getDJ(function(plugDJ){
+        dj = plugDJ;
+    });
+    bot.getStaff(function(plugStaff){
+        staff = plugStaff;
+    });
+    bot.getUsers(function(plugUsers){
+        users = plugUsers;
+    });
+});
+
+//Still figuring out how this works
+bot.on('floodChat', function(data) {
+    bot.chat("flood!");
+});
+
+//Event which triggers with a user joins the room
+bot.on('userJoin', function(data) {
+    //console.log(data);
+    bot.getStaff(function(plugStaff){
+        staff = plugStaff;
+    });
+    bot.getUsers(function(plugUsers){
+        users = plugUsers;
+    });
+});
 
 //Event which triggers when the current song receives 5 mehs, skips the song
 var setmehs = false;
