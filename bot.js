@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.1.2";
+var version = "4.2.0";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -185,7 +185,7 @@ var mehs = 4;
 bot.on('vote', function(data) {
     roomScore = bot.getRoomScore();
     if (roomScore.negative > mehs && setmehs){
-        bot.chat("@" + dj.username + " Your tune does not fall within the established genre of Christian Anything");
+        bot.chat("@" + dj.username + " Your tune does not fall within the established genre of Christian Anything. Please type .noplay or .yesplay for more info.");
         bot.moderateForceSkip(dj.id);
     }
 });
@@ -206,7 +206,7 @@ bot.on('chat', function(data) {
             switch (command)
             {
             case ".commands":
-                bot.sendChat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude, .obadiah, .titus");
+                bot.sendChat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude, .obadiah, .titus, .yesplay, .noplay, .warn, .banuser");
                 break;
             case ".hey":
                 bot.sendChat("Well hey there! @" + data.from);
@@ -218,6 +218,31 @@ bot.on('chat', function(data) {
             case ".meh":
                 bot.meh();
                 bot.sendChat("I hate this song.");
+                break;
+            case ".yesplay": //Gives the room criteria for acceptable genres
+                bot.chat("Types of music we encourage in Christian Anything is music that is written by Christian bands and is about our savior, God.");
+                break;
+            case ".noplay": //Gives the room criteria for unacceptable genres
+                bot.chat("DO NOT PLAY: Any other genere of music that is not Christian music and is not written by a Christian band. Repeated failure to obey these rules may = ban.");
+                break;   
+            case ".warn": //Skips a user playing an off-genre song
+                for (var i=0; i<staff.length; i++){
+                    if (staff[i].username == data.un && staff[i].role > 1){
+                        bot.chat("@" + dj.username + " Your tune does not fall within the established genre of Christian Anything. Please type .noplay or .yesplay for more info.");
+                        bot.moderateForceSkip(dj.id);
+                    }
+                }
+                break;
+            case ".banuser": //Bans a user from the room permanently with .banuser [givenUser]
+                for (var i=0; i<staff.length; i++){
+                    if (staff[i].username == data.un && staff[i].role > 1){
+                        for (var j=0; j<users.length; j++){
+                            if (users[j].username == qualifier){
+                                bot.moderateBanUser(users[j].id);
+                            }
+                        }
+                    }
+                }
                 break;
             case ".props":
                 bot.sendChat("Epic Play! @" + bot.getDJs()[0].username);
