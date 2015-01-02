@@ -601,5 +601,5 @@ December 25, 2014:
 
 January 2, 2015:
 
-4.5.0:
+4.2.0:
 1. New Commands
