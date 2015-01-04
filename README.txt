@@ -3,7 +3,7 @@ Mega-Bot
 
 Plug.DJ Bot
 
-Version Number: 4.2.0
+Version Number: 4.2.1
 
 Debut Date: December 10, 2013
  
@@ -89,6 +89,8 @@ Commands:
 62. .noplay
 63. .warn
 64. .banuser
+65. .move
+66. .front
 
 Release Notes:
  
@@ -603,3 +605,9 @@ January 2, 2015:
 
 4.2.0:
 1. New Commands
+
+January 4, 2015:
+
+4.2.1:
+1. New Commands
+2. Code Maintenance
