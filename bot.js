@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.2.1";
+var version = "4.2.2";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -37,7 +37,7 @@ var bot = new plugapi({
     "password": "xxxxxxxxxxxxxxxxxxxxxxxx"
 });
 	
-		bot.connect(room);
+bot.connect(room);
 
 var reconnect = function() {
   bot.connect(room);
