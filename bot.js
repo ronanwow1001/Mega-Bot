@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.2.2";
+var version = "4.3.0";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -46,137 +46,90 @@ var reconnect = function() {
 bot.on('close', reconnect);
 bot.on('error', reconnect);
 
-
 var media = null;
 var waitlist = null;
 var dj = null;
+var admins = null;
 var staff = null;
 var users = null;
 var roomScore = null;
+var afkList = {};
+var autoskipEnabled = false;
+var waitlistArray = [];
+var waitlistUsernames = [];
 
-//Event which triggers when the bot joins the room
 bot.on('roomJoin', function(data) {
-  bot.getMedia(function(plugMedia) {
-    media = plugMedia;
-  });
-  bot.getWaitList(function(plugWaitlist) {
-    waitlist = plugWaitlist;
-  });
-  bot.getDJ(function(plugDJ) {
-    dj = plugDJ;
-  });
-  bot.getStaff(function(plugStaff) {
-    staff = plugStaff;
-  });
-  bot.getUsers(function(plugUsers) {
-    users = plugUsers;
-  });
-  console.log("I'm live!");
-});
-
-//Event which triggers when new DJ starts playing a song
-bot.on('advance', function(data) {
-  bot.getMedia(function(plugMedia) {
-    media = plugMedia;
-  });
-  bot.getDJ(function(plugDJ) {
-    dj = plugDJ;
-  });
-  bot.getWaitList(function(plugWaitlist) {
-    waitlist = plugWaitlist;
-  });
-  var noSpaceName = media.author.toLowerCase().replace(/ +/g, "");
-  var wordCheck = false;
-  var authorWords = media.author.toLowerCase().split(' ');
-  for (var i = 0; i < authorWords.length; i++) {
-    //console.log(authorWords[i]);
-    if (dj.username.toLowerCase().indexOf(authorWords[i]) > -1 && authorWords[i].match(/[a-zA-Z]/g)) {
-      wordCheck = true;
-    }
-  }
-  //console.log("No Space Name: " + noSpaceName + ", Word Check: " + wordCheck + ", Author: " + dj.username.toLowerCase());
-  if (dj.username.toLowerCase() == media.author.toLowerCase() || dj.username.toLowerCase() == noSpaceName || wordCheck) {
-    var link = 'http://api.soundcloud.com/users.json?q=' + media.author + '&consumer_key=apigee';
-    request(link, function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        if (info[0] != undefined) {
-          bot.chat(info[0].username + ": " + info[0].permalink_url);
+    bot.getMedia(function(plugMedia){
+        media = plugMedia;
+        if (media != null){
+            bot.getTimeRemaining(function(timeRemaining){
+                var timer = setInterval(
+                    function() {
+                        if (autoskipEnabled){
+                            bot.moderateForceSkip(dj.id);
+                            bot.chat("Autoskip!");
+                        }
+                        clearInterval(timer);
+                    }, (timeRemaining * 1000)
+                );
+            });
         }
-      }
     });
-  }
-  // if (data.lastPlay.score != null) {
-  //     bot.chat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.grabs + " :thumbsdown: " + data.lastPlay.score.negative);
-  //     bot.chat(":musical_note: " + data.dj.username + " started playing \"" + data.media.title + "\" by " + data.media.author + " :musical_note:");
-  // }
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+        waitlistArray.push(waitlist);
+        for (var j=0; j<waitlist.length; j++){
+            waitlistUsernames.push(waitlist[j].username);
+        }
+    });
+    bot.getDJ(function(plugDJ){
+        dj = plugDJ;
+        if (dj == null){
+            bot.djJoin();
+            bot.chat("Autojoining booth!");
+        }
+    });
+    bot.getStaff(function(plugStaff){
+        staff = plugStaff;
+    });
+    bot.getUsers(function(plugUsers){
+        users = plugUsers;
+    });
+    bot.getAdmins(function(plugAdmins){
+        admins = plugAdmins;
+    });
+    console.log("I'm live!");
 });
 
-//Event which triggers when the waitlist changes
-bot.on('waitListUpdate', function(data) {
-  bot.getWaitList(function(plugWaitlist) {
-    waitlist = plugWaitlist;
-  });
-  bot.getStaff(function(plugStaff) {
-    staff = plugStaff;
-  });
-  bot.getUsers(function(plugUsers) {
-    users = plugUsers;
-  });
-});
-
-//Event which triggers when user skips his song
-bot.on('skip', function(data) {
-  bot.getMedia(function(plugMedia) {
-    media = plugMedia;
-  });
-  bot.getWaitList(function(plugWaitlist) {
-    waitlist = plugWaitlist;
-  });
-  bot.getDJ(function(plugDJ) {
-    dj = plugDJ;
-  });
-  bot.getStaff(function(plugStaff) {
-    staff = plugStaff;
-  });
-  bot.getUsers(function(plugUsers) {
-    users = plugUsers;
-  });
-});
-
-//Event which triggers when a mod skips the song
-bot.on('modSkip', function(data) {
-  bot.getMedia(function(plugMedia) {
-    media = plugMedia;
-  });
-  bot.getWaitList(function(plugWaitlist) {
-    waitlist = plugWaitlist;
-  });
-  bot.getDJ(function(plugDJ) {
-    dj = plugDJ;
-  });
-  bot.getStaff(function(plugStaff) {
-    staff = plugStaff;
-  });
-  bot.getUsers(function(plugUsers) {
-    users = plugUsers;
-  });
-});
-
-//Still figuring out how this works
-bot.on('floodChat', function(data) {
-  bot.chat("flood!");
-});
-
-//Event which triggers with a user joins the room
-bot.on('userJoin', function(data) {
-  //console.log(data);
-  bot.getStaff(function(plugStaff) {
-    staff = plugStaff;
-  });
-  bot.getUsers(function(plugUsers) {
-    users = plugUsers;
-  });
+bot.on('advance', function(data) {
+    bot.getMedia(function(plugMedia){
+        media = plugMedia;
+        if (media != null){
+            var timer = setInterval(
+                function() {
+                    if (autoskipEnabled){
+                        bot.moderateForceSkip(dj.id);
+                        bot.chat("Autoskip!");
+                    }
+                    clearInterval(timer);
+                }, (media.duration * 1000)
+            );
+        }
+    });
+    bot.getWaitList(function(plugWaitlist){
+        waitlist = plugWaitlist;
+    });
+    bot.getDJ(function(plugDJ){
+        dj = plugDJ;
+        if (dj == null){
+            bot.djJoin();
+            bot.chat("Autojoining booth!");
+        }
+    });
+    // if (data.lastPlay.score != null) {
+    //     bot.chat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.grabs + " :thumbsdown: " + data.lastPlay.score.negative);
+    //     bot.chat(":musical_note: " + data.dj.username + " started playing \"" + data.media.title + "\" by " + data.media.author + " :musical_note:");
+    // }
 });
 
 //Event which triggers when the current song receives 5 mehs, skips the song
@@ -191,18 +144,13 @@ bot.on('vote', function(data) {
 });
 
 bot.on('chat', function(data) {
-  var command = data.message.split(' ')[0];
-  var firstIndex = data.message.indexOf('');
-  var qualifier = "";
-  if (firstIndex != -1) {
-    qualifier = data.message.substring(firstIndex + 1, data.message.length);
-  }
-  qualifier = qualifier.replace(/&#39;/g, '\'');
-  qualifier = qualifier.replace(/&#34;/g, '\"');
-  qualifier = qualifier.replace(/&amp;/g, '\&');
-  qualifier = qualifier.replace(/&lt;/gi, '\<');
-  qualifier = qualifier.replace(/&gt;/gi, '\>');
-  switch (command) {
+    var command=data.message.split(' ')[0];
+    var firstIndex=data.message.indexOf(' ');
+    var qualifier="";
+    if (firstIndex!=-1){
+        qualifier = data.message.substring(firstIndex+1, data.message.length);
+    }
+    switch (command) {
     case ".commands":
       bot.chat("List of Commands: .commands, .hey, .woot, .meh, .props, .calc, .join, .leave, .skip, .forecast, .version, .artist, .track, .genre, .github, .help, .about, .define, .grab, .facebook, .wiki, .darkside, .rank, .like, .theme, .translate, .google, .status, .coin, .mood, .autotranslate, .untranslate, .album, .similar, .events, .soundcloud, .lottery, .rules, .eggs, .pita, .8ball, Mega-bot, .songlink, .download, .votes, .ping, .temp, .songid, .title, .author, .song, .jonah, .philemon, .2john, .time, .1john, .3john, .jude, .obadiah, .titus, .yesplay, .noplay, .warn, .banuser, .move, .front");
       break;
@@ -909,7 +857,7 @@ bot.on('chat', function(data) {
           bot.chat('The current mood, that I am in, is grumpy.');
           break;
         case 1:
-          bot.chat('My mood tells me, that I feel like, I need some Christian Rock music.');
+          bot.chat('I need some Christian Rock music.');
           break;
         case 2:
           bot.chat('I feel like, I need Worship music.');
@@ -3745,7 +3693,7 @@ bot.on('chat', function(data) {
           break;
       }
       break;
-    default:
+    case 1:
       languageCodes = ["ar", "bg", "ca", "zh-CHS", "zh-CHT", "cs", "da", "nl", "en", "et", "fa", "fi", "fr", "de", "el", "ht", "he", "hi", "hu", "id", "it", "ja", "ko", "lv", "lt", "ms", "mww", "no", "pl", "pt", "ro", "ru", "sk", "sl", "es", "sv", "th", "tr", "uk", "ur", "vi"];
       languages = ['Arabic', 'Bulgarian', 'Catalan', 'Chinese', 'Chinese', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Persian (Farsi)', 'Finnish', 'French', 'German', 'Greek', 'Haitian Creole', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Latvian', 'Lithuanian', 'Malay', 'Hmong Daw', 'Norwegian', 'Polish', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Spanish', 'Swedish', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
       if (translateList.indexOf(data.from) != -1) {
@@ -3796,12 +3744,17 @@ bot.on('chat', function(data) {
           }
         }
       }
-      // bot.getMedia(function(currentMedia) { 
-      //     media = currentMedia; 
-      // });
-      // bot.getDJ(function(currentDJ) { 
-      //     dj = currentDJ; 
-      // });
       break;
+    default:
+            if (data.message.indexOf("@")!=-1){ //Checks to see if the user is afk
+                var spaceUsername = data.message.slice(data.message.indexOf("@") + 1).split(' ')[0] + " " + data.message.slice(data.message.indexOf("@") + 1).split(' ')[1];
+                if (data.un != "MegaBot" && data.message.slice(data.message.indexOf("@") + 1).split(' ')[0] in afkList){
+                    bot.chat("@" + data.un + " " + data.message.slice(data.message.indexOf("@") + 1).split(' ')[0] + " is afk: " + afkList[data.message.slice(data.message.indexOf("@") + 1).split(' ')[0]]);
+                }
+                else if (spaceUsername in afkList){
+                    bot.chat("@" + data.un + " " + spaceUsername + " is afk: " + afkList[spaceUsername]);
+                }
+            }
+            break;
   }
 });
