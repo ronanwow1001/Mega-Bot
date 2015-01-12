@@ -2,7 +2,7 @@ var plugapi = require('plugapi');
 var room = 'christian-anything-2';
  
 var Lastfm = require('simple-lastfm');
-var version = "4.3.0";
+var version = "4.4.0";
 
 var theme = "The current theme for this room is Christian Music.";
 var joined = new Date().getTime();
@@ -262,17 +262,29 @@ bot.on('chat', function(data) {
         bot.chat("/me does not compute correctly.");
       }
       break;
-    case ".join":
-      bot.waitListJoin();
-      bot.chat("Joined Waitlist!");
+    case ".join": 
+      for (var i=0; i<staff.length; i++){
+        if (staff[i].username == data.un && staff[i].role > 1){
+          bot.djJoin();
+          bot.chat("Joining waitlist!");
+        }
+      }
       break;
-    case ".leave":
-      bot.waitListLeave();
-      bot.chat("Left Waitlist.");
+    case ".leave": 
+      for (var i=0; i<staff.length; i++){
+        if (staff[i].username == data.un && staff[i].role > 1){
+          bot.djLeave();
+          bot.chat("Leaving waitlist.");
+        }
+      }
       break;
-    case ".skip":
-      bot.skipSong(bot.getDJs()[0].id);
-      bot.chat("Skipped Song!");
+    case ".skip": 
+      for (var i=0; i<staff.length; i++){
+        if (staff[i].username == data.un && staff[i].role > 1){
+          bot.chat("Skipping!");
+          bot.moderateForceSkip(dj.id);
+        }
+      }
       break;
     case ".forecast":
       if (qualifier === "") {
